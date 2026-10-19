@@ -1,0 +1,76 @@
+{
+  "schema_version": 1,
+  "app": "oryth",
+  "locale": "fr",
+  "generated_at": "2026-10-20T00:00:00Z",
+  "ttl_hours": 12,
+  "items": [
+    {
+      "id": "oddside-intro-2026w44",
+      "kind": "promo",
+      "priority": 10,
+      "starts_at": "2026-10-20T00:00:00Z",
+      "ends_at": "2026-12-31T00:00:00Z",
+      "platforms": [
+        "macos",
+        "ios"
+      ],
+      "min_app_version": "1.0.8",
+      "max_impressions_per_user": 3,
+      "title": "Oddside, the next game from OVJECT",
+      "body": "Live in an ordinary neighborhood, then step into the twisted place from the rumors. Updates as it gets built.",
+      "cta": {
+        "label": "Get updates",
+        "action": "url",
+        "url": "https://ovject.com/oddside?utm_source=oryth&utm_medium=feedcard&utm_campaign=oddside_prereg&utm_content=oddside-intro-2026w44"
+      },
+      "secondary": {
+        "label": "Not now",
+        "action": "dismiss"
+      },
+      "store": null,
+      "tags": [
+        "oddside"
+      ],
+      "approval": {
+        "gate": "pending",
+        "approved_by": "",
+        "approved_at": ""
+      }
+    },
+    {
+      "id": "kairo-intro-2026w44",
+      "kind": "promo",
+      "priority": 5,
+      "starts_at": "2026-10-20T00:00:00Z",
+      "ends_at": "2026-12-31T00:00:00Z",
+      "platforms": [
+        "macos",
+        "ios"
+      ],
+      "min_app_version": "1.0.8",
+      "max_impressions_per_user": 3,
+      "title": "KAIRO, a film camera app from OVJECT",
+      "body": "A film camera app for iOS. Halation and bloom rebuilt from real light, HDR glow on lights, black-and-white contrast.",
+      "cta": {
+        "label": "Learn more",
+        "action": "url",
+        "url": "https://ovject.com/kairo?utm_source=oryth&utm_medium=feedcard&utm_campaign=kairo_intro&utm_content=kairo-intro-2026w44"
+      },
+      "secondary": {
+        "label": "Not now",
+        "action": "dismiss"
+      },
+      "store": null,
+      "tags": [
+        "kairo"
+      ],
+      "approval": {
+        "gate": "pending",
+        "approved_by": "",
+        "approved_at": ""
+      }
+    }
+  ],
+  "signature": null
+}
