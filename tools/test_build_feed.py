@@ -364,6 +364,44 @@ class SourceValidationTests(unittest.TestCase):
         self.assertEqual(built["en"][0]["items"][0]["id"], "testapp-update-2026w50")
 
 
+class RunsOnTests(unittest.TestCase):
+    """`runs_on` = platforms the promoted app itself runs on (optional, passed through);
+    `platforms` = host app platforms on which the item is shown."""
+
+    def test_runs_on_passes_through_when_present_and_stays_absent_otherwise(self):
+        with_it = approved_source(runs_on=["ios", "android"])
+        without = approved_source("other-card-002")
+        without["cta"]["url"] = without["cta"]["url"].replace("utm_content=sample-card-001", "utm_content=other-card-002")
+        with tempfile.TemporaryDirectory() as tmp:
+            write_sources(tmp, "testapp", [with_it, without])
+            built = build_feed.build_app("testapp", tmp, generated_at=GENERATED_AT)
+        feed, _report = built["en"]
+        by_id = {item["id"]: item for item in feed["items"]}
+        self.assertEqual(by_id["sample-card-001"]["runs_on"], ["ios", "android"])
+        self.assertEqual(by_id["sample-card-001"]["platforms"], ["macos", "ios"], "platforms is untouched")
+        self.assertNotIn("runs_on", by_id["other-card-002"])
+        self.assertEqual(build_feed.validate_feed(feed, expected_app="testapp", expected_locale="en"), [])
+
+    def test_runs_on_rejects_unknown_platform_empty_or_duplicate_values(self):
+        for bad, fragment in (
+            (["ios", "tvos"], "unknown platform 'tvos'"),
+            ([], "non-empty array"),
+            ("ios", "non-empty array"),
+            (["ios", "ios"], "must be unique"),
+        ):
+            with tempfile.TemporaryDirectory() as tmp:
+                write_sources(tmp, "testapp", [approved_source(runs_on=bad)])
+                with self.assertRaises(build_feed.BuildError) as raised:
+                    build_feed.load_sources(tmp, "testapp")
+            self.assertIn("runs_on", str(raised.exception))
+            self.assertIn(fragment, str(raised.exception))
+        doc = json.loads(EXAMPLE.read_text(encoding="utf-8"))
+        doc["items"][0]["runs_on"] = ["web", "windows"]
+        self.assertEqual(build_feed.validate_feed(doc, expected_app="kairo", expected_locale="ko"), [])
+        doc["items"][0]["runs_on"] = ["desktop"]
+        self.assertTrue(any("runs_on: unknown platform 'desktop'" in error for error in build_feed.validate_feed(doc)))
+
+
 class CliTests(unittest.TestCase):
     def run_main(self, argv):
         out = io.StringIO()

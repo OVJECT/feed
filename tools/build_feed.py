@@ -36,7 +36,8 @@ DEFAULT_OUT = REPO_ROOT / "v1"
 LOCALES = ["en", "ko", "ja", "zh-Hans", "zh-Hant", "es", "fr", "de", "th", "vi"]
 SOURCE_LOCALE = "en"
 KINDS = ("promo", "news", "community", "survey")
-PLATFORMS = ("ios", "android", "macos")
+PLATFORMS = ("ios", "android", "macos")        # host app platforms on which an item is shown
+RUNS_ON = ("macos", "ios", "android", "web", "windows")  # platforms the promoted app itself runs on
 ACTIONS = ("url", "store", "dismiss")
 SCHEMA_VERSION = 1
 MAX_ITEMS = 10
@@ -67,7 +68,7 @@ ITEM_REQUIRED = (
     "title", "body", "cta", "secondary", "approval",
 )
 ITEM_ALLOWED = ITEM_REQUIRED + (
-    "min_app_version", "max_impressions_per_user", "image", "store", "tags",
+    "runs_on", "min_app_version", "max_impressions_per_user", "image", "store", "tags",
 )
 STRING_KEYS = ("title", "body", "cta_label", "secondary_label")
 SOURCE_REQUIRED = (
@@ -75,7 +76,7 @@ SOURCE_REQUIRED = (
     "cta", "secondary", "approval", "strings",
 )
 SOURCE_ALLOWED = SOURCE_REQUIRED + (
-    "notes", "review", "gate_context", "min_app_version", "max_impressions_per_user", "image", "store", "tags",
+    "notes", "review", "gate_context", "runs_on", "min_app_version", "max_impressions_per_user", "image", "store", "tags",
 )
 # `gate_context` is the evidence handed to the Nimble gate (scripts/gate_feed.py):
 #   {"app_summary": "...", "source_excerpts": ["...", ...]}
@@ -178,6 +179,18 @@ def _check_action(obj, path, errors, *, app=None, item_id=None):
         errors.append(f"{path}.url: must be a string when present")
 
 
+def _check_runs_on(value, path, errors):
+    """`runs_on` (optional): the platforms the promoted app itself runs on."""
+    if not isinstance(value, list) or not value:
+        errors.append(f"{path}: must be a non-empty array of {list(RUNS_ON)}")
+        return
+    if len(set(map(str, value))) != len(value):
+        errors.append(f"{path}: must be unique")
+    for entry in value:
+        if entry not in RUNS_ON:
+            errors.append(f"{path}: unknown platform '{entry}' (allowed: {list(RUNS_ON)})")
+
+
 def _check_image(obj, path, errors):
     if not isinstance(obj, dict):
         errors.append(f"{path}: must be an object")
@@ -266,6 +279,8 @@ def validate_item(item, index, errors, *, app=None, allow_pending=False):
         for platform in platforms:
             if platform not in PLATFORMS:
                 errors.append(f"{path}.platforms: unknown platform '{platform}'")
+    if "runs_on" in item:
+        _check_runs_on(item["runs_on"], f"{path}.runs_on", errors)
 
     version = item.get("min_app_version")
     if version is not None and (not isinstance(version, str) or not SEMVER_RE.match(version)):
@@ -387,6 +402,8 @@ def validate_source(source, path):
     stem = Path(path).stem
     if item_id != stem:
         errors.append(f"{path}: id '{item_id}' must equal the file name '{stem}'")
+    if "runs_on" in source:
+        _check_runs_on(source["runs_on"], f"{path}.runs_on", errors)
     strings = source.get("strings")
     if not isinstance(strings, dict):
         errors.append(f"{path}.strings: must be an object keyed by locale")
@@ -509,6 +526,8 @@ def item_for_locale(source, locale):
         "ends_at": source["ends_at"],
         "platforms": list(source["platforms"]),
     }
+    if source.get("runs_on") is not None:
+        item["runs_on"] = list(source["runs_on"])
     if source.get("min_app_version") is not None:
         item["min_app_version"] = source["min_app_version"]
     if source.get("max_impressions_per_user") is not None:

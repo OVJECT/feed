@@ -7,6 +7,10 @@ GitHub Pages serves the root of `main`; `v1/` is the schema-v1 path.
 enough), commit, and the `feed` workflow validates it, regenerates `v1/`, commits the result as
 `github-actions[bot]`, and Pages redeploys. Nobody needs a local clone to publish copy.
 
+> **Status (2026-10-19): every file under `v1/` is empty (`items: []`).** Both items under `src/oryth/` are still
+> `approval.gate: pending`, so the default build drops them. Pushing `main` as it is publishes an empty feed, and the
+> OVJECT page in the app shows nothing until an item is approved. See "승인하는 법" below.
+
 ## Layout
 
 | Path | What | Who writes it |
@@ -26,6 +30,14 @@ enough), commit, and the `feed` workflow validates it, regenerates `v1/`, commit
 3. "Commit changes": main에 직접 커밋하거나 새 브랜치 + PR. PR이면 Actions `feed`가 검사만 하고 요약(Summary)에 "무엇이 바뀔지" diff를 보여 준다.
 4. main에 들어가면 Actions `feed`가 테스트·검증 → `v1/` 재생성 → `github-actions[bot]` 커밋 → Pages가 1분쯤 뒤 재배포. 빨간 ✗면 아무것도 공개되지 않고 마지막 정상 `v1/`이 그대로 남는다(로그의 `FAIL …` 줄이 이유).
 5. 확인: Actions 탭 초록 ✓ + `https://ovject.github.io/feed/v1/<app>/<locale>.json`. 끄기: 항목 파일을 지우거나 `approval.gate`를 `pending`으로 바꾸면 그 항목이 빠진 피드가 올라간다(전부 빠지면 `items: []`).
+
+## 승인하는 법 (how to approve)
+
+1. GitHub 웹에서 `src/<app>/<item-id>.json`을 열고 `approval`을
+   `{"gate": "pass", "approved_by": "JY", "approved_at": "2026-10-20T09:00:00Z"}`처럼 바꾼다(`approved_at`은 ISO 8601 UTC).
+2. `review`에서 `gate`가 `needs_human`인 로케일은 그 로케일의 `strings`를 직접 읽는다. 그대로 괜찮으면 `gate`를 `"pass"`로 바꾸고 사유를 `reasons`에 적는다. 아니면 `strings.<locale>`을 고친 뒤 `gate`를 `"pass"`로 바꾼다. `pass`가 아닌 로케일은 그 로케일 파일에서 항목이 빠진다(영어 대체 없음).
+3. 커밋(main 직접 또는 PR 머지) → Actions `feed`가 `v1/`을 다시 만들어 봇 커밋 → Pages가 1분쯤 뒤 재배포.
+4. **경고: 승인 없이 push하면 피드는 `items: []`라서 앱의 OVJECT 페이지가 빈 상태가 된다.** 지금 로컬 `v1/`이 그 상태다(위 Status). 자리표시자 CTA URL(`https://ovject.com/oddside`, `https://ovject.com/kairo`)도 승인 전에 실제 주소로 바꾸고, 문구가 바뀌면 새 id로 만든다.
 
 ## Pipeline (`.github/workflows/feed.yml`)
 
@@ -76,6 +88,11 @@ deployment, the fallback is switching Pages to the Actions deployment (`actions/
   other than `pass` leaves the item out of that locale's file (no English fallback for a failed gate).
 - An app never introduces itself: in `src/<app>/`, an item whose `tags` contain `<app>` or whose id starts with
   `<app>-` is a validation error for that app's feed (JY, 2026-10-19). The same item is fine in another app's folder.
+- Two platform fields, not one: `platforms` (required) lists the **host app platforms on which the item is shown**
+  (`ios`, `android`, `macos`; the host app hides the card when its own platform is absent). `runs_on` (optional) lists
+  the **platforms the promoted app itself runs on** (`macos`, `ios`, `android`, `web`, `windows`) and is passed through
+  to the output unchanged so the card can say where that app is available. Omit it while unconfirmed
+  (KAIRO: `["ios"]`; Oddside: none yet).
 - Each `strings.<locale>` is complete (`title`, `body`, `cta_label`, `secondary_label`) or absent; the tests require
   all ten locales for every committed item (OVJECT rule, 2026-10-19).
 - Limits: title ≤ 40, body ≤ 120, labels ≤ 16 characters; HTTPS only; `cta.url` carries `utm_source=<app>`,
@@ -125,7 +142,7 @@ When the two differ, `src/` wins. Specification: `marketing/crosspromo/CROSS_PRO
 
 - `src/oryth/`: `oddside-intro-2026w44`, `kairo-intro-2026w44`, all ten locales written by hand, **approval still
   `pending`**, CTA URLs are placeholders (the Oddside pre-registration page and a KAIRO page on ovject.com do not
-  exist yet). The Nimble gate passed 16 of 20 locale strings; Oddside `en`·`th`·`vi` and KAIRO `th` are
+  exist yet). `kairo-intro` carries `runs_on: ["ios"]`; `oddside-intro` has no `runs_on` (release platforms unconfirmed). The Nimble gate passed 16 of 20 locale strings; Oddside `en`·`th`·`vi` and KAIRO `th` are
   `needs_human` and stay out of those files until a person sets their `review.<locale>.gate` to `pass`.
 - `v1/oryth/*.json`: ten files with `items: []`, the default build of the sources above. The earlier preview build
   made with `--include-pending` is no longer committed; the feed stays empty until items are approved in `src/`.

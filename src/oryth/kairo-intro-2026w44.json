@@ -9,6 +9,9 @@
     "macos",
     "ios"
   ],
+  "runs_on": [
+    "ios"
+  ],
   "min_app_version": "1.0.8",
   "max_impressions_per_user": 3,
   "image": null,
