@@ -2,7 +2,7 @@
   "schema_version": 1,
   "app": "oryth",
   "locale": "vi",
-  "generated_at": "2026-10-19T13:09:25Z",
+  "generated_at": "2026-10-19T13:45:56Z",
   "ttl_hours": 12,
   "items": [
     {
@@ -72,6 +72,86 @@
         "gate": "pass",
         "approved_by": "JY",
         "approved_at": "2026-10-19T11:26:06Z"
+      }
+    },
+    {
+      "id": "random-taptap-intro-2026w44",
+      "kind": "promo",
+      "priority": 4,
+      "starts_at": "2026-10-19T13:45:00Z",
+      "ends_at": "2099-01-01T00:00:00Z",
+      "platforms": [
+        "macos",
+        "ios"
+      ],
+      "runs_on": [
+        "ios",
+        "android"
+      ],
+      "min_app_version": "1.0.8",
+      "max_impressions_per_user": 3,
+      "title": "Random TapTap, ứng dụng của OVJECT",
+      "body": "Mọi người đặt ngón tay lên màn hình, ánh sáng chạy rồi dừng ở một người. Chọn người thắng, chia đội hoặc xếp thứ tự.",
+      "cta": {
+        "label": "Trên App Store",
+        "action": "url",
+        "url": "https://apps.apple.com/app/id6740798110?utm_source=oryth&utm_medium=feedcard&utm_campaign=random_taptap_intro&utm_content=random-taptap-intro-2026w44"
+      },
+      "secondary": {
+        "label": "Để sau",
+        "action": "dismiss"
+      },
+      "store": {
+        "ios_app_id": "6740798110",
+        "android_package": "com.OVJECT.TapTap"
+      },
+      "tags": [
+        "random-taptap"
+      ],
+      "approval": {
+        "gate": "pass",
+        "approved_by": "JY",
+        "approved_at": "2026-10-19T13:46:00Z"
+      }
+    },
+    {
+      "id": "croco-roulette-intro-2026w44",
+      "kind": "promo",
+      "priority": 1,
+      "starts_at": "2026-10-19T13:45:00Z",
+      "ends_at": "2099-01-01T00:00:00Z",
+      "platforms": [
+        "macos",
+        "ios"
+      ],
+      "runs_on": [
+        "ios",
+        "android"
+      ],
+      "min_app_version": "1.0.8",
+      "max_impressions_per_user": 3,
+      "title": "Croco? Croco Roulette của OVJECT",
+      "body": "Bản số đơn giản của trò nhổ răng cá sấu đồ chơi. Hợp để cá bữa trưa hay định hình phạt; chơi một mình thì không vui.",
+      "cta": {
+        "label": "Trên App Store",
+        "action": "url",
+        "url": "https://apps.apple.com/app/id1501486372?utm_source=oryth&utm_medium=feedcard&utm_campaign=croco_roulette_intro&utm_content=croco-roulette-intro-2026w44"
+      },
+      "secondary": {
+        "label": "Để sau",
+        "action": "dismiss"
+      },
+      "store": {
+        "ios_app_id": "1501486372",
+        "android_package": "com.OVJECT.CrocoR"
+      },
+      "tags": [
+        "croco-roulette"
+      ],
+      "approval": {
+        "gate": "pass",
+        "approved_by": "JY",
+        "approved_at": "2026-10-19T13:46:00Z"
       }
     }
   ],
