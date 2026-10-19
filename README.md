@@ -1,11 +1,103 @@
 # OVJECT in-app news feed (`OVJECT/feed`)
 
 Static JSON that OVJECT apps read and draw as **one native card** (no WebView, no code).
-Served by GitHub Pages from the repository root; `v1/` is the schema-v1 path.
+GitHub Pages serves the root of `main`; `v1/` is the schema-v1 path.
 
-- Spec: `marketing/crosspromo/CROSS_PROMO.md` §8 (private marketing folder)
-- Schema: `marketing/crosspromo/feed-schema.json`
-- Generator: `marketing/scripts/build_feed.py` (writes `v1/<app>/<locale>.json`)
+**Everything is managed in this repository.** Edit a source file under `src/` (the GitHub web editor is
+enough), commit, and the `feed` workflow validates it, regenerates `v1/`, commits the result as
+`github-actions[bot]`, and Pages redeploys. Nobody needs a local clone to publish copy.
+
+## Layout
+
+| Path | What | Who writes it |
+|---|---|---|
+| `src/<app>/<item-id>.json` | one item per file: shared fields, `strings.<locale>` for all ten locales, `approval`, per-locale gate results `review`, memos `notes` / `gate_context` | people |
+| `tools/build_feed.py` | validator + generator, standard library only (**canonical copy**) | maintainers |
+| `tools/test_build_feed.py` | unit tests + the rules every item under `src/` must meet | maintainers |
+| `tools/feed-schema.json`, `tools/fixtures/` | output schema (reference) and the example the tests use | maintainers |
+| `v1/<app>/<locale>.json` | the published feed. **Generated: never edit by hand**, the workflow overwrites it | `github-actions[bot]` |
+| `img/<app>/` | card images (rules in `img/oryth/README.md`) | people |
+| `.github/workflows/feed.yml` | the pipeline | maintainers |
+
+## GitHub에서 고치는 법 (how to edit on GitHub)
+
+1. `src/<app>/<item-id>.json`을 열어 연필 아이콘으로 고친다: 문구는 `strings.<locale>`, 기간은 `starts_at`·`ends_at`, 링크는 `cta.url`(https + utm 4종). 문구를 바꾼 새 캠페인은 **새 id = 새 파일**(파일 이름 = id).
+2. 공개 조건: `approval.gate`가 `pending`이 아니고 `approved_by`·`approved_at`이 채워진 항목만 나가고, `review.<locale>.gate`가 `pass`인 로케일 파일에만 들어간다(아니면 그 로케일에서만 빠진다, 영어 대체 없음).
+3. "Commit changes": main에 직접 커밋하거나 새 브랜치 + PR. PR이면 Actions `feed`가 검사만 하고 요약(Summary)에 "무엇이 바뀔지" diff를 보여 준다.
+4. main에 들어가면 Actions `feed`가 테스트·검증 → `v1/` 재생성 → `github-actions[bot]` 커밋 → Pages가 1분쯤 뒤 재배포. 빨간 ✗면 아무것도 공개되지 않고 마지막 정상 `v1/`이 그대로 남는다(로그의 `FAIL …` 줄이 이유).
+5. 확인: Actions 탭 초록 ✓ + `https://ovject.github.io/feed/v1/<app>/<locale>.json`. 끄기: 항목 파일을 지우거나 `approval.gate`를 `pending`으로 바꾸면 그 항목이 빠진 피드가 올라간다(전부 빠지면 `items: []`).
+
+## Pipeline (`.github/workflows/feed.yml`)
+
+| Event | What runs |
+|---|---|
+| push to `main` touching `src/`, `tools/`, `v1/` or the workflow | job `check`, then job `publish` |
+| pull request touching the same paths | job `check` only; the job summary shows the `v1/` diff that merging would publish |
+| manual run (Actions → feed → Run workflow) | same as a push to `main`; use it to retry after a failure |
+
+- `check`: `python3 -m unittest discover -s tools` → `tools/build_feed.py --skip-unchanged` (pending items dropped,
+  locales whose gate is not `pass` left out, every rule in `tools/feed-schema.json` applied) →
+  `tools/build_feed.py --check v1/*/*.json` (strict: a pending item in the output fails the run) → diff preview.
+- `publish` (`main` only, `contents: write` on this job alone): rebuilds the same way, and when `v1/` differs
+  from what is committed, commits it as `github-actions[bot]` and pushes to `main`. Pages redeploys from that push.
+- Only `actions/checkout` and `actions/setup-python`, pinned to a commit. Python 3.12, standard library only.
+
+### Why the workflow commits `v1/` itself (and the option we did not pick)
+
+Two designs were compared:
+
+| | **Bot commit on `main` (chosen)** | Fail the run when `v1/` is stale, a person regenerates locally |
+|---|---|---|
+| Editing from the GitHub web UI | works end to end | every copy change needs a clone + Python, which is what this setup removes |
+| What a red run means | a real validation error | mostly "you forgot to regenerate", hiding real errors |
+| `v1/` always equals `build(src/)` | enforced (a hand edit of `v1/` is rebuilt away on the next run) | only by discipline |
+| Permissions | `contents: write` on one job, via the job token (no personal token stored) | read only |
+
+Why the chosen design is safe:
+
+- A push made with the job token never starts another workflow run, and the bot commit only touches `v1/`,
+  so there is no loop; `--skip-unchanged` also means a rerun with nothing changed commits nothing
+  (`generated_at` only moves when the content moves).
+- `concurrency` serialises runs per branch, so two bot commits never race.
+- Validation runs *before* anything is written; a failure publishes nothing and the last good `v1/` stays.
+- Nothing is published that the generator would not produce from `src/`: no pending item, no locale whose gate
+  did not pass, nothing over the size, count or length limits.
+
+Known limits: the bot push needs `main` to accept direct pushes from Actions (no branch protection rule that
+requires pull requests, or one that exempts the bot). The repository must have Actions enabled, with the
+default "Read repository contents" token setting; the workflow raises its own permission to write for the
+publish job. Pages stays on "Deploy from a branch" (`main`, `/`); if a bot push ever fails to trigger the Pages
+deployment, the fallback is switching Pages to the Actions deployment (`actions/upload-pages-artifact` +
+`actions/deploy-pages`), which this workflow does not use yet.
+
+## Rules the build enforces
+
+- An item is published only when `approval.gate` is not `pending` **and** `approved_by` is set; a `review.<locale>.gate`
+  other than `pass` leaves the item out of that locale's file (no English fallback for a failed gate).
+- Each `strings.<locale>` is complete (`title`, `body`, `cta_label`, `secondary_label`) or absent; the tests require
+  all ten locales for every committed item (OVJECT rule, 2026-10-19).
+- Limits: title ≤ 40, body ≤ 120, labels ≤ 16 characters; HTTPS only; `cta.url` carries `utm_source=<app>`,
+  `utm_medium=feedcard`, `utm_campaign`, `utm_content=<item-id>`; ISO 8601 dates with `ends_at` after `starts_at`;
+  ≤ 10 items and ≤ 20 KB per file; no markup in text; `additionalProperties: false` everywhere.
+- `notes`, `gate_context`, `review` and `strings` never reach the output. They stay in `src/` for traceability,
+  but this repository is public: do not write anything there that must stay private.
+
+## Local use
+
+```bash
+python3 tools/build_feed.py                                   # every app under src/ → v1/
+python3 tools/build_feed.py --app oryth --include-pending     # preview unapproved items (do not commit)
+python3 tools/build_feed.py --check v1/oryth/*.json           # lint existing files
+python3 -m unittest discover -s tools -p "test_*.py"
+```
+
+## Marketing folder and the Nimble gate
+
+The private marketing folder keeps a snapshot of the generator (`marketing/scripts/build_feed.py`) and a draft
+area (`marketing/crosspromo/feed-src/<app>/`): night production writes drafts there, and `marketing/scripts/gate_feed.py`
+runs the Nimble gate over every locale string and writes `review.<locale>` into the draft. **This repository's `src/`
+is the source of truth for what is published**: copy a gated draft here (or edit here directly) to publish.
+When the two differ, `src/` wins. Specification: `marketing/crosspromo/CROSS_PROMO.md` §8.
 
 ## URL rules
 
@@ -14,55 +106,25 @@ Served by GitHub Pages from the repository root; `v1/` is the schema-v1 path.
 | Feed | `https://ovject.github.io/feed/v1/<app>/<locale>.json` |
 | Image | `https://ovject.github.io/feed/img/<app>/<item-id>-<w>x<h>.<png\|jpg\|webp>` |
 
-- `<app>`: lowercase slug (`oryth` first; later `kairo`, `oddside`).
+- `<app>`: lowercase slug (`oryth` first; later `kairo`, `oddside`). A new app is a new folder `src/<app>/`;
+  the workflow builds every folder it finds. Removing an app means deleting both `src/<app>/` and `v1/<app>/`.
 - `<locale>`: `en`, `ko`, `ja`, `zh-Hans`, `zh-Hant`, `es`, `fr`, `de`, `th`, `vi` (10 files per app, always all 10).
-  Locales without their own copy carry the English strings (the generator falls back to `en`; no machine translation).
   Apps fall back to `en.json` on 404.
 - `v1` is the schema path. A breaking change opens `v2/`; `v1/` keeps being served.
 - Response headers are GitHub's (`Cache-Control: max-age=600`, `ETag`); the real refresh period is the
-  feed's `ttl_hours` (12). Files stay under 20 KB and 10 items.
-- **Off switch**: publish `"items": []` and the card disappears from every app on its next refresh.
-- Only HTTPS. Keep `.nojekyll` so Pages serves files as-is.
+  feed's `ttl_hours` (12).
+- **Off switch**: a feed with `items: []` makes the card disappear from every app on its next refresh
+  (delete the item files or set their `approval.gate` to `pending`).
+- Only HTTPS. Keep `.nojekyll` so Pages serves files as-is. `src/`, `tools/` and `.github/` are served too; they
+  contain nothing secret.
+- Changed copy gets a **new item id** (apps store dismiss/impression state per id).
 
-## Publishing procedure (a person pushes; agents never push)
+## Current state (2026-10-19)
 
-1. Edit or add items in `marketing/crosspromo/feed-src/<app>/<item-id>.json`
-   (one file per item: shared fields + `strings.<locale>` for **all ten locales**, written by hand, no
-   translation engine + free `notes` + `gate_context` evidence). A locale is either fully written or absent;
-   only an absent locale falls back to `en`.
-2. Gate every locale string (serial Nimble calls, one per string):
-   ```bash
-   python3 /Volumes/SSD03/marketing/scripts/gate_feed.py --app oryth
-   ```
-   It writes `review.<locale>.gate` (`pass` / `fail` / `needs_human`) into the source file. A locale whose gate
-   is not `pass` is **left out of that locale's file** (no `en` fallback). A human who reads a `needs_human`
-   string and accepts it sets its `gate` to `pass` by hand (note why in `reasons`) or rewrites the string and
-   runs the gate again.
-3. Approval: fill `approval.gate` (e.g. `nimble-5f-pass`), `approved_by`, `approved_at`.
-   Items still `pending` are dropped by the default build.
-4. Build into this clone:
-   ```bash
-   python3 /Volumes/SSD03/marketing/scripts/build_feed.py --app oryth --out /Volumes/SSD03/web/ovject-feed/v1
-   ```
-   `--include-pending` emits unapproved items for local preview only; rebuild without it before pushing.
-5. Lint the written files (also runs inside the build):
-   ```bash
-   python3 /Volumes/SSD03/marketing/scripts/build_feed.py --check v1/oryth/*.json
-   ```
-6. Commit and push `main`; GitHub Pages redeploys in about a minute.
-   Verify: `curl -sI https://ovject.github.io/feed/v1/oryth/en.json` → `200`, `content-type: application/json`.
-7. Changed copy gets a **new item id** (apps store dismiss/impression state per id).
-
-## Current state
-
-`v1/oryth/*.json` was generated with `--include-pending` (2 items, approval pending, CTA URLs are placeholders:
-the Oddside pre-registration page and a KAIRO page on ovject.com do not exist yet). All ten locales are written
-in `feed-src`; the Nimble gate passed 16 of the 20 locale strings and flagged 4 for human review
-(Oddside `en`·`th`·`vi`, KAIRO `th`), so those are left out: `en.json` and `vi.json` carry only KAIRO,
-`th.json` is empty (`items: []`, the app shows nothing). No locale string is approved by a person yet.
-Review the flagged strings, approve the copy, replace the placeholder URLs in `feed-src`, rebuild without
-`--include-pending`, then push.
-
-Published: the repo `OVJECT/feed` and Pages (branch `main`, path `/`) exist since 2026-10-19 and serve the
-first commit (`5620a07`: en/ko copy with en fallback, still pending approval). The ten-locale rebuild above is
-local only until the owner pushes `main`.
+- `src/oryth/`: `oddside-intro-2026w44`, `kairo-intro-2026w44`, all ten locales written by hand, **approval still
+  `pending`**, CTA URLs are placeholders (the Oddside pre-registration page and a KAIRO page on ovject.com do not
+  exist yet). The Nimble gate passed 16 of 20 locale strings; Oddside `en`·`th`·`vi` and KAIRO `th` are
+  `needs_human` and stay out of those files until a person sets their `review.<locale>.gate` to `pass`.
+- `v1/oryth/*.json`: ten files with `items: []`, the default build of the sources above. The earlier preview build
+  made with `--include-pending` is no longer committed; the feed stays empty until items are approved in `src/`.
+- Published: the repository and Pages (`main`, `/`) exist since 2026-10-19 and serve whatever `main` holds.

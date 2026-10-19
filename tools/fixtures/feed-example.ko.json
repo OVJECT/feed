@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "app": "kairo",
+  "locale": "ko",
+  "generated_at": "2026-10-26T00:00:00Z",
+  "ttl_hours": 12,
+  "items": [
+    {
+      "id": "oddside-updates-2026w44",
+      "kind": "promo",
+      "priority": 10,
+      "starts_at": "2026-10-26T00:00:00Z",
+      "ends_at": "2026-12-01T00:00:00Z",
+      "platforms": ["ios", "android"],
+      "min_app_version": "2.1.0",
+      "max_impressions_per_user": 3,
+      "title": "OVJECT의 다음 게임, 오드사이드",
+      "body": "평범한 동네에서 살다가 소문 속 뒤틀린 곳에 들어가 싸웁니다. 만들어지는 대로 소식을 보내 드립니다.",
+      "image": {
+        "url": "https://ovject.com/feed/img/kairo/oddside-updates-2026w44-1200x630.png",
+        "width": 1200,
+        "height": 630,
+        "alt": "오드사이드 동네 거리 스크린샷"
+      },
+      "cta": {
+        "label": "소식 받기",
+        "action": "url",
+        "url": "https://ovject.com/oddside?utm_source=kairo&utm_medium=feedcard&utm_campaign=oddside_prereg&utm_content=oddside-updates-2026w44"
+      },
+      "secondary": { "label": "나중에", "action": "dismiss" },
+      "store": null,
+      "tags": ["oddside"],
+      "approval": {
+        "gate": "nimble-5f-pass",
+        "approved_by": "JY",
+        "approved_at": "2026-10-25T10:00:00Z"
+      }
+    }
+  ],
+  "signature": null
+}

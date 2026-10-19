@@ -1,0 +1,112 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ovject.com/feed/v1/schema.json",
+  "title": "OVJECT in-app news feed (v1)",
+  "description": "앱이 읽어 네이티브 카드로 그리는 소식 피드. 명세는 marketing/crosspromo/CROSS_PROMO.md §8. 데이터만 담고 코드·HTML은 금지.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "app", "locale", "generated_at", "ttl_hours", "items"],
+  "properties": {
+    "schema_version": { "type": "integer", "const": 1 },
+    "app": { "type": "string", "pattern": "^[a-z0-9-]{2,32}$" },
+    "locale": { "type": "string", "enum": ["en", "ko", "ja", "zh-Hans", "zh-Hant", "es", "fr", "de", "th", "vi"] },
+    "generated_at": { "type": "string", "format": "date-time" },
+    "ttl_hours": { "type": "integer", "minimum": 1, "maximum": 168 },
+    "items": {
+      "type": "array",
+      "maxItems": 10,
+      "items": { "$ref": "#/$defs/item" }
+    },
+    "signature": { "type": ["string", "null"], "description": "items 배열 정규화 JSON에 대한 Ed25519 서명(base64). v1에서는 선택." }
+  },
+  "$defs": {
+    "item": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "kind", "priority", "starts_at", "ends_at", "platforms", "title", "body", "cta", "secondary", "approval"],
+      "properties": {
+        "id": { "type": "string", "pattern": "^[a-z0-9-]{3,64}$" },
+        "kind": { "type": "string", "enum": ["promo", "news", "community", "survey"] },
+        "priority": { "type": "integer" },
+        "starts_at": { "type": "string", "format": "date-time" },
+        "ends_at": { "type": "string", "format": "date-time" },
+        "platforms": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "type": "string", "enum": ["ios", "android", "macos"] }
+        },
+        "min_app_version": { "type": "string", "pattern": "^\\d+\\.\\d+\\.\\d+$" },
+        "max_impressions_per_user": { "type": "integer", "minimum": 1, "default": 3 },
+        "title": { "type": "string", "minLength": 1, "maxLength": 40 },
+        "body": { "type": "string", "minLength": 1, "maxLength": 120 },
+        "image": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["url", "width", "height", "alt"],
+          "properties": {
+            "url": { "type": "string", "pattern": "^https://" },
+            "width": { "type": "integer", "minimum": 1 },
+            "height": { "type": "integer", "minimum": 1 },
+            "alt": { "type": "string", "minLength": 1, "maxLength": 120 }
+          }
+        },
+        "cta": { "$ref": "#/$defs/action" },
+        "secondary": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["label", "action"],
+          "properties": {
+            "label": { "type": "string", "minLength": 1, "maxLength": 16 },
+            "action": { "type": "string", "const": "dismiss" }
+          }
+        },
+        "store": {
+          "type": ["object", "null"],
+          "additionalProperties": false,
+          "properties": {
+            "ios_app_id": { "type": "string", "pattern": "^\\d+$" },
+            "android_package": { "type": "string", "pattern": "^[a-zA-Z][a-zA-Z0-9_]*(\\.[a-zA-Z][a-zA-Z0-9_]*)+$" }
+          }
+        },
+        "tags": { "type": "array", "items": { "type": "string", "pattern": "^[a-z0-9-]{1,32}$" } },
+        "approval": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["gate", "approved_by", "approved_at"],
+          "properties": {
+            "gate": { "type": "string", "description": "예: nimble-5f-pass" },
+            "approved_by": { "type": "string" },
+            "approved_at": { "type": "string", "format": "date-time" }
+          }
+        }
+      },
+      "allOf": [
+        {
+          "if": { "properties": { "cta": { "properties": { "action": { "const": "store" } } } } },
+          "then": { "required": ["store"], "properties": { "store": { "type": "object" } } }
+        }
+      ]
+    },
+    "action": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["label", "action"],
+      "properties": {
+        "label": { "type": "string", "minLength": 1, "maxLength": 16 },
+        "action": { "type": "string", "enum": ["url", "store", "dismiss"] },
+        "url": {
+          "type": "string",
+          "pattern": "^https://[^\\s]+utm_source=[^&\\s]+.*utm_medium=feedcard.*utm_campaign=[^&\\s]+.*utm_content=[^&\\s]+",
+          "description": "action=url일 때 필수. https와 utm_source·utm_medium=feedcard·utm_campaign·utm_content를 모두 포함"
+        }
+      },
+      "allOf": [
+        {
+          "if": { "properties": { "action": { "const": "url" } } },
+          "then": { "required": ["url"] }
+        }
+      ]
+    }
+  }
+}

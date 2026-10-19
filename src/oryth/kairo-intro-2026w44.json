@@ -1,0 +1,556 @@
+{
+  "notes": "KAIRO 소개 카드(Oryth 두 번째 항목, 우선순위 낮음). KAIRO 홍보는 보류(HANDOFF §1)지만 카드 소재로는 쓸 수 있다는 부모 세션 지시에 따라 넣었다. EN·KO는 스토어 홍보문(KAIRO_v2/fastlane/metadata/{en-US,ko}/promotional_text.txt)에서 수치('필름 40종')를 뺀 것이고, 'iOS용'은 KAIRO_v2/README.md 첫 줄(iOS film camera application) 기준이다. 나머지 8개 로케일은 2026-10-19 밤 사용자 정정에 따라 claude-code 세션이 번역 엔진 없이 EN 원문의 사실 범위 안에서 다시 썼다(KAIRO·OVJECT·HDR·iOS는 라틴 표기 유지). CTA url은 자리표시자(https://ovject.com/kairo 페이지 여부 미확인). store 필드는 비워 두었다(ios_app_id 미확인). 로케일별 Nimble 게이트 결과는 review, 사람 승인은 비어 있다. notes·review 필드는 생성기가 버린다.",
+  "id": "kairo-intro-2026w44",
+  "kind": "promo",
+  "priority": 5,
+  "starts_at": "2026-10-20T00:00:00Z",
+  "ends_at": "2026-12-31T00:00:00Z",
+  "platforms": [
+    "macos",
+    "ios"
+  ],
+  "min_app_version": "1.0.8",
+  "max_impressions_per_user": 3,
+  "image": null,
+  "cta": {
+    "action": "url",
+    "url": "https://ovject.com/kairo?utm_source=oryth&utm_medium=feedcard&utm_campaign=kairo_intro&utm_content=kairo-intro-2026w44"
+  },
+  "secondary": {
+    "action": "dismiss"
+  },
+  "store": null,
+  "tags": [
+    "kairo"
+  ],
+  "approval": {
+    "gate": "pending",
+    "approved_by": "",
+    "approved_at": ""
+  },
+  "strings": {
+    "en": {
+      "title": "KAIRO, a film camera app from OVJECT",
+      "body": "A film camera app for iOS. Halation and bloom rebuilt from real light, HDR glow on lights, black-and-white contrast.",
+      "cta_label": "Learn more",
+      "secondary_label": "Not now"
+    },
+    "ko": {
+      "title": "OVJECT의 필름 카메라 앱, KAIRO",
+      "body": "iOS용 필름 카메라 앱입니다. 실제 빛에서 계산한 할레이션과 빛번짐, HDR 화면에서 빛나는 조명, 흑백 대비 필터.",
+      "cta_label": "자세히 보기",
+      "secondary_label": "나중에"
+    },
+    "ja": {
+      "title": "OVJECTのフィルムカメラアプリ、KAIRO",
+      "body": "iOS向けのフィルムカメラアプリです。実際の光から計算したハレーションとにじみ、HDRで光る照明、白黒のコントラストフィルター。",
+      "cta_label": "詳しく見る",
+      "secondary_label": "あとで"
+    },
+    "zh-Hans": {
+      "title": "OVJECT 的胶片相机应用：KAIRO",
+      "body": "一款 iOS 胶片相机应用。根据真实光线计算的光晕与眩光、在 HDR 屏幕上发亮的灯光，以及黑白对比滤镜。",
+      "cta_label": "了解更多",
+      "secondary_label": "以后再说"
+    },
+    "zh-Hant": {
+      "title": "OVJECT 的底片相機 App：KAIRO",
+      "body": "一款 iOS 底片相機 App。依真實光線計算的光暈與眩光、在 HDR 螢幕上發亮的燈光，以及黑白對比濾鏡。",
+      "cta_label": "了解更多",
+      "secondary_label": "以後再說"
+    },
+    "es": {
+      "title": "KAIRO, cámara de película de OVJECT",
+      "body": "Cámara de película para iOS. Halación y bloom a partir de luz real, brillo HDR en las luces, filtros en blanco y negro.",
+      "cta_label": "Saber más",
+      "secondary_label": "Ahora no"
+    },
+    "fr": {
+      "title": "KAIRO, l'appli photo argentique d'OVJECT",
+      "body": "Appli photo argentique pour iOS. Halation et bloom calculés d'après la lumière réelle, éclat HDR, filtres noir et blanc.",
+      "cta_label": "En savoir plus",
+      "secondary_label": "Plus tard"
+    },
+    "de": {
+      "title": "KAIRO, die Filmkamera-App von OVJECT",
+      "body": "Filmkamera-App für iOS. Halation und Bloom aus echtem Licht berechnet, HDR-Leuchten der Lichter, Schwarz-Weiß-Filter.",
+      "cta_label": "Mehr erfahren",
+      "secondary_label": "Später"
+    },
+    "th": {
+      "title": "KAIRO แอปกล้องฟิล์มจาก OVJECT",
+      "body": "แอปกล้องฟิล์มสำหรับ iOS ฮาเลชันและบลูมคำนวณจากแสงจริง แสงไฟที่เรืองบนจอ HDR และฟิลเตอร์ขาวดำแบบคอนทราสต์",
+      "cta_label": "ดูเพิ่มเติม",
+      "secondary_label": "ไว้ทีหลัง"
+    },
+    "vi": {
+      "title": "KAIRO, ứng dụng máy ảnh phim của OVJECT",
+      "body": "Ứng dụng máy ảnh phim cho iOS. Halation và bloom tính từ ánh sáng thật, đèn sáng HDR, bộ lọc tương phản đen trắng.",
+      "cta_label": "Tìm hiểu thêm",
+      "secondary_label": "Để sau"
+    }
+  },
+  "gate_context": {
+    "app_summary": "KAIRO는 OVJECT의 iOS 필름 카메라 앱으로, App Store에 출시되어 있다. 필름 룩을 Metal 렌더링으로 재현하며, 스토어 홍보문은 실제 빛에서 계산한 할레이션과 빛번짐, HDR 화면에서 빛나는 조명, 흑백 대비 필터를 든다. 마케팅은 보류 중이지만 소식 카드 소재로는 허용됐다. 카드에는 필름 수(40종)를 쓰지 않기로 했다(수치 제외). 카드 역할: 같은 스튜디오(OVJECT)의 다른 앱(Oryth) 안에서 KAIRO를 한 번 소개하고 자세히 보기 링크를 건넨다. 가격·구독·기능 추가 약속은 없다.",
+    "source_excerpts": [
+      "KAIRO_v2/fastlane/metadata/en-US/promotional_text.txt: \"40 films, each made for its own light. Halation and bloom rebuilt from real light, HDR glow on lights, and black-and-white contrast filters.\"",
+      "KAIRO_v2/fastlane/metadata/ko/promotional_text.txt: \"저마다의 빛을 위한 필름 40종. 실제 빛에서 계산한 할레이션과 빛번짐, HDR 화면에서 빛나는 조명, 흑백 대비 필터.\"",
+      "KAIRO_v2/README.md 첫 줄: \"KAIRO is a professional-grade iOS film camera application that brings the authentic look of analog film to the digital age using advanced Metal rendering.\"",
+      "brand/BRAND_VOICE.md §3 KAIRO(보류) 최소 규칙: 필름 수·기능·구독 안내는 쓰지 않는다(크레딧 한 줄 예외). 이 카드는 부모 세션 지시로 스토어 홍보문에서 수치만 뺀 소개다."
+    ]
+  },
+  "review": {
+    "en": {
+      "gate": "pass",
+      "checked_at": "2026-10-19T09:16:57Z",
+      "tool": "DGX :8090 /v1/score ×2 (choices reversed for order check)",
+      "fields": {
+        "tone": {
+          "output": "ON_BRAND",
+          "prob": 0.975,
+          "margin": 0.954,
+          "entropy": 0.114,
+          "stable": true
+        },
+        "banned_expression": {
+          "output": "NONE",
+          "prob": 0.926,
+          "margin": 0.868,
+          "entropy": 0.165,
+          "stable": true
+        },
+        "fact_grounding": {
+          "output": "SUPPORTED",
+          "prob": 0.955,
+          "margin": 0.927,
+          "entropy": 0.158,
+          "stable": true
+        },
+        "platform_policy": {
+          "output": "COMPLIANT",
+          "prob": 0.97,
+          "margin": 0.948,
+          "entropy": 0.112,
+          "stable": true
+        },
+        "en_naturalness": {
+          "output": "NATURAL",
+          "prob": 0.906,
+          "margin": 0.855,
+          "entropy": 0.282,
+          "stable": true
+        }
+      },
+      "reasons": [],
+      "naturalness_note": "en_naturalness=NATURAL (참고용, 통과 조건 아님; 사람 확인)",
+      "log": "gates/log/2026-10-19-feed-kairo-intro-2026w44-en.json"
+    },
+    "ko": {
+      "gate": "pass",
+      "checked_at": "2026-10-19T09:17:01Z",
+      "tool": "DGX :8090 /v1/score ×2 (choices reversed for order check)",
+      "fields": {
+        "tone": {
+          "output": "ON_BRAND",
+          "prob": 0.975,
+          "margin": 0.955,
+          "entropy": 0.12,
+          "stable": true
+        },
+        "banned_expression": {
+          "output": "NONE",
+          "prob": 0.887,
+          "margin": 0.784,
+          "entropy": 0.206,
+          "stable": true
+        },
+        "fact_grounding": {
+          "output": "SUPPORTED",
+          "prob": 0.651,
+          "margin": 0.349,
+          "entropy": 0.568,
+          "stable": true
+        },
+        "platform_policy": {
+          "output": "COMPLIANT",
+          "prob": 0.977,
+          "margin": 0.96,
+          "entropy": 0.09,
+          "stable": true
+        },
+        "korean_naturalness": {
+          "output": "NATURAL",
+          "prob": 0.925,
+          "margin": 0.865,
+          "entropy": 0.22,
+          "stable": true
+        }
+      },
+      "reasons": [],
+      "naturalness_note": "korean_naturalness=NATURAL (참고용, 통과 조건 아님; 사람 확인)",
+      "log": "gates/log/2026-10-19-feed-kairo-intro-2026w44-ko.json"
+    },
+    "ja": {
+      "gate": "pass",
+      "checked_at": "2026-10-19T09:17:04Z",
+      "tool": "DGX :8090 /v1/score ×2 (choices reversed for order check)",
+      "fields": {
+        "tone": {
+          "output": "ON_BRAND",
+          "prob": 0.958,
+          "margin": 0.922,
+          "entropy": 0.178,
+          "stable": true
+        },
+        "banned_expression": {
+          "output": "NONE",
+          "prob": 0.949,
+          "margin": 0.909,
+          "entropy": 0.123,
+          "stable": true
+        },
+        "fact_grounding": {
+          "output": "SUPPORTED",
+          "prob": 0.982,
+          "margin": 0.97,
+          "entropy": 0.073,
+          "stable": true
+        },
+        "platform_policy": {
+          "output": "COMPLIANT",
+          "prob": 0.964,
+          "margin": 0.935,
+          "entropy": 0.129,
+          "stable": true
+        },
+        "ja_naturalness": {
+          "output": "NATURAL",
+          "prob": 0.663,
+          "margin": 0.414,
+          "entropy": 0.605,
+          "stable": true
+        }
+      },
+      "reasons": [],
+      "naturalness_note": "ja_naturalness=NATURAL (참고용, 통과 조건 아님; 사람 확인)",
+      "log": "gates/log/2026-10-19-feed-kairo-intro-2026w44-ja.json"
+    },
+    "zh-Hans": {
+      "gate": "pass",
+      "checked_at": "2026-10-19T09:17:08Z",
+      "tool": "DGX :8090 /v1/score ×2 (choices reversed for order check)",
+      "fields": {
+        "tone": {
+          "output": "ON_BRAND",
+          "prob": 0.981,
+          "margin": 0.967,
+          "entropy": 0.097,
+          "stable": true
+        },
+        "banned_expression": {
+          "output": "NONE",
+          "prob": 0.942,
+          "margin": 0.892,
+          "entropy": 0.13,
+          "stable": true
+        },
+        "fact_grounding": {
+          "output": "SUPPORTED",
+          "prob": 0.913,
+          "margin": 0.847,
+          "entropy": 0.25,
+          "stable": true
+        },
+        "platform_policy": {
+          "output": "COMPLIANT",
+          "prob": 0.978,
+          "margin": 0.96,
+          "entropy": 0.088,
+          "stable": true
+        },
+        "zh_hans_naturalness": {
+          "output": "NATURAL",
+          "prob": 0.921,
+          "margin": 0.86,
+          "entropy": 0.231,
+          "stable": true
+        }
+      },
+      "reasons": [],
+      "naturalness_note": "zh_hans_naturalness=NATURAL (참고용, 통과 조건 아님; 사람 확인)",
+      "log": "gates/log/2026-10-19-feed-kairo-intro-2026w44-zh-Hans.json"
+    },
+    "zh-Hant": {
+      "gate": "pass",
+      "checked_at": "2026-10-19T09:17:11Z",
+      "tool": "DGX :8090 /v1/score ×2 (choices reversed for order check)",
+      "fields": {
+        "tone": {
+          "output": "ON_BRAND",
+          "prob": 0.953,
+          "margin": 0.92,
+          "entropy": 0.201,
+          "stable": true
+        },
+        "banned_expression": {
+          "output": "NONE",
+          "prob": 0.916,
+          "margin": 0.841,
+          "entropy": 0.17,
+          "stable": true
+        },
+        "fact_grounding": {
+          "output": "SUPPORTED",
+          "prob": 0.917,
+          "margin": 0.856,
+          "entropy": 0.243,
+          "stable": true
+        },
+        "platform_policy": {
+          "output": "COMPLIANT",
+          "prob": 0.964,
+          "margin": 0.936,
+          "entropy": 0.129,
+          "stable": true
+        },
+        "zh_hant_naturalness": {
+          "output": "NON_NATIVE",
+          "prob": 0.55,
+          "margin": 0.151,
+          "entropy": 0.614,
+          "stable": false
+        }
+      },
+      "reasons": [],
+      "naturalness_note": "zh_hant_naturalness=NON_NATIVE (참고용, 통과 조건 아님; 사람 확인)",
+      "log": "gates/log/2026-10-19-feed-kairo-intro-2026w44-zh-Hant.json"
+    },
+    "es": {
+      "gate": "pass",
+      "checked_at": "2026-10-19T09:17:14Z",
+      "tool": "DGX :8090 /v1/score ×2 (choices reversed for order check)",
+      "fields": {
+        "tone": {
+          "output": "ON_BRAND",
+          "prob": 0.985,
+          "margin": 0.974,
+          "entropy": 0.076,
+          "stable": true
+        },
+        "banned_expression": {
+          "output": "NONE",
+          "prob": 0.961,
+          "margin": 0.931,
+          "entropy": 0.101,
+          "stable": true
+        },
+        "fact_grounding": {
+          "output": "SUPPORTED",
+          "prob": 0.985,
+          "margin": 0.974,
+          "entropy": 0.063,
+          "stable": true
+        },
+        "platform_policy": {
+          "output": "COMPLIANT",
+          "prob": 0.972,
+          "margin": 0.951,
+          "entropy": 0.104,
+          "stable": true
+        },
+        "es_naturalness": {
+          "output": "NATURAL",
+          "prob": 0.893,
+          "margin": 0.821,
+          "entropy": 0.295,
+          "stable": true
+        }
+      },
+      "reasons": [],
+      "naturalness_note": "es_naturalness=NATURAL (참고용, 통과 조건 아님; 사람 확인)",
+      "log": "gates/log/2026-10-19-feed-kairo-intro-2026w44-es.json"
+    },
+    "fr": {
+      "gate": "pass",
+      "checked_at": "2026-10-19T09:17:18Z",
+      "tool": "DGX :8090 /v1/score ×2 (choices reversed for order check)",
+      "fields": {
+        "tone": {
+          "output": "ON_BRAND",
+          "prob": 0.985,
+          "margin": 0.974,
+          "entropy": 0.076,
+          "stable": true
+        },
+        "banned_expression": {
+          "output": "NONE",
+          "prob": 0.965,
+          "margin": 0.937,
+          "entropy": 0.091,
+          "stable": true
+        },
+        "fact_grounding": {
+          "output": "SUPPORTED",
+          "prob": 0.975,
+          "margin": 0.961,
+          "entropy": 0.097,
+          "stable": true
+        },
+        "platform_policy": {
+          "output": "COMPLIANT",
+          "prob": 0.971,
+          "margin": 0.948,
+          "entropy": 0.107,
+          "stable": true
+        },
+        "fr_naturalness": {
+          "output": "NATURAL",
+          "prob": 0.897,
+          "margin": 0.829,
+          "entropy": 0.288,
+          "stable": true
+        }
+      },
+      "reasons": [],
+      "naturalness_note": "fr_naturalness=NATURAL (참고용, 통과 조건 아님; 사람 확인)",
+      "log": "gates/log/2026-10-19-feed-kairo-intro-2026w44-fr.json"
+    },
+    "de": {
+      "gate": "pass",
+      "checked_at": "2026-10-19T09:17:21Z",
+      "tool": "DGX :8090 /v1/score ×2 (choices reversed for order check)",
+      "fields": {
+        "tone": {
+          "output": "ON_BRAND",
+          "prob": 0.985,
+          "margin": 0.973,
+          "entropy": 0.077,
+          "stable": true
+        },
+        "banned_expression": {
+          "output": "NONE",
+          "prob": 0.968,
+          "margin": 0.944,
+          "entropy": 0.085,
+          "stable": true
+        },
+        "fact_grounding": {
+          "output": "SUPPORTED",
+          "prob": 0.985,
+          "margin": 0.973,
+          "entropy": 0.063,
+          "stable": true
+        },
+        "platform_policy": {
+          "output": "COMPLIANT",
+          "prob": 0.97,
+          "margin": 0.947,
+          "entropy": 0.112,
+          "stable": true
+        },
+        "de_naturalness": {
+          "output": "NATURAL",
+          "prob": 0.814,
+          "margin": 0.673,
+          "entropy": 0.426,
+          "stable": true
+        }
+      },
+      "reasons": [],
+      "naturalness_note": "de_naturalness=NATURAL (참고용, 통과 조건 아님; 사람 확인)",
+      "log": "gates/log/2026-10-19-feed-kairo-intro-2026w44-de.json"
+    },
+    "th": {
+      "gate": "needs_human",
+      "checked_at": "2026-10-19T09:17:25Z",
+      "tool": "DGX :8090 /v1/score ×2 (choices reversed for order check)",
+      "fields": {
+        "tone": {
+          "output": "ON_BRAND",
+          "prob": 0.7,
+          "margin": 0.469,
+          "entropy": 0.703,
+          "stable": true
+        },
+        "banned_expression": {
+          "output": "NONE",
+          "prob": 0.83,
+          "margin": 0.735,
+          "entropy": 0.331,
+          "stable": true
+        },
+        "fact_grounding": {
+          "output": "SUPPORTED",
+          "prob": 0.964,
+          "margin": 0.945,
+          "entropy": 0.131,
+          "stable": true
+        },
+        "platform_policy": {
+          "output": "COMPLIANT",
+          "prob": 0.869,
+          "margin": 0.773,
+          "entropy": 0.345,
+          "stable": true
+        },
+        "th_naturalness": {
+          "output": "NON_NATIVE",
+          "prob": 0.917,
+          "margin": 0.842,
+          "entropy": 0.224,
+          "stable": true
+        }
+      },
+      "reasons": [
+        "tone=ON_BRAND (margin 0.469, entropy 0.703, stable True)"
+      ],
+      "naturalness_note": "th_naturalness=NON_NATIVE (참고용, 통과 조건 아님; 사람 확인)",
+      "log": "gates/log/2026-10-19-feed-kairo-intro-2026w44-th.json"
+    },
+    "vi": {
+      "gate": "pass",
+      "checked_at": "2026-10-19T09:17:28Z",
+      "tool": "DGX :8090 /v1/score ×2 (choices reversed for order check)",
+      "fields": {
+        "tone": {
+          "output": "ON_BRAND",
+          "prob": 0.978,
+          "margin": 0.96,
+          "entropy": 0.105,
+          "stable": true
+        },
+        "banned_expression": {
+          "output": "NONE",
+          "prob": 0.95,
+          "margin": 0.908,
+          "entropy": 0.119,
+          "stable": true
+        },
+        "fact_grounding": {
+          "output": "SUPPORTED",
+          "prob": 0.98,
+          "margin": 0.966,
+          "entropy": 0.08,
+          "stable": true
+        },
+        "platform_policy": {
+          "output": "COMPLIANT",
+          "prob": 0.971,
+          "margin": 0.949,
+          "entropy": 0.108,
+          "stable": true
+        },
+        "vi_naturalness": {
+          "output": "NATURAL",
+          "prob": 0.9,
+          "margin": 0.833,
+          "entropy": 0.282,
+          "stable": true
+        }
+      },
+      "reasons": [],
+      "naturalness_note": "vi_naturalness=NATURAL (참고용, 통과 조건 아님; 사람 확인)",
+      "log": "gates/log/2026-10-19-feed-kairo-intro-2026w44-vi.json"
+    }
+  }
+}
