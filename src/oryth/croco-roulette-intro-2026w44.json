@@ -1,0 +1,559 @@
+{
+  "notes": "OVJECT 앱 소개(Oryth 'OVJECT 앱' 페이지). 2026-10-19 claude-code 세션이 추가했고 approval은 pending이다 — JY가 approval을 채우면 게시된다. 우선순위는 KAIRO(5) 아래로 정렬용이며 바꿔도 된다. 출처: 사이트 feed/croco-game.md와 App Store(KR·US) 설명. '혼자 하면 재미없다'는 사이트·스토어에 그대로 있는 문구다. 문구는 10개 로케일 모두 번역 엔진 없이 직접 썼고(앱·고유명은 라틴 표기, 한국어는 해요체), 수치·출시 약속·최상급은 쓰지 않았다. 이미지는 넣지 않았다(사이트 자산은 웹 전용 경로). notes·review·gate_context는 생성기가 버린다.",
+  "id": "croco-roulette-intro-2026w44",
+  "kind": "promo",
+  "priority": 1,
+  "starts_at": "2026-10-20T00:00:00Z",
+  "ends_at": "2099-01-01T00:00:00Z",
+  "platforms": [
+    "macos",
+    "ios"
+  ],
+  "runs_on": [
+    "ios",
+    "android"
+  ],
+  "min_app_version": "1.0.8",
+  "max_impressions_per_user": 3,
+  "image": null,
+  "cta": {
+    "action": "url",
+    "url": "https://apps.apple.com/app/id1501486372?utm_source=oryth&utm_medium=feedcard&utm_campaign=croco_roulette_intro&utm_content=croco-roulette-intro-2026w44"
+  },
+  "secondary": {
+    "action": "dismiss"
+  },
+  "store": {
+    "ios_app_id": "1501486372",
+    "android_package": "com.OVJECT.CrocoR"
+  },
+  "tags": [
+    "croco-roulette"
+  ],
+  "approval": {
+    "gate": "pending",
+    "approved_by": "",
+    "approved_at": ""
+  },
+  "strings": {
+    "en": {
+      "title": "Croco? Croco Roulette, from OVJECT",
+      "body": "A simple digital version of the toy crocodile tooth game. Good for lunch bets and penalties, but no fun alone.",
+      "cta_label": "On the App Store",
+      "secondary_label": "Not now"
+    },
+    "ko": {
+      "title": "OVJECT의 악어 이빨 게임, Croco? Croco Roulette",
+      "body": "장난감 악어 이빨 게임을 거의 그대로 옮긴 앱이에요. 점심 내기나 벌칙을 정할 때 좋고, 혼자 하면 재미없어요.",
+      "cta_label": "App Store에서 보기",
+      "secondary_label": "나중에"
+    },
+    "ja": {
+      "title": "OVJECTのワニ歯ゲーム、Croco? Croco Roulette",
+      "body": "おもちゃのワニの歯ゲームをほぼそのままデジタルにしたアプリです。ランチの賭けや罰ゲームに向いていて、一人では楽しくありません。",
+      "cta_label": "App Storeで見る",
+      "secondary_label": "あとで"
+    },
+    "zh-Hans": {
+      "title": "OVJECT 的鳄鱼牙齿游戏：Croco? Croco Roulette",
+      "body": "把玩具鳄鱼拔牙游戏几乎原样搬进手机的应用。适合赌午餐、定惩罚，一个人玩没意思。",
+      "cta_label": "在 App Store 查看",
+      "secondary_label": "以后再说"
+    },
+    "zh-Hant": {
+      "title": "OVJECT 的鱷魚牙齒遊戲：Croco? Croco Roulette",
+      "body": "把玩具鱷魚拔牙遊戲幾乎原樣搬進手機的 App。適合賭午餐、定懲罰，一個人玩沒意思。",
+      "cta_label": "在 App Store 查看",
+      "secondary_label": "以後再說"
+    },
+    "es": {
+      "title": "Croco? Croco Roulette, de OVJECT",
+      "body": "Versión digital sencilla del juego del cocodrilo de dientes. Para apostar el almuerzo o fijar castigos; solo, aburre.",
+      "cta_label": "En App Store",
+      "secondary_label": "Ahora no"
+    },
+    "fr": {
+      "title": "Croco? Croco Roulette, par OVJECT",
+      "body": "Version numérique simple du jeu du crocodile dentiste. Pour parier le déjeuner ou fixer des gages ; seul, pas drôle.",
+      "cta_label": "Sur l'App Store",
+      "secondary_label": "Plus tard"
+    },
+    "de": {
+      "title": "Croco? Croco Roulette von OVJECT",
+      "body": "Schlichte digitale Version des Krokodil-Zahnspiels. Für Wetten ums Mittagessen und Strafen; allein macht es keinen Spaß.",
+      "cta_label": "Im App Store",
+      "secondary_label": "Später"
+    },
+    "th": {
+      "title": "Croco? Croco Roulette จาก OVJECT",
+      "body": "เกมถอนฟันจระเข้ฉบับดิจิทัลที่ทำให้เรียบง่าย ใช้ตัดสินว่าใครเลี้ยงมื้อกลางวันหรือรับบทลงโทษ แต่เล่นคนเดียวไม่สนุก",
+      "cta_label": "ดูบน App Store",
+      "secondary_label": "ไว้ทีหลัง"
+    },
+    "vi": {
+      "title": "Croco? Croco Roulette của OVJECT",
+      "body": "Bản số đơn giản của trò nhổ răng cá sấu đồ chơi. Hợp để cá bữa trưa hay định hình phạt; chơi một mình thì không vui.",
+      "cta_label": "Trên App Store",
+      "secondary_label": "Để sau"
+    }
+  },
+  "gate_context": {
+    "app_summary": "Croco? Croco Roulette(KR 스토어명 크로코 악어 복불복)는 OVJECT의 악어 이빨 보드게임 앱이다. 스토어 설명: 장난감 악어이빨 보드게임을 거의 그대로 심플하게 구현했고, 점심 복불복·벌칙 같은 룰을 정해 하며, 혼자 하면 재미없다. 카드 역할: Oryth의 'OVJECT 앱' 페이지에서 같은 스튜디오의 다른 게임을 소개하고 스토어 링크를 건넨다. 가격·기능 추가 약속은 없다.",
+    "source_excerpts": [
+      "OVJECT/Website feed/croco-game.md: \"A simple digital adaptation of the classic crocodile tooth-pulling game. Ideal for betting on lunch, deciding penalties, or just having a laugh with friends.\" / \"Social Experience: Designed to be played with friends. 'Not fun alone!'\"",
+      "App Store KR (id1501486372, 2026-10-19 조회): \"장난감 악어이빨 보드게임을 거의 그대로 심플하게 구현한 앱입니다. 주의 - 혼자 하면 재미없음!\" / US: \"Toy crocodile roulette board games, almost as a simple implementation app. Caution - Alone Any fun!\""
+    ]
+  },
+  "review": {
+    "en": {
+      "gate": "pass",
+      "checked_at": "2026-10-19T11:40:14Z",
+      "tool": "DGX :8090 /v1/score ×2 (choices reversed for order check)",
+      "fields": {
+        "tone": {
+          "output": "ON_BRAND",
+          "prob": 0.937,
+          "margin": 0.876,
+          "entropy": 0.222,
+          "stable": true
+        },
+        "banned_expression": {
+          "output": "NONE",
+          "prob": 0.965,
+          "margin": 0.945,
+          "entropy": 0.099,
+          "stable": true
+        },
+        "fact_grounding": {
+          "output": "SUPPORTED",
+          "prob": 0.882,
+          "margin": 0.785,
+          "entropy": 0.306,
+          "stable": true
+        },
+        "platform_policy": {
+          "output": "COMPLIANT",
+          "prob": 0.913,
+          "margin": 0.845,
+          "entropy": 0.256,
+          "stable": true
+        },
+        "en_naturalness": {
+          "output": "NATURAL",
+          "prob": 0.604,
+          "margin": 0.319,
+          "entropy": 0.667,
+          "stable": true
+        }
+      },
+      "reasons": [],
+      "naturalness_note": "en_naturalness=NATURAL (참고용, 통과 조건 아님; 사람 확인)",
+      "log": "gates/log/2026-10-19-feed-croco-roulette-intro-2026w44-en.json"
+    },
+    "ko": {
+      "gate": "pass",
+      "checked_at": "2026-10-19T11:40:17Z",
+      "tool": "DGX :8090 /v1/score ×2 (choices reversed for order check)",
+      "fields": {
+        "tone": {
+          "output": "ON_BRAND",
+          "prob": 0.985,
+          "margin": 0.971,
+          "entropy": 0.076,
+          "stable": true
+        },
+        "banned_expression": {
+          "output": "NONE",
+          "prob": 0.993,
+          "margin": 0.989,
+          "entropy": 0.027,
+          "stable": true
+        },
+        "fact_grounding": {
+          "output": "SUPPORTED",
+          "prob": 0.993,
+          "margin": 0.988,
+          "entropy": 0.032,
+          "stable": true
+        },
+        "platform_policy": {
+          "output": "COMPLIANT",
+          "prob": 0.956,
+          "margin": 0.92,
+          "entropy": 0.147,
+          "stable": true
+        },
+        "korean_naturalness": {
+          "output": "NATURAL",
+          "prob": 0.974,
+          "margin": 0.961,
+          "entropy": 0.1,
+          "stable": true
+        }
+      },
+      "reasons": [],
+      "naturalness_note": "korean_naturalness=NATURAL (참고용, 통과 조건 아님; 사람 확인)",
+      "log": "gates/log/2026-10-19-feed-croco-roulette-intro-2026w44-ko.json"
+    },
+    "ja": {
+      "gate": "pass",
+      "checked_at": "2026-10-19T11:40:21Z",
+      "tool": "DGX :8090 /v1/score ×2 (choices reversed for order check)",
+      "fields": {
+        "tone": {
+          "output": "ON_BRAND",
+          "prob": 0.978,
+          "margin": 0.957,
+          "entropy": 0.105,
+          "stable": true
+        },
+        "banned_expression": {
+          "output": "NONE",
+          "prob": 0.991,
+          "margin": 0.988,
+          "entropy": 0.031,
+          "stable": true
+        },
+        "fact_grounding": {
+          "output": "SUPPORTED",
+          "prob": 0.985,
+          "margin": 0.973,
+          "entropy": 0.066,
+          "stable": true
+        },
+        "platform_policy": {
+          "output": "COMPLIANT",
+          "prob": 0.945,
+          "margin": 0.9,
+          "entropy": 0.176,
+          "stable": true
+        },
+        "ja_naturalness": {
+          "output": "NATURAL",
+          "prob": 0.792,
+          "margin": 0.638,
+          "entropy": 0.461,
+          "stable": true
+        }
+      },
+      "reasons": [],
+      "naturalness_note": "ja_naturalness=NATURAL (참고용, 통과 조건 아님; 사람 확인)",
+      "log": "gates/log/2026-10-19-feed-croco-roulette-intro-2026w44-ja.json"
+    },
+    "zh-Hans": {
+      "gate": "pass",
+      "checked_at": "2026-10-19T11:40:24Z",
+      "tool": "DGX :8090 /v1/score ×2 (choices reversed for order check)",
+      "fields": {
+        "tone": {
+          "output": "ON_BRAND",
+          "prob": 0.974,
+          "margin": 0.952,
+          "entropy": 0.116,
+          "stable": true
+        },
+        "banned_expression": {
+          "output": "NONE",
+          "prob": 0.983,
+          "margin": 0.976,
+          "entropy": 0.054,
+          "stable": true
+        },
+        "fact_grounding": {
+          "output": "SUPPORTED",
+          "prob": 0.982,
+          "margin": 0.972,
+          "entropy": 0.077,
+          "stable": true
+        },
+        "platform_policy": {
+          "output": "COMPLIANT",
+          "prob": 0.931,
+          "margin": 0.876,
+          "entropy": 0.215,
+          "stable": true
+        },
+        "zh_hans_naturalness": {
+          "output": "NATURAL",
+          "prob": 0.815,
+          "margin": 0.673,
+          "entropy": 0.431,
+          "stable": true
+        }
+      },
+      "reasons": [],
+      "naturalness_note": "zh_hans_naturalness=NATURAL (참고용, 통과 조건 아님; 사람 확인)",
+      "log": "gates/log/2026-10-19-feed-croco-roulette-intro-2026w44-zh-Hans.json"
+    },
+    "zh-Hant": {
+      "gate": "pass",
+      "checked_at": "2026-10-19T11:40:28Z",
+      "tool": "DGX :8090 /v1/score ×2 (choices reversed for order check)",
+      "fields": {
+        "tone": {
+          "output": "ON_BRAND",
+          "prob": 0.977,
+          "margin": 0.955,
+          "entropy": 0.107,
+          "stable": true
+        },
+        "banned_expression": {
+          "output": "NONE",
+          "prob": 0.981,
+          "margin": 0.974,
+          "entropy": 0.06,
+          "stable": true
+        },
+        "fact_grounding": {
+          "output": "SUPPORTED",
+          "prob": 0.987,
+          "margin": 0.978,
+          "entropy": 0.056,
+          "stable": true
+        },
+        "platform_policy": {
+          "output": "COMPLIANT",
+          "prob": 0.936,
+          "margin": 0.885,
+          "entropy": 0.199,
+          "stable": true
+        },
+        "zh_hant_naturalness": {
+          "output": "NATURAL",
+          "prob": 0.82,
+          "margin": 0.678,
+          "entropy": 0.411,
+          "stable": true
+        }
+      },
+      "reasons": [],
+      "naturalness_note": "zh_hant_naturalness=NATURAL (참고용, 통과 조건 아님; 사람 확인)",
+      "log": "gates/log/2026-10-19-feed-croco-roulette-intro-2026w44-zh-Hant.json"
+    },
+    "es": {
+      "gate": "pass",
+      "checked_at": "2026-10-19T11:40:31Z",
+      "tool": "DGX :8090 /v1/score ×2 (choices reversed for order check)",
+      "fields": {
+        "tone": {
+          "output": "ON_BRAND",
+          "prob": 0.969,
+          "margin": 0.941,
+          "entropy": 0.134,
+          "stable": true
+        },
+        "banned_expression": {
+          "output": "NONE",
+          "prob": 0.973,
+          "margin": 0.962,
+          "entropy": 0.081,
+          "stable": true
+        },
+        "fact_grounding": {
+          "output": "SUPPORTED",
+          "prob": 0.935,
+          "margin": 0.895,
+          "entropy": 0.214,
+          "stable": true
+        },
+        "platform_policy": {
+          "output": "COMPLIANT",
+          "prob": 0.933,
+          "margin": 0.884,
+          "entropy": 0.212,
+          "stable": true
+        },
+        "es_naturalness": {
+          "output": "NON_NATIVE",
+          "prob": 0.599,
+          "margin": 0.376,
+          "entropy": 0.692,
+          "stable": true
+        }
+      },
+      "reasons": [],
+      "naturalness_note": "es_naturalness=NON_NATIVE (참고용, 통과 조건 아님; 사람 확인)",
+      "log": "gates/log/2026-10-19-feed-croco-roulette-intro-2026w44-es.json"
+    },
+    "fr": {
+      "gate": "pass",
+      "checked_at": "2026-10-19T11:40:34Z",
+      "tool": "DGX :8090 /v1/score ×2 (choices reversed for order check)",
+      "fields": {
+        "tone": {
+          "output": "ON_BRAND",
+          "prob": 0.983,
+          "margin": 0.968,
+          "entropy": 0.083,
+          "stable": true
+        },
+        "banned_expression": {
+          "output": "NONE",
+          "prob": 0.989,
+          "margin": 0.984,
+          "entropy": 0.04,
+          "stable": true
+        },
+        "fact_grounding": {
+          "output": "SUPPORTED",
+          "prob": 0.977,
+          "margin": 0.96,
+          "entropy": 0.09,
+          "stable": true
+        },
+        "platform_policy": {
+          "output": "COMPLIANT",
+          "prob": 0.943,
+          "margin": 0.896,
+          "entropy": 0.182,
+          "stable": true
+        },
+        "fr_naturalness": {
+          "output": "NATURAL",
+          "prob": 0.546,
+          "margin": 0.159,
+          "entropy": 0.642,
+          "stable": true
+        }
+      },
+      "reasons": [],
+      "naturalness_note": "fr_naturalness=NATURAL (참고용, 통과 조건 아님; 사람 확인)",
+      "log": "gates/log/2026-10-19-feed-croco-roulette-intro-2026w44-fr.json"
+    },
+    "de": {
+      "gate": "pass",
+      "checked_at": "2026-10-19T11:40:38Z",
+      "tool": "DGX :8090 /v1/score ×2 (choices reversed for order check)",
+      "fields": {
+        "tone": {
+          "output": "ON_BRAND",
+          "prob": 0.973,
+          "margin": 0.947,
+          "entropy": 0.12,
+          "stable": true
+        },
+        "banned_expression": {
+          "output": "NONE",
+          "prob": 0.984,
+          "margin": 0.975,
+          "entropy": 0.053,
+          "stable": true
+        },
+        "fact_grounding": {
+          "output": "SUPPORTED",
+          "prob": 0.958,
+          "margin": 0.93,
+          "entropy": 0.151,
+          "stable": true
+        },
+        "platform_policy": {
+          "output": "COMPLIANT",
+          "prob": 0.943,
+          "margin": 0.9,
+          "entropy": 0.189,
+          "stable": true
+        },
+        "de_naturalness": {
+          "output": "NATURAL",
+          "prob": 0.607,
+          "margin": 0.319,
+          "entropy": 0.669,
+          "stable": true
+        }
+      },
+      "reasons": [],
+      "naturalness_note": "de_naturalness=NATURAL (참고용, 통과 조건 아님; 사람 확인)",
+      "log": "gates/log/2026-10-19-feed-croco-roulette-intro-2026w44-de.json"
+    },
+    "th": {
+      "gate": "pass",
+      "checked_at": "2026-10-19T11:41:54Z",
+      "tool": "DGX :8090 /v1/score ×2 (choices reversed for order check)",
+      "fields": {
+        "tone": {
+          "output": "ON_BRAND",
+          "prob": 0.703,
+          "margin": 0.418,
+          "entropy": 0.597,
+          "stable": true
+        },
+        "banned_expression": {
+          "output": "NONE",
+          "prob": 0.899,
+          "margin": 0.841,
+          "entropy": 0.22,
+          "stable": true
+        },
+        "fact_grounding": {
+          "output": "SUPPORTED",
+          "prob": 0.826,
+          "margin": 0.671,
+          "entropy": 0.385,
+          "stable": true
+        },
+        "platform_policy": {
+          "output": "COMPLIANT",
+          "prob": 0.807,
+          "margin": 0.659,
+          "entropy": 0.45,
+          "stable": true
+        },
+        "th_naturalness": {
+          "output": "AWKWARD",
+          "prob": 0.555,
+          "margin": 0.187,
+          "entropy": 0.648,
+          "stable": true
+        }
+      },
+      "reasons": [],
+      "naturalness_note": "th_naturalness=AWKWARD (참고용, 통과 조건 아님; 사람 확인)",
+      "log": "gates/log/2026-10-19-feed-croco-roulette-intro-2026w44-th.json"
+    },
+    "vi": {
+      "gate": "pass",
+      "checked_at": "2026-10-19T11:40:45Z",
+      "tool": "DGX :8090 /v1/score ×2 (choices reversed for order check)",
+      "fields": {
+        "tone": {
+          "output": "ON_BRAND",
+          "prob": 0.9,
+          "margin": 0.81,
+          "entropy": 0.326,
+          "stable": true
+        },
+        "banned_expression": {
+          "output": "NONE",
+          "prob": 0.964,
+          "margin": 0.947,
+          "entropy": 0.101,
+          "stable": true
+        },
+        "fact_grounding": {
+          "output": "SUPPORTED",
+          "prob": 0.958,
+          "margin": 0.927,
+          "entropy": 0.15,
+          "stable": true
+        },
+        "platform_policy": {
+          "output": "COMPLIANT",
+          "prob": 0.896,
+          "margin": 0.814,
+          "entropy": 0.29,
+          "stable": true
+        },
+        "vi_naturalness": {
+          "output": "NON_NATIVE",
+          "prob": 0.462,
+          "margin": 0.149,
+          "entropy": 0.766,
+          "stable": false
+        }
+      },
+      "reasons": [],
+      "naturalness_note": "vi_naturalness=NON_NATIVE (참고용, 통과 조건 아님; 사람 확인)",
+      "log": "gates/log/2026-10-19-feed-croco-roulette-intro-2026w44-vi.json"
+    }
+  }
+}

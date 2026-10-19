@@ -1,0 +1,572 @@
+{
+  "notes": "OVJECT 앱 소개(Oryth 'OVJECT 앱' 페이지). 2026-10-19 claude-code 세션이 추가했고 approval은 pending이다 — JY가 approval을 채우면 게시된다. 우선순위는 KAIRO(5) 아래로 정렬용이며 바꿔도 된다. 출처: 사이트 feed/field-day.md와 Google Play 설명. 사이트의 '(more coming soon!)'과 미니게임 개수는 약속·수치라 쓰지 않았다. iOS 목록 없음 → runs_on은 android만. 문구는 10개 로케일 모두 번역 엔진 없이 직접 썼고(앱·고유명은 라틴 표기, 한국어는 해요체), 수치·출시 약속·최상급은 쓰지 않았다. 이미지는 넣지 않았다(사이트 자산은 웹 전용 경로). notes·review·gate_context는 생성기가 버린다.",
+  "id": "pitapato-field-day-intro-2026w44",
+  "kind": "promo",
+  "priority": 1,
+  "starts_at": "2026-10-20T00:00:00Z",
+  "ends_at": "2099-01-01T00:00:00Z",
+  "platforms": [
+    "macos",
+    "ios"
+  ],
+  "runs_on": [
+    "android"
+  ],
+  "min_app_version": "1.0.8",
+  "max_impressions_per_user": 3,
+  "image": null,
+  "cta": {
+    "action": "url",
+    "url": "https://play.google.com/store/apps/details?id=com.OVJECT.fieldday&utm_source=oryth&utm_medium=feedcard&utm_campaign=pitapato_field_day_intro&utm_content=pitapato-field-day-intro-2026w44"
+  },
+  "secondary": {
+    "action": "dismiss"
+  },
+  "store": {
+    "android_package": "com.OVJECT.fieldday"
+  },
+  "tags": [
+    "pitapato-field-day"
+  ],
+  "approval": {
+    "gate": "pending",
+    "approved_by": "",
+    "approved_at": ""
+  },
+  "strings": {
+    "en": {
+      "title": "PITAPATO'S FIELD DAY, a game from OVJECT",
+      "body": "A field day game for Android with the cute Pitapato moles. Play with friends or challenge yourself.",
+      "cta_label": "On Google Play",
+      "secondary_label": "Not now"
+    },
+    "ko": {
+      "title": "OVJECT의 운동회 게임, PITAPATO'S FIELD DAY",
+      "body": "귀여운 피타파토 두더지들이 운동회를 여는 Android 게임이에요. 친구와 겨루거나 혼자 도전해 보세요.",
+      "cta_label": "Google Play에서 보기",
+      "secondary_label": "나중에"
+    },
+    "ja": {
+      "title": "OVJECTの運動会ゲーム、PITAPATO'S FIELD DAY",
+      "body": "かわいいピタパトのモグラたちが運動会を開くAndroid向けゲームです。友達と競ったり、一人で挑戦したりできます。",
+      "cta_label": "Google Playで見る",
+      "secondary_label": "あとで"
+    },
+    "zh-Hans": {
+      "title": "OVJECT 的运动会游戏：PITAPATO'S FIELD DAY",
+      "body": "可爱的 Pitapato 鼹鼠们举办运动会的 Android 游戏。可以和朋友较量，也可以自己挑战。",
+      "cta_label": "在 Google Play 查看",
+      "secondary_label": "以后再说"
+    },
+    "zh-Hant": {
+      "title": "OVJECT 的運動會遊戲：PITAPATO'S FIELD DAY",
+      "body": "可愛的 Pitapato 鼴鼠們舉辦運動會的 Android 遊戲。可以和朋友較量，也可以自己挑戰。",
+      "cta_label": "在 Google Play 查看",
+      "secondary_label": "以後再說"
+    },
+    "es": {
+      "title": "PITAPATO'S FIELD DAY, de OVJECT",
+      "body": "Un juego para Android donde los topos Pitapato celebran un día de campo. Compite con amigos o ponte a prueba tú solo.",
+      "cta_label": "En Google Play",
+      "secondary_label": "Ahora no"
+    },
+    "fr": {
+      "title": "PITAPATO'S FIELD DAY, par OVJECT",
+      "body": "Un jeu Android où les taupes Pitapato organisent une journée sportive. Rivalisez entre amis ou relevez le défi seul.",
+      "cta_label": "Sur Google Play",
+      "secondary_label": "Plus tard"
+    },
+    "de": {
+      "title": "PITAPATO'S FIELD DAY von OVJECT",
+      "body": "Android-Spiel, in dem die Pitapato-Maulwürfe ein Sportfest feiern. Mit Freunden antreten oder allein üben.",
+      "cta_label": "Bei Google Play",
+      "secondary_label": "Später"
+    },
+    "th": {
+      "title": "PITAPATO'S FIELD DAY จาก OVJECT",
+      "body": "เกม Android ที่ตัวตุ่น Pitapato จัดวันกีฬาสี เล่นแข่งกับเพื่อนหรือท้าทายตัวเองก็ได้",
+      "cta_label": "ดูบน Google Play",
+      "secondary_label": "ไว้ทีหลัง"
+    },
+    "vi": {
+      "title": "PITAPATO'S FIELD DAY của OVJECT",
+      "body": "Trò chơi Android về những chú chuột chũi Pitapato tổ chức ngày hội thể thao. Thi đấu cùng bạn bè hoặc tự thử thách.",
+      "cta_label": "Trên Google Play",
+      "secondary_label": "Để sau"
+    }
+  },
+  "gate_context": {
+    "app_summary": "PITAPATO'S FIELD DAY는 OVJECT의 Android 게임이다. 귀여운 피타파토 두더지들이 운동회를 여는 미니게임으로, 사이트는 친구와 겨루거나 혼자 도전할 수 있다고 한다. App Store 개발자 목록(KR·US)에는 없고 Google Play에만 있다. Google Play 설명은 '현재 게임 1개만 가능'이라 적고 있어(마지막 업데이트 2022-05-13) 카드에는 게임 수나 추가 약속을 쓰지 않았다. 카드 역할: Oryth의 'OVJECT 앱' 페이지에서 같은 스튜디오의 다른 게임을 소개하고 Google Play 링크를 건넨다.",
+    "source_excerpts": [
+      "OVJECT/Website feed/field-day.md: \"Join the cute moles for a fun-filled field day!\" / \"Join the charming Pitapato moles as they participate in various field day activities. Compete with friends or challenge yourself in this adorable mini-game collection.\"",
+      "Google Play (com.OVJECT.fieldday, 2026-10-19 조회): \"Cute moles held a field day. Enjoy various games! (Only 1 game is available now...)\""
+    ]
+  },
+  "review": {
+    "en": {
+      "gate": "needs_human",
+      "checked_at": "2026-10-19T11:40:48Z",
+      "tool": "DGX :8090 /v1/score ×2 (choices reversed for order check)",
+      "fields": {
+        "tone": {
+          "output": "ON_BRAND",
+          "prob": 0.948,
+          "margin": 0.898,
+          "entropy": 0.192,
+          "stable": true
+        },
+        "banned_expression": {
+          "output": "NONE",
+          "prob": 0.935,
+          "margin": 0.904,
+          "entropy": 0.169,
+          "stable": true
+        },
+        "fact_grounding": {
+          "output": "SUPPORTED",
+          "prob": 0.707,
+          "margin": 0.523,
+          "entropy": 0.612,
+          "stable": true
+        },
+        "platform_policy": {
+          "output": "COMPLIANT",
+          "prob": 0.887,
+          "margin": 0.805,
+          "entropy": 0.319,
+          "stable": true
+        },
+        "en_naturalness": {
+          "output": "NATURAL",
+          "prob": 0.856,
+          "margin": 0.758,
+          "entropy": 0.375,
+          "stable": true
+        }
+      },
+      "reasons": [
+        "fact_grounding=SUPPORTED (margin 0.523, entropy 0.612, stable True)"
+      ],
+      "naturalness_note": "en_naturalness=NATURAL (참고용, 통과 조건 아님; 사람 확인)",
+      "log": "gates/log/2026-10-19-feed-pitapato-field-day-intro-2026w44-en.json"
+    },
+    "ko": {
+      "gate": "pass",
+      "checked_at": "2026-10-19T11:40:52Z",
+      "tool": "DGX :8090 /v1/score ×2 (choices reversed for order check)",
+      "fields": {
+        "tone": {
+          "output": "ON_BRAND",
+          "prob": 0.966,
+          "margin": 0.934,
+          "entropy": 0.139,
+          "stable": true
+        },
+        "banned_expression": {
+          "output": "NONE",
+          "prob": 0.968,
+          "margin": 0.953,
+          "entropy": 0.095,
+          "stable": true
+        },
+        "fact_grounding": {
+          "output": "SUPPORTED",
+          "prob": 0.837,
+          "margin": 0.691,
+          "entropy": 0.365,
+          "stable": true
+        },
+        "platform_policy": {
+          "output": "COMPLIANT",
+          "prob": 0.916,
+          "margin": 0.852,
+          "entropy": 0.251,
+          "stable": true
+        },
+        "korean_naturalness": {
+          "output": "NATURAL",
+          "prob": 0.957,
+          "margin": 0.929,
+          "entropy": 0.151,
+          "stable": true
+        }
+      },
+      "reasons": [],
+      "naturalness_note": "korean_naturalness=NATURAL (참고용, 통과 조건 아님; 사람 확인)",
+      "log": "gates/log/2026-10-19-feed-pitapato-field-day-intro-2026w44-ko.json"
+    },
+    "ja": {
+      "gate": "pass",
+      "checked_at": "2026-10-19T11:40:55Z",
+      "tool": "DGX :8090 /v1/score ×2 (choices reversed for order check)",
+      "fields": {
+        "tone": {
+          "output": "ON_BRAND",
+          "prob": 0.937,
+          "margin": 0.878,
+          "entropy": 0.228,
+          "stable": true
+        },
+        "banned_expression": {
+          "output": "NONE",
+          "prob": 0.932,
+          "margin": 0.901,
+          "entropy": 0.175,
+          "stable": true
+        },
+        "fact_grounding": {
+          "output": "SUPPORTED",
+          "prob": 0.795,
+          "margin": 0.664,
+          "entropy": 0.486,
+          "stable": true
+        },
+        "platform_policy": {
+          "output": "COMPLIANT",
+          "prob": 0.865,
+          "margin": 0.764,
+          "entropy": 0.356,
+          "stable": true
+        },
+        "ja_naturalness": {
+          "output": "NATURAL",
+          "prob": 0.706,
+          "margin": 0.527,
+          "entropy": 0.589,
+          "stable": true
+        }
+      },
+      "reasons": [],
+      "naturalness_note": "ja_naturalness=NATURAL (참고용, 통과 조건 아님; 사람 확인)",
+      "log": "gates/log/2026-10-19-feed-pitapato-field-day-intro-2026w44-ja.json"
+    },
+    "zh-Hans": {
+      "gate": "needs_human",
+      "checked_at": "2026-10-19T11:40:58Z",
+      "tool": "DGX :8090 /v1/score ×2 (choices reversed for order check)",
+      "fields": {
+        "tone": {
+          "output": "ON_BRAND",
+          "prob": 0.883,
+          "margin": 0.771,
+          "entropy": 0.351,
+          "stable": true
+        },
+        "banned_expression": {
+          "output": "NONE",
+          "prob": 0.915,
+          "margin": 0.869,
+          "entropy": 0.207,
+          "stable": true
+        },
+        "fact_grounding": {
+          "output": "SUPPORTED",
+          "prob": 0.72,
+          "margin": 0.582,
+          "entropy": 0.608,
+          "stable": true
+        },
+        "platform_policy": {
+          "output": "COMPLIANT",
+          "prob": 0.86,
+          "margin": 0.755,
+          "entropy": 0.368,
+          "stable": true
+        },
+        "zh_hans_naturalness": {
+          "output": "NATURAL",
+          "prob": 0.537,
+          "margin": 0.236,
+          "entropy": 0.722,
+          "stable": true
+        }
+      },
+      "reasons": [
+        "fact_grounding=SUPPORTED (margin 0.582, entropy 0.608, stable True)"
+      ],
+      "naturalness_note": "zh_hans_naturalness=NATURAL (참고용, 통과 조건 아님; 사람 확인)",
+      "log": "gates/log/2026-10-19-feed-pitapato-field-day-intro-2026w44-zh-Hans.json"
+    },
+    "zh-Hant": {
+      "gate": "pass",
+      "checked_at": "2026-10-19T11:41:02Z",
+      "tool": "DGX :8090 /v1/score ×2 (choices reversed for order check)",
+      "fields": {
+        "tone": {
+          "output": "ON_BRAND",
+          "prob": 0.907,
+          "margin": 0.818,
+          "entropy": 0.299,
+          "stable": true
+        },
+        "banned_expression": {
+          "output": "NONE",
+          "prob": 0.927,
+          "margin": 0.887,
+          "entropy": 0.182,
+          "stable": true
+        },
+        "fact_grounding": {
+          "output": "SUPPORTED",
+          "prob": 0.763,
+          "margin": 0.627,
+          "entropy": 0.542,
+          "stable": true
+        },
+        "platform_policy": {
+          "output": "COMPLIANT",
+          "prob": 0.87,
+          "margin": 0.77,
+          "entropy": 0.346,
+          "stable": true
+        },
+        "zh_hant_naturalness": {
+          "output": "NATURAL",
+          "prob": 0.435,
+          "margin": 0.011,
+          "entropy": 0.727,
+          "stable": true
+        }
+      },
+      "reasons": [],
+      "naturalness_note": "zh_hant_naturalness=NATURAL (참고용, 통과 조건 아님; 사람 확인)",
+      "log": "gates/log/2026-10-19-feed-pitapato-field-day-intro-2026w44-zh-Hant.json"
+    },
+    "es": {
+      "gate": "needs_human",
+      "checked_at": "2026-10-19T11:41:05Z",
+      "tool": "DGX :8090 /v1/score ×2 (choices reversed for order check)",
+      "fields": {
+        "tone": {
+          "output": "ON_BRAND",
+          "prob": 0.951,
+          "margin": 0.907,
+          "entropy": 0.19,
+          "stable": true
+        },
+        "banned_expression": {
+          "output": "NONE",
+          "prob": 0.943,
+          "margin": 0.914,
+          "entropy": 0.152,
+          "stable": true
+        },
+        "fact_grounding": {
+          "output": "SUPPORTED",
+          "prob": 0.517,
+          "margin": 0.212,
+          "entropy": 0.817,
+          "stable": true
+        },
+        "platform_policy": {
+          "output": "COMPLIANT",
+          "prob": 0.867,
+          "margin": 0.767,
+          "entropy": 0.35,
+          "stable": true
+        },
+        "es_naturalness": {
+          "output": "NATURAL",
+          "prob": 0.579,
+          "margin": 0.293,
+          "entropy": 0.687,
+          "stable": true
+        }
+      },
+      "reasons": [
+        "fact_grounding=SUPPORTED (margin 0.212, entropy 0.817, stable True)"
+      ],
+      "naturalness_note": "es_naturalness=NATURAL (참고용, 통과 조건 아님; 사람 확인)",
+      "log": "gates/log/2026-10-19-feed-pitapato-field-day-intro-2026w44-es.json"
+    },
+    "fr": {
+      "gate": "needs_human",
+      "checked_at": "2026-10-19T11:41:09Z",
+      "tool": "DGX :8090 /v1/score ×2 (choices reversed for order check)",
+      "fields": {
+        "tone": {
+          "output": "ON_BRAND",
+          "prob": 0.965,
+          "margin": 0.933,
+          "entropy": 0.145,
+          "stable": true
+        },
+        "banned_expression": {
+          "output": "NONE",
+          "prob": 0.952,
+          "margin": 0.934,
+          "entropy": 0.133,
+          "stable": true
+        },
+        "fact_grounding": {
+          "output": "SUPPORTED",
+          "prob": 0.668,
+          "margin": 0.504,
+          "entropy": 0.691,
+          "stable": true
+        },
+        "platform_policy": {
+          "output": "COMPLIANT",
+          "prob": 0.879,
+          "margin": 0.785,
+          "entropy": 0.323,
+          "stable": true
+        },
+        "fr_naturalness": {
+          "output": "NATURAL",
+          "prob": 0.776,
+          "margin": 0.627,
+          "entropy": 0.495,
+          "stable": true
+        }
+      },
+      "reasons": [
+        "fact_grounding=SUPPORTED (margin 0.504, entropy 0.691, stable True)"
+      ],
+      "naturalness_note": "fr_naturalness=NATURAL (참고용, 통과 조건 아님; 사람 확인)",
+      "log": "gates/log/2026-10-19-feed-pitapato-field-day-intro-2026w44-fr.json"
+    },
+    "de": {
+      "gate": "needs_human",
+      "checked_at": "2026-10-19T11:41:13Z",
+      "tool": "DGX :8090 /v1/score ×2 (choices reversed for order check)",
+      "fields": {
+        "tone": {
+          "output": "ON_BRAND",
+          "prob": 0.946,
+          "margin": 0.895,
+          "entropy": 0.204,
+          "stable": true
+        },
+        "banned_expression": {
+          "output": "NONE",
+          "prob": 0.939,
+          "margin": 0.916,
+          "entropy": 0.162,
+          "stable": true
+        },
+        "fact_grounding": {
+          "output": "SUPPORTED",
+          "prob": 0.718,
+          "margin": 0.587,
+          "entropy": 0.623,
+          "stable": true
+        },
+        "platform_policy": {
+          "output": "COMPLIANT",
+          "prob": 0.865,
+          "margin": 0.762,
+          "entropy": 0.356,
+          "stable": true
+        },
+        "de_naturalness": {
+          "output": "NATURAL",
+          "prob": 0.596,
+          "margin": 0.333,
+          "entropy": 0.689,
+          "stable": true
+        }
+      },
+      "reasons": [
+        "fact_grounding=SUPPORTED (margin 0.587, entropy 0.623, stable True)"
+      ],
+      "naturalness_note": "de_naturalness=NATURAL (참고용, 통과 조건 아님; 사람 확인)",
+      "log": "gates/log/2026-10-19-feed-pitapato-field-day-intro-2026w44-de.json"
+    },
+    "th": {
+      "gate": "needs_human",
+      "checked_at": "2026-10-19T11:41:16Z",
+      "tool": "DGX :8090 /v1/score ×2 (choices reversed for order check)",
+      "fields": {
+        "tone": {
+          "output": "ON_BRAND",
+          "prob": 0.493,
+          "margin": 0.133,
+          "entropy": 0.909,
+          "stable": true
+        },
+        "banned_expression": {
+          "output": "NONE",
+          "prob": 0.828,
+          "margin": 0.754,
+          "entropy": 0.358,
+          "stable": true
+        },
+        "fact_grounding": {
+          "output": "SUPPORTED",
+          "prob": 0.644,
+          "margin": 0.433,
+          "entropy": 0.716,
+          "stable": true
+        },
+        "platform_policy": {
+          "output": "COMPLIANT",
+          "prob": 0.746,
+          "margin": 0.535,
+          "entropy": 0.515,
+          "stable": true
+        },
+        "th_naturalness": {
+          "output": "NON_NATIVE",
+          "prob": 0.818,
+          "margin": 0.645,
+          "entropy": 0.37,
+          "stable": false
+        }
+      },
+      "reasons": [
+        "tone=ON_BRAND (margin 0.133, entropy 0.909, stable True)",
+        "fact_grounding=SUPPORTED (margin 0.433, entropy 0.716, stable True)"
+      ],
+      "naturalness_note": "th_naturalness=NON_NATIVE (참고용, 통과 조건 아님; 사람 확인)",
+      "log": "gates/log/2026-10-19-feed-pitapato-field-day-intro-2026w44-th.json"
+    },
+    "vi": {
+      "gate": "needs_human",
+      "checked_at": "2026-10-19T11:41:20Z",
+      "tool": "DGX :8090 /v1/score ×2 (choices reversed for order check)",
+      "fields": {
+        "tone": {
+          "output": "ON_BRAND",
+          "prob": 0.928,
+          "margin": 0.865,
+          "entropy": 0.258,
+          "stable": true
+        },
+        "banned_expression": {
+          "output": "NONE",
+          "prob": 0.947,
+          "margin": 0.927,
+          "entropy": 0.143,
+          "stable": true
+        },
+        "fact_grounding": {
+          "output": "SUPPORTED",
+          "prob": 0.732,
+          "margin": 0.617,
+          "entropy": 0.616,
+          "stable": true
+        },
+        "platform_policy": {
+          "output": "COMPLIANT",
+          "prob": 0.869,
+          "margin": 0.764,
+          "entropy": 0.339,
+          "stable": true
+        },
+        "vi_naturalness": {
+          "output": "NATURAL",
+          "prob": 0.427,
+          "margin": 0.021,
+          "entropy": 0.748,
+          "stable": true
+        }
+      },
+      "reasons": [
+        "fact_grounding=SUPPORTED (margin 0.617, entropy 0.616, stable True)"
+      ],
+      "naturalness_note": "vi_naturalness=NATURAL (참고용, 통과 조건 아님; 사람 확인)",
+      "log": "gates/log/2026-10-19-feed-pitapato-field-day-intro-2026w44-vi.json"
+    }
+  }
+}

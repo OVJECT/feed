@@ -11,6 +11,9 @@ enough), commit, and the `feed` workflow validates it, regenerates `v1/`, commit
 > `needs_human` locale strings were read and accepted unchanged), so every file under `v1/` carries both items in
 > its own language. CTA URLs are real: KAIRO leads to its App Store page, Oddside to the `ovject.com` home page
 > until it has a pre-registration page of its own (then replace `cta.url` only; a new item id when the copy changes).
+> Five more OVJECT app intros (`random-taptap`, `pitapato`, `croco-snap`, `croco-roulette`, `pitapato-field-day`,
+> all `*-intro-2026w44`) sit in `src/oryth/` with `approval.gate: pending`, so they are **not published** yet
+> (see "Current state").
 
 ## Layout
 
@@ -147,6 +150,16 @@ When the two differ, `src/` wins. Specification: `marketing/crosspromo/CROSS_PRO
   (`review.<locale>.human`). CTA URLs: KAIRO → its App Store page (`apps.apple.com/app/id6745693309`), Oddside →
   `https://ovject.com/` until a pre-registration page exists. `kairo-intro` carries `runs_on: ["ios"]`; `oddside-intro` has no `runs_on`
   (release platforms unconfirmed).
+- `src/oryth/` also holds five OVJECT app intros, **pending approval** (`approval.gate: pending`, so the default build
+  leaves them out and `v1/` is unchanged): `random-taptap-intro-2026w44` (priority 4), `pitapato-intro-2026w44` (3),
+  `croco-snap-intro-2026w44` (2), `croco-roulette-intro-2026w44` (1), `pitapato-field-day-intro-2026w44` (1). All ten
+  locales are written by hand from the OVJECT website feed pages and the App Store / Google Play listings; no image,
+  no figures, no promises. CTAs go to the App Store page (Field Day: Google Play only, `runs_on: ["android"]`).
+  Nimble gate: 41 of 50 locale strings `pass`, 9 `needs_human` (Field Day `en`·`zh-Hans`·`es`·`fr`·`de`·`th`·`vi`,
+  PITAPATO `vi`, Croco Snap `th`). **Approving means setting `approval` and also reading each `needs_human` locale
+  and setting its `review.<locale>.gate` to `pass`; a locale left at `needs_human` simply omits that item.**
+  Croco Snap!: the Google Play listing describes a different game (a beat-memory game) than the website and the App
+  Store (crocodile roulette); the card follows the latter.
 - `v1/oryth/*.json`: ten files, two items each (Oddside priority 10, KAIRO priority 5), the default build of the
   sources above. Published only once `main` is pushed.
 - Published: the repository and Pages (`main`, `/`) exist since 2026-10-19 and serve whatever `main` holds.
