@@ -1,0 +1,8 @@
+{
+  "derive_from": "oryth",
+  "platforms": ["ios"],
+  "min_app_version": "2.0.1",
+  "max_impressions_per_user": 20,
+  "cta_hosts": ["apps.apple.com", "ovject.com"],
+  "exclude": []
+}

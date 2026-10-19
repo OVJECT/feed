@@ -2,7 +2,7 @@
   "schema_version": 1,
   "app": "kairo",
   "locale": "vi",
-  "generated_at": "2026-10-19T20:01:29Z",
+  "generated_at": "2026-10-19T20:07:49Z",
   "ttl_hours": 12,
   "items": [
     {
@@ -34,7 +34,7 @@
       "approval": {
         "gate": "pass",
         "approved_by": "JY",
-        "approved_at": "2026-10-19T20:01:29Z"
+        "approved_at": "2026-10-19T11:26:06Z"
       }
     },
     {
@@ -73,7 +73,7 @@
       "approval": {
         "gate": "pass",
         "approved_by": "JY",
-        "approved_at": "2026-10-19T20:01:29Z"
+        "approved_at": "2026-10-19T13:46:00Z"
       }
     },
     {
@@ -112,7 +112,7 @@
       "approval": {
         "gate": "pass",
         "approved_by": "JY",
-        "approved_at": "2026-10-19T20:01:29Z"
+        "approved_at": "2026-10-19T13:53:00Z"
       }
     },
     {
@@ -151,7 +151,7 @@
       "approval": {
         "gate": "pass",
         "approved_by": "JY",
-        "approved_at": "2026-10-19T20:01:29Z"
+        "approved_at": "2026-10-19T13:46:00Z"
       }
     }
   ],

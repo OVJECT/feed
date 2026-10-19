@@ -23,6 +23,7 @@ used for drafts and local linting.
 from __future__ import annotations
 
 import argparse
+import copy
 import datetime as dt
 import json
 import re
@@ -43,6 +44,10 @@ RUNS_ON = ("macos", "ios", "android", "web", "windows")  # platforms the promote
 # Feed-level `links`: a row of fixed destinations for the app's OVJECT page
 # (home page, store, support, privacy, later socials). Source: src/_links/<app>.json.
 LINKS_DIR = "_links"
+# Derived hosts: an app whose feed is built from another app's items (src/_hosts/<app>.json),
+# e.g. KAIRO's gallery card reuses the Oryth items. The parent's approval and gate results carry over.
+HOSTS_DIR = "_hosts"
+HOST_KEYS = ("derive_from", "platforms", "min_app_version", "max_impressions_per_user", "cta_hosts", "exclude")
 MAX_LINKS = 8
 LINK_LABEL_MAX = 24
 _OVJECT_HOSTS = ("ovject.github.io", "ovject.com")
@@ -536,7 +541,11 @@ def discover_apps(src_root):
     root = Path(src_root)
     if not root.is_dir():
         raise BuildError(f"source root not found: {root}")
-    apps = sorted(entry.name for entry in root.iterdir() if entry.is_dir() and APP_RE.match(entry.name))
+    apps = {entry.name for entry in root.iterdir() if entry.is_dir() and APP_RE.match(entry.name)}
+    hosts_dir = root / HOSTS_DIR
+    if hosts_dir.is_dir():
+        apps.update(path.stem for path in hosts_dir.glob("*.json") if APP_RE.match(path.stem))
+    apps = sorted(apps)
     if not apps:
         raise BuildError(f"no app folders under {root}")
     return apps
@@ -560,6 +569,8 @@ def self_promotion_errors(source, app, path):
 def load_sources(src_root, app):
     app_dir = Path(src_root) / app
     if not app_dir.is_dir():
+        if (Path(src_root) / HOSTS_DIR / f"{app}.json").is_file():
+            return []  # a derived host may have no items of its own
         raise BuildError(f"source folder not found: {app_dir}")
     sources = []
     errors = []
@@ -576,6 +587,88 @@ def load_sources(src_root, app):
     if errors:
         raise BuildError("\n".join(errors))
     return sources
+
+
+def load_host_config(src_root, app):
+    """Derived-host config from <src_root>/_hosts/<app>.json, or None.
+
+    {"derive_from": "oryth", "platforms": ["ios"], "min_app_version": "2.0.1",
+     "max_impressions_per_user": 20, "cta_hosts": ["apps.apple.com", "ovject.com"], "exclude": ["<item id>"]}
+    Only derive_from and platforms are required."""
+    path = Path(src_root) / HOSTS_DIR / f"{app}.json"
+    if not path.is_file():
+        return None
+    try:
+        with path.open(encoding="utf-8") as handle:
+            host = json.load(handle)
+    except (OSError, ValueError) as exc:
+        raise BuildError(f"{path}: cannot read JSON ({exc})")
+    errors = []
+    if not isinstance(host, dict):
+        raise BuildError(f"{path}: must be a JSON object")
+    _check_keys(host, ("derive_from", "platforms"), HOST_KEYS, str(path), errors)
+    parent = host.get("derive_from")
+    if not isinstance(parent, str) or not APP_RE.match(parent) or parent == app:
+        errors.append(f"{path}.derive_from: must be another app slug")
+    elif (Path(src_root) / HOSTS_DIR / f"{parent}.json").is_file():
+        errors.append(f"{path}.derive_from: '{parent}' is itself a derived host; chains are not allowed")
+    platforms = host.get("platforms")
+    if not isinstance(platforms, list) or not platforms or any(p not in PLATFORMS for p in platforms):
+        errors.append(f"{path}.platforms: non-empty list of {list(PLATFORMS)}")
+    version = host.get("min_app_version")
+    if version is not None and (not isinstance(version, str) or not SEMVER_RE.match(version)):
+        errors.append(f"{path}.min_app_version: must be semver like 1.2.3")
+    impressions = host.get("max_impressions_per_user")
+    if impressions is not None and (not is_int(impressions) or impressions < 1):
+        errors.append(f"{path}.max_impressions_per_user: must be an integer >= 1")
+    for key in ("cta_hosts", "exclude"):
+        value = host.get(key)
+        if value is not None and (not isinstance(value, list) or any(not isinstance(v, str) or not v for v in value)):
+            errors.append(f"{path}.{key}: must be a list of non-empty strings")
+    if errors:
+        raise BuildError("\n".join(errors))
+    return host
+
+
+def derived_sources(src_root, app, host, own_ids):
+    """Copies of the parent app's items for a derived host.
+
+    The copy keeps the parent's strings, approval and review gates (JY: approving an item for the parent app
+    approves it here too). Host fields replace platforms/min_app_version/max_impressions_per_user and the CTA's
+    utm_source becomes this app. Skipped: ids in `exclude`, ids the host defines itself, items about the host
+    app, and items whose CTA host is not in `cta_hosts` (when set)."""
+    derived = []
+    exclude = set(host.get("exclude") or [])
+    cta_hosts = host.get("cta_hosts")
+    for source in load_sources(src_root, host["derive_from"]):
+        item_id = source["id"]
+        if item_id in exclude or item_id in own_ids:
+            continue
+        if item_id.startswith(f"{app}-") or app in (source.get("tags") or []):
+            continue
+        item = copy.deepcopy(source)
+        item["platforms"] = list(host["platforms"])
+        if host.get("min_app_version") is not None:
+            item["min_app_version"] = host["min_app_version"]
+        if host.get("max_impressions_per_user") is not None:
+            item["max_impressions_per_user"] = host["max_impressions_per_user"]
+        cta = item.get("cta") or {}
+        url = cta.get("url")
+        if isinstance(url, str):
+            if cta_hosts is not None and (urlsplit(url).hostname or "") not in cta_hosts:
+                continue
+            cta["url"] = re.sub(r"utm_source=[^&]*", f"utm_source={app}", url)
+        derived.append(item)
+    return derived
+
+
+def load_app_sources(src_root, app):
+    """The app's own items plus, for a derived host, the items derived from its parent."""
+    own = load_sources(src_root, app)
+    host = load_host_config(src_root, app)
+    if host is None:
+        return own
+    return own + derived_sources(src_root, app, host, {source["id"] for source in own})
 
 
 def load_links(src_root, app):
@@ -694,7 +787,7 @@ def build_locale_feed(app, locale, sources, *, generated_at, ttl_hours=DEFAULT_T
 def build_app(app, src_root, *, generated_at=None, ttl_hours=DEFAULT_TTL_HOURS,
               include_pending=False, locales=LOCALES):
     """Return {locale: (feed, report)} for every locale."""
-    sources = load_sources(src_root, app)
+    sources = load_app_sources(src_root, app)
     links = load_links(src_root, app)
     generated_at = generated_at or dt.datetime.now(dt.timezone.utc).replace(microsecond=0).isoformat().replace("+00:00", "Z")
     if parse_datetime(generated_at) is None:

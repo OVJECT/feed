@@ -733,7 +733,7 @@ class CommittedSourcesTests(unittest.TestCase):
     def test_default_build_publishes_only_approved_items_whose_gate_passed(self):
         """What CI publishes: pending items dropped, a locale whose gate is not pass left out, strict lint."""
         for app in build_feed.discover_apps(FEED_SRC):
-            sources = build_feed.load_sources(FEED_SRC, app)
+            sources = build_feed.load_app_sources(FEED_SRC, app)
             built = build_feed.build_app(app, FEED_SRC, generated_at=GENERATED_AT)
             self.assertEqual(sorted(built), sorted(build_feed.LOCALES))
             pending = sorted(source["id"] for source in sources if build_feed.is_pending(source))
@@ -757,7 +757,7 @@ class CommittedSourcesTests(unittest.TestCase):
 
     def test_preview_build_with_pending_covers_every_gated_item(self):
         for app in build_feed.discover_apps(FEED_SRC):
-            sources = build_feed.load_sources(FEED_SRC, app)
+            sources = build_feed.load_app_sources(FEED_SRC, app)
             built = build_feed.build_app(app, FEED_SRC, generated_at=GENERATED_AT, include_pending=True)
             for locale, (feed, report) in built.items():
                 label = f"{app}/{locale}"
@@ -773,6 +773,114 @@ class CommittedSourcesTests(unittest.TestCase):
                     else:
                         self.assertNotIn(source["id"], ids, f"{label} {source['id']} gate={gate}")
                         self.assertIn(f"{source['id']}({gate})", report["gate_failed"], label)
+
+
+def write_host(root, app, **config):
+    hosts = Path(root) / "_hosts"
+    hosts.mkdir(parents=True, exist_ok=True)
+    doc = {"derive_from": "parentapp", "platforms": ["ios"]}
+    doc.update(config)
+    (hosts / f"{app}.json").write_text(json.dumps(doc), encoding="utf-8")
+
+
+class DerivedHostTests(unittest.TestCase):
+    """src/_hosts/<app>.json: the host's feed is built from another app's items."""
+
+    def build(self, tmp, **config):
+        write_host(tmp, "hostapp", **config)
+        return build_feed.build_app("hostapp", tmp, generated_at=GENERATED_AT)
+
+    def test_items_are_copied_with_host_fields_and_inherited_approval(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            write_sources(tmp, "parentapp", [source_for_app("parentapp", "promo-a")])
+            built = self.build(tmp, min_app_version="2.0.1", max_impressions_per_user=20)
+        feed, _ = built["en"]
+        self.assertEqual(feed["app"], "hostapp")
+        item = feed["items"][0]
+        self.assertEqual(item["id"], "promo-a")
+        self.assertEqual(item["platforms"], ["ios"])
+        self.assertEqual(item["min_app_version"], "2.0.1")
+        self.assertEqual(item["max_impressions_per_user"], 20)
+        self.assertIn("utm_source=hostapp", item["cta"]["url"])
+        self.assertNotIn("utm_source=parentapp", item["cta"]["url"])
+        self.assertEqual(item["approval"]["approved_by"], "JY")
+        self.assertEqual(build_feed.validate_feed(feed, expected_app="hostapp", expected_locale="en"), [])
+
+    def test_pending_parent_items_stay_out(self):
+        pending = source_for_app("parentapp", "promo-b", approval={"gate": "pending", "approved_by": "", "approved_at": ""})
+        with tempfile.TemporaryDirectory() as tmp:
+            write_sources(tmp, "parentapp", [pending])
+            feed, report = self.build(tmp)["en"]
+        self.assertEqual(feed["items"], [])
+        self.assertEqual(report["skipped_pending"], ["promo-b"])
+
+    def test_the_host_never_introduces_itself(self):
+        about_host = source_for_app("parentapp", "promo-c", tags=["hostapp"])
+        prefixed = source_for_app("parentapp", "hostapp-intro")
+        with tempfile.TemporaryDirectory() as tmp:
+            write_sources(tmp, "parentapp", [about_host, prefixed, source_for_app("parentapp", "promo-a")])
+            feed, _ = self.build(tmp)["en"]
+        self.assertEqual([item["id"] for item in feed["items"]], ["promo-a"])
+
+    def test_exclude_and_cta_hosts(self):
+        play = source_for_app("parentapp", "promo-play")
+        play["cta"]["url"] = play["cta"]["url"].replace("https://ovject.com", "https://play.google.com")
+        with tempfile.TemporaryDirectory() as tmp:
+            write_sources(tmp, "parentapp", [play, source_for_app("parentapp", "promo-a"), source_for_app("parentapp", "promo-x")])
+            feed, _ = self.build(tmp, cta_hosts=["ovject.com"], exclude=["promo-x"])["en"]
+        self.assertEqual([item["id"] for item in feed["items"]], ["promo-a"])
+
+    def test_an_own_item_with_the_same_id_wins(self):
+        own = source_for_app("hostapp", "promo-a", priority=99)
+        with tempfile.TemporaryDirectory() as tmp:
+            write_sources(tmp, "parentapp", [source_for_app("parentapp", "promo-a")])
+            write_sources(tmp, "hostapp", [own])
+            feed, _ = self.build(tmp)["en"]
+        self.assertEqual([(item["id"], item["priority"]) for item in feed["items"]], [("promo-a", 99)])
+
+    def test_discovery_lists_host_only_apps(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            write_sources(tmp, "parentapp", [source_for_app("parentapp")])
+            write_host(tmp, "hostapp")
+            self.assertEqual(build_feed.discover_apps(tmp), ["hostapp", "parentapp"])
+
+    def test_bad_host_config_is_rejected(self):
+        cases = [
+            {"derive_from": "hostapp"},               # itself
+            {"platforms": ["windows"]},               # unknown platform
+            {"platforms": []},                        # empty
+            {"min_app_version": "2.0"},               # not semver
+            {"max_impressions_per_user": 0},
+            {"cta_hosts": "ovject.com"},              # not a list
+            {"surprise": 1},                          # unknown key
+        ]
+        for config in cases:
+            with self.subTest(config=config), tempfile.TemporaryDirectory() as tmp:
+                write_sources(tmp, "parentapp", [source_for_app("parentapp")])
+                write_host(tmp, "hostapp", **config)
+                with self.assertRaises(build_feed.BuildError):
+                    build_feed.build_app("hostapp", tmp, generated_at=GENERATED_AT)
+
+    def test_chains_are_rejected(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            write_sources(tmp, "parentapp", [source_for_app("parentapp")])
+            write_host(tmp, "parentapp", derive_from="grandparent")
+            write_host(tmp, "hostapp")
+            with self.assertRaises(build_feed.BuildError):
+                build_feed.build_app("hostapp", tmp, generated_at=GENERATED_AT)
+
+
+class CommittedHostTests(unittest.TestCase):
+    def test_every_committed_host_builds_and_passes_the_strict_check(self):
+        for path in sorted((FEED_SRC / "_hosts").glob("*.json")):
+            app = path.stem
+            built = build_feed.build_app(app, FEED_SRC, generated_at=GENERATED_AT)
+            for locale, (feed, _report) in built.items():
+                self.assertEqual(
+                    build_feed.validate_feed(feed, expected_app=app, expected_locale=locale), [], f"{app}/{locale}"
+                )
+                for item in feed["items"]:
+                    self.assertNotIn(app, item.get("tags") or [], f"{app} introduces itself: {item['id']}")
 
 
 if __name__ == "__main__":

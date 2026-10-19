@@ -52,6 +52,28 @@ enough), commit, and the `feed` workflow validates it, regenerates `v1/`, commit
 3. 커밋(main 직접 또는 PR 머지) → Actions `feed`가 `v1/`을 다시 만들어 봇 커밋 → Pages가 1분쯤 뒤 재배포.
 4. **경고: 승인된 항목이 하나도 없으면 피드는 `items: []`라서 앱의 OVJECT 페이지가 빈 상태가 된다**(승인 전 push, 또는 모든 항목을 `pending`으로 되돌릴 때). Oddside의 CTA는 전용 사전등록 페이지가 생기기 전까지 `https://ovject.com/` 홈이다. 페이지가 생기면 `cta.url`만 바꾼다(문구가 바뀌면 새 id).
 
+## 다른 앱의 항목을 그대로 쓰는 앱 (derived host, 예: KAIRO 갤러리 카드)
+
+`src/_hosts/<app>.json`이 있는 앱의 피드는 부모 앱(`derive_from`)의 항목을 복사해 만든다. 새 앱 소개는 **`src/oryth/`에 한 번만** 등록하고 승인하면, 부모에서 승인된 항목이 파생 앱의 `v1/<app>/`에도 자동으로 들어간다(JY 결정 2026-10-20: 부모 승인이 파생 앱에도 적용). 문구·게이트 결과·승인은 부모 것을 그대로 쓴다.
+
+```json
+{ "derive_from": "oryth", "platforms": ["ios"], "min_app_version": "2.0.1",
+  "max_impressions_per_user": 20, "cta_hosts": ["apps.apple.com", "ovject.com"], "exclude": [] }
+```
+
+| 필드 | 뜻 |
+|---|---|
+| `derive_from` (필수) | 부모 앱 슬러그. 부모가 또 파생 앱이면 안 된다 |
+| `platforms` (필수) | 이 앱에서 항목을 보여 줄 플랫폼(부모의 `platforms`를 대체) |
+| `min_app_version`, `max_impressions_per_user` | 있으면 부모 값을 대체 |
+| `cta_hosts` | 있으면 CTA 호스트가 이 목록에 없는 항목은 뺀다(안드로이드 전용 Play 링크 등) |
+| `exclude` | 가져오지 않을 항목 id |
+
+- CTA의 `utm_source`는 파생 앱 슬러그로 바뀐다(`utm_content`는 항목 id 그대로).
+- 파생 앱 자신을 소개하는 항목(`tags`에 앱 이름, id가 `<app>-`로 시작)은 조용히 빠진다.
+- `src/<app>/<id>.json`을 따로 두면 같은 id의 부모 항목 대신 그 파일이 쓰인다(파생 앱만 문구를 다르게 하고 싶을 때).
+- 부모 항목을 `pending`으로 되돌리면 파생 앱에서도 같이 빠진다.
+
 ## Pipeline (`.github/workflows/feed.yml`)
 
 | Event | What runs |
