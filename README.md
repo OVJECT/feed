@@ -42,7 +42,7 @@ enough), commit, and the `feed` workflow validates it, regenerates `v1/`, commit
 2. `kind`: `website`·`appstore`·`support`·`privacy`·`instagram`·`x`·`threads`·`youtube`·`discord`·`bluesky`·`tiktok`·`github`. `label`은 생략하면 영어 기본값(Website·App Store·…)이 들어간다. 최대 8개, 적은 순서대로 보이고, 같은 url 두 번은 안 된다.
 3. 허용 호스트가 kind마다 정해져 있다(website·support·privacy는 `ovject.github.io`·`ovject.com`, appstore는 `apps.apple.com`, 소셜은 각 서비스 도메인). https만. 어긋나면 Actions가 빨간 ✗로 멈추고 아무것도 공개되지 않는다.
 4. 커밋하면 Actions `feed`가 10개 로케일 파일 모두에 같은 `links`를 넣어 `v1/`을 다시 만든다. 링크는 항목 승인(`approval`)과 무관하게 바로 공개되고, 항목 UTM 규칙은 적용되지 않는다. 파일을 비우면(`"links": []`) 피드에서 `links` 필드가 빠진다.
-5. 참고: `https://ovject.github.io/Website/…` 주소(website·support·privacy)는 지금 `http://ovject.com/…`로 301 리다이렉트된다(2026-10-19 curl 확인). JY가 원하는 방식이라 그대로 두었고, 주소를 바꿀 일이 생기면 이 파일의 `url`만 고친다.
+5. 참고: 홈페이지 계열 링크(website·support·privacy)는 `ovject.com` 주소를 직접 쓴다(JY 결정; `ovject.github.io/Website/…`는 `ovject.com`으로 301이라 쓰지 않는다). 주소를 바꿀 일이 생기면 이 파일의 `url`만 고친다.
 
 ## 승인하는 법 (how to approve)
 

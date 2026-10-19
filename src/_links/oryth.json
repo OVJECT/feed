@@ -1,8 +1,8 @@
 {
   "links": [
-    { "kind": "website", "url": "https://ovject.github.io/Website/" },
+    { "kind": "website", "url": "https://ovject.com/" },
     { "kind": "appstore", "url": "https://apps.apple.com/us/developer/junyoung-lee/id1501486371" },
-    { "kind": "support", "url": "https://ovject.github.io/Website/oryth-support.html" },
-    { "kind": "privacy", "url": "https://ovject.github.io/Website/oryth_privacy_policy_en.html" }
+    { "kind": "support", "url": "https://ovject.com/oryth-support.html" },
+    { "kind": "privacy", "url": "https://ovject.com/oryth_privacy_policy_en.html" }
   ]
 }

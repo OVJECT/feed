@@ -2,7 +2,7 @@
   "schema_version": 1,
   "app": "oryth",
   "locale": "vi",
-  "generated_at": "2026-10-19T12:46:37Z",
+  "generated_at": "2026-10-19T12:49:00Z",
   "ttl_hours": 12,
   "items": [
     {
@@ -79,7 +79,7 @@
     {
       "kind": "website",
       "label": "Website",
-      "url": "https://ovject.github.io/Website/"
+      "url": "https://ovject.com/"
     },
     {
       "kind": "appstore",
@@ -89,12 +89,12 @@
     {
       "kind": "support",
       "label": "Support",
-      "url": "https://ovject.github.io/Website/oryth-support.html"
+      "url": "https://ovject.com/oryth-support.html"
     },
     {
       "kind": "privacy",
       "label": "Privacy",
-      "url": "https://ovject.github.io/Website/oryth_privacy_policy_en.html"
+      "url": "https://ovject.com/oryth_privacy_policy_en.html"
     }
   ],
   "signature": null
