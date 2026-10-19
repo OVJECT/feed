@@ -3,7 +3,7 @@
   "id": "pitapato-intro-2026w44",
   "kind": "promo",
   "priority": 3,
-  "starts_at": "2026-10-20T00:00:00Z",
+  "starts_at": "2026-10-19T13:52:00Z",
   "ends_at": "2099-01-01T00:00:00Z",
   "platforms": [
     "macos",
@@ -31,9 +31,9 @@
     "pitapato"
   ],
   "approval": {
-    "gate": "pending",
-    "approved_by": "",
-    "approved_at": ""
+    "gate": "pass",
+    "approved_by": "JY",
+    "approved_at": "2026-10-19T13:53:00Z"
   },
   "strings": {
     "en": {
@@ -511,7 +511,8 @@
       "log": "gates/log/2026-10-19-feed-pitapato-intro-2026w44-th.json"
     },
     "vi": {
-      "gate": "needs_human",
+      "gate": "pass",
+      "human": "JY approved 2026-10-19 with item approval; vi native review not done; text unchanged",
       "checked_at": "2026-10-19T11:39:33Z",
       "tool": "DGX :8090 /v1/score ×2 (choices reversed for order check)",
       "fields": {

@@ -2,7 +2,7 @@
   "schema_version": 1,
   "app": "oryth",
   "locale": "zh-Hant",
-  "generated_at": "2026-10-19T13:45:56Z",
+  "generated_at": "2026-10-19T13:53:07Z",
   "ttl_hours": 12,
   "items": [
     {
@@ -112,6 +112,46 @@
         "gate": "pass",
         "approved_by": "JY",
         "approved_at": "2026-10-19T13:46:00Z"
+      }
+    },
+    {
+      "id": "pitapato-intro-2026w44",
+      "kind": "promo",
+      "priority": 3,
+      "starts_at": "2026-10-19T13:52:00Z",
+      "ends_at": "2099-01-01T00:00:00Z",
+      "platforms": [
+        "macos",
+        "ios"
+      ],
+      "runs_on": [
+        "ios",
+        "android"
+      ],
+      "min_app_version": "1.0.8",
+      "max_impressions_per_user": 3,
+      "title": "OVJECT 的海盜輪盤：PITAPATO",
+      "body": "木桶裡藏著鼴鼠的海盜輪盤遊戲。把玩具刀插進洞裡，先約好鼴鼠跳出來的人要受什麼懲罰，玩起來更有趣。",
+      "cta": {
+        "label": "在 App Store 查看",
+        "action": "url",
+        "url": "https://apps.apple.com/app/id1505739502?utm_source=oryth&utm_medium=feedcard&utm_campaign=pitapato_intro&utm_content=pitapato-intro-2026w44"
+      },
+      "secondary": {
+        "label": "以後再說",
+        "action": "dismiss"
+      },
+      "store": {
+        "ios_app_id": "1505739502",
+        "android_package": "com.OVJECT.Pitapato"
+      },
+      "tags": [
+        "pitapato"
+      ],
+      "approval": {
+        "gate": "pass",
+        "approved_by": "JY",
+        "approved_at": "2026-10-19T13:53:00Z"
       }
     },
     {
