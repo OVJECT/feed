@@ -2,8 +2,158 @@
   "schema_version": 1,
   "app": "kairo",
   "locale": "ko",
-  "generated_at": "2026-10-19T19:57:20Z",
+  "generated_at": "2026-10-19T20:01:29Z",
   "ttl_hours": 12,
-  "items": [],
+  "items": [
+    {
+      "id": "oddside-intro-2026w44",
+      "kind": "promo",
+      "priority": 10,
+      "starts_at": "2026-10-19T12:00:00Z",
+      "ends_at": "2026-12-31T00:00:00Z",
+      "platforms": [
+        "ios"
+      ],
+      "min_app_version": "2.0.1",
+      "max_impressions_per_user": 20,
+      "title": "OVJECT의 다음 게임, 오드사이드",
+      "body": "평범한 동네에서 살다가 소문 속 뒤틀린 곳에 들어가 싸웁니다. 만들어지는 대로 소식을 보내 드립니다.",
+      "cta": {
+        "label": "소식 받기",
+        "action": "url",
+        "url": "https://ovject.com/?utm_source=kairo&utm_medium=feedcard&utm_campaign=oddside_prereg&utm_content=oddside-intro-2026w44"
+      },
+      "secondary": {
+        "label": "나중에",
+        "action": "dismiss"
+      },
+      "store": null,
+      "tags": [
+        "oddside"
+      ],
+      "approval": {
+        "gate": "pass",
+        "approved_by": "JY",
+        "approved_at": "2026-10-19T20:01:29Z"
+      }
+    },
+    {
+      "id": "random-taptap-intro-2026w44",
+      "kind": "promo",
+      "priority": 4,
+      "starts_at": "2026-10-19T13:45:00Z",
+      "ends_at": "2099-01-01T00:00:00Z",
+      "platforms": [
+        "ios"
+      ],
+      "runs_on": [
+        "ios",
+        "android"
+      ],
+      "min_app_version": "2.0.1",
+      "max_impressions_per_user": 20,
+      "title": "OVJECT의 결정 도우미, Random TapTap",
+      "body": "다 같이 화면에 손가락을 올리면 불빛이 돌다가 한 사람에게 멈춰요. 당첨자 뽑기, 팀 나누기, 순서 정하기를 할 수 있어요.",
+      "cta": {
+        "label": "App Store에서 보기",
+        "action": "url",
+        "url": "https://apps.apple.com/app/id6740798110?utm_source=kairo&utm_medium=feedcard&utm_campaign=random_taptap_intro&utm_content=random-taptap-intro-2026w44"
+      },
+      "secondary": {
+        "label": "나중에",
+        "action": "dismiss"
+      },
+      "store": {
+        "ios_app_id": "6740798110",
+        "android_package": "com.OVJECT.TapTap"
+      },
+      "tags": [
+        "random-taptap"
+      ],
+      "approval": {
+        "gate": "pass",
+        "approved_by": "JY",
+        "approved_at": "2026-10-19T20:01:29Z"
+      }
+    },
+    {
+      "id": "pitapato-intro-2026w44",
+      "kind": "promo",
+      "priority": 3,
+      "starts_at": "2026-10-19T13:52:00Z",
+      "ends_at": "2099-01-01T00:00:00Z",
+      "platforms": [
+        "ios"
+      ],
+      "runs_on": [
+        "ios",
+        "android"
+      ],
+      "min_app_version": "2.0.1",
+      "max_impressions_per_user": 20,
+      "title": "OVJECT의 해적 룰렛, PITAPATO",
+      "body": "통 속 두더지가 튀어나오는 해적 룰렛 게임이에요. 장난감 칼을 꽂아 보고, 두더지가 나온 사람에게 줄 벌칙을 정해 보세요.",
+      "cta": {
+        "label": "App Store에서 보기",
+        "action": "url",
+        "url": "https://apps.apple.com/app/id1505739502?utm_source=kairo&utm_medium=feedcard&utm_campaign=pitapato_intro&utm_content=pitapato-intro-2026w44"
+      },
+      "secondary": {
+        "label": "나중에",
+        "action": "dismiss"
+      },
+      "store": {
+        "ios_app_id": "1505739502",
+        "android_package": "com.OVJECT.Pitapato"
+      },
+      "tags": [
+        "pitapato"
+      ],
+      "approval": {
+        "gate": "pass",
+        "approved_by": "JY",
+        "approved_at": "2026-10-19T20:01:29Z"
+      }
+    },
+    {
+      "id": "croco-roulette-intro-2026w44",
+      "kind": "promo",
+      "priority": 1,
+      "starts_at": "2026-10-19T13:45:00Z",
+      "ends_at": "2099-01-01T00:00:00Z",
+      "platforms": [
+        "ios"
+      ],
+      "runs_on": [
+        "ios",
+        "android"
+      ],
+      "min_app_version": "2.0.1",
+      "max_impressions_per_user": 20,
+      "title": "OVJECT의 악어 이빨 게임, Croco? Croco Roulette",
+      "body": "장난감 악어 이빨 게임을 거의 그대로 옮긴 앱이에요. 점심 내기나 벌칙을 정할 때 좋고, 혼자 하면 재미없어요.",
+      "cta": {
+        "label": "App Store에서 보기",
+        "action": "url",
+        "url": "https://apps.apple.com/app/id1501486372?utm_source=kairo&utm_medium=feedcard&utm_campaign=croco_roulette_intro&utm_content=croco-roulette-intro-2026w44"
+      },
+      "secondary": {
+        "label": "나중에",
+        "action": "dismiss"
+      },
+      "store": {
+        "ios_app_id": "1501486372",
+        "android_package": "com.OVJECT.CrocoR"
+      },
+      "tags": [
+        "croco-roulette"
+      ],
+      "approval": {
+        "gate": "pass",
+        "approved_by": "JY",
+        "approved_at": "2026-10-19T20:01:29Z"
+      }
+    }
+  ],
   "signature": null
 }

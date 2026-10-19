@@ -2,8 +2,158 @@
   "schema_version": 1,
   "app": "kairo",
   "locale": "fr",
-  "generated_at": "2026-10-19T19:57:20Z",
+  "generated_at": "2026-10-19T20:01:29Z",
   "ttl_hours": 12,
-  "items": [],
+  "items": [
+    {
+      "id": "oddside-intro-2026w44",
+      "kind": "promo",
+      "priority": 10,
+      "starts_at": "2026-10-19T12:00:00Z",
+      "ends_at": "2026-12-31T00:00:00Z",
+      "platforms": [
+        "ios"
+      ],
+      "min_app_version": "2.0.1",
+      "max_impressions_per_user": 20,
+      "title": "Oddside, le prochain jeu d'OVJECT",
+      "body": "Vivez dans un quartier ordinaire, puis entrez dans le lieu tordu des rumeurs. Des nouvelles au fil du développement.",
+      "cta": {
+        "label": "Suivre l'actu",
+        "action": "url",
+        "url": "https://ovject.com/?utm_source=kairo&utm_medium=feedcard&utm_campaign=oddside_prereg&utm_content=oddside-intro-2026w44"
+      },
+      "secondary": {
+        "label": "Plus tard",
+        "action": "dismiss"
+      },
+      "store": null,
+      "tags": [
+        "oddside"
+      ],
+      "approval": {
+        "gate": "pass",
+        "approved_by": "JY",
+        "approved_at": "2026-10-19T20:01:29Z"
+      }
+    },
+    {
+      "id": "random-taptap-intro-2026w44",
+      "kind": "promo",
+      "priority": 4,
+      "starts_at": "2026-10-19T13:45:00Z",
+      "ends_at": "2099-01-01T00:00:00Z",
+      "platforms": [
+        "ios"
+      ],
+      "runs_on": [
+        "ios",
+        "android"
+      ],
+      "min_app_version": "2.0.1",
+      "max_impressions_per_user": 20,
+      "title": "Random TapTap, le tirage d'OVJECT",
+      "body": "Chacun pose un doigt sur l'écran et une lumière s'arrête sur l'un d'eux. Gagnants, équipes ou ordre de passage.",
+      "cta": {
+        "label": "Sur l'App Store",
+        "action": "url",
+        "url": "https://apps.apple.com/app/id6740798110?utm_source=kairo&utm_medium=feedcard&utm_campaign=random_taptap_intro&utm_content=random-taptap-intro-2026w44"
+      },
+      "secondary": {
+        "label": "Plus tard",
+        "action": "dismiss"
+      },
+      "store": {
+        "ios_app_id": "6740798110",
+        "android_package": "com.OVJECT.TapTap"
+      },
+      "tags": [
+        "random-taptap"
+      ],
+      "approval": {
+        "gate": "pass",
+        "approved_by": "JY",
+        "approved_at": "2026-10-19T20:01:29Z"
+      }
+    },
+    {
+      "id": "pitapato-intro-2026w44",
+      "kind": "promo",
+      "priority": 3,
+      "starts_at": "2026-10-19T13:52:00Z",
+      "ends_at": "2099-01-01T00:00:00Z",
+      "platforms": [
+        "ios"
+      ],
+      "runs_on": [
+        "ios",
+        "android"
+      ],
+      "min_app_version": "2.0.1",
+      "max_impressions_per_user": 20,
+      "title": "PITAPATO, la roulette pirate d'OVJECT",
+      "body": "Une roulette pirate avec une taupe dans un tonneau. Piquez le couteau jouet dans un trou, avec un gage à la clé.",
+      "cta": {
+        "label": "Sur l'App Store",
+        "action": "url",
+        "url": "https://apps.apple.com/app/id1505739502?utm_source=kairo&utm_medium=feedcard&utm_campaign=pitapato_intro&utm_content=pitapato-intro-2026w44"
+      },
+      "secondary": {
+        "label": "Plus tard",
+        "action": "dismiss"
+      },
+      "store": {
+        "ios_app_id": "1505739502",
+        "android_package": "com.OVJECT.Pitapato"
+      },
+      "tags": [
+        "pitapato"
+      ],
+      "approval": {
+        "gate": "pass",
+        "approved_by": "JY",
+        "approved_at": "2026-10-19T20:01:29Z"
+      }
+    },
+    {
+      "id": "croco-roulette-intro-2026w44",
+      "kind": "promo",
+      "priority": 1,
+      "starts_at": "2026-10-19T13:45:00Z",
+      "ends_at": "2099-01-01T00:00:00Z",
+      "platforms": [
+        "ios"
+      ],
+      "runs_on": [
+        "ios",
+        "android"
+      ],
+      "min_app_version": "2.0.1",
+      "max_impressions_per_user": 20,
+      "title": "Croco? Croco Roulette, par OVJECT",
+      "body": "Version numérique simple du jeu du crocodile dentiste. Pour parier le déjeuner ou fixer des gages ; seul, pas drôle.",
+      "cta": {
+        "label": "Sur l'App Store",
+        "action": "url",
+        "url": "https://apps.apple.com/app/id1501486372?utm_source=kairo&utm_medium=feedcard&utm_campaign=croco_roulette_intro&utm_content=croco-roulette-intro-2026w44"
+      },
+      "secondary": {
+        "label": "Plus tard",
+        "action": "dismiss"
+      },
+      "store": {
+        "ios_app_id": "1501486372",
+        "android_package": "com.OVJECT.CrocoR"
+      },
+      "tags": [
+        "croco-roulette"
+      ],
+      "approval": {
+        "gate": "pass",
+        "approved_by": "JY",
+        "approved_at": "2026-10-19T20:01:29Z"
+      }
+    }
+  ],
   "signature": null
 }

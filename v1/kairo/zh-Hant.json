@@ -2,8 +2,158 @@
   "schema_version": 1,
   "app": "kairo",
   "locale": "zh-Hant",
-  "generated_at": "2026-10-19T19:57:20Z",
+  "generated_at": "2026-10-19T20:01:29Z",
   "ttl_hours": 12,
-  "items": [],
+  "items": [
+    {
+      "id": "oddside-intro-2026w44",
+      "kind": "promo",
+      "priority": 10,
+      "starts_at": "2026-10-19T12:00:00Z",
+      "ends_at": "2026-12-31T00:00:00Z",
+      "platforms": [
+        "ios"
+      ],
+      "min_app_version": "2.0.1",
+      "max_impressions_per_user": 20,
+      "title": "OVJECT 的下一款遊戲：Oddside",
+      "body": "在普通的街區裡生活，然後走進傳聞中那個扭曲的地方戰鬥。遊戲還在製作中，我們會邊做邊更新消息。",
+      "cta": {
+        "label": "接收更新",
+        "action": "url",
+        "url": "https://ovject.com/?utm_source=kairo&utm_medium=feedcard&utm_campaign=oddside_prereg&utm_content=oddside-intro-2026w44"
+      },
+      "secondary": {
+        "label": "以後再說",
+        "action": "dismiss"
+      },
+      "store": null,
+      "tags": [
+        "oddside"
+      ],
+      "approval": {
+        "gate": "pass",
+        "approved_by": "JY",
+        "approved_at": "2026-10-19T20:01:29Z"
+      }
+    },
+    {
+      "id": "random-taptap-intro-2026w44",
+      "kind": "promo",
+      "priority": 4,
+      "starts_at": "2026-10-19T13:45:00Z",
+      "ends_at": "2099-01-01T00:00:00Z",
+      "platforms": [
+        "ios"
+      ],
+      "runs_on": [
+        "ios",
+        "android"
+      ],
+      "min_app_version": "2.0.1",
+      "max_impressions_per_user": 20,
+      "title": "OVJECT 的決定小幫手：Random TapTap",
+      "body": "大家把手指放在螢幕上，燈光轉動後停在其中一人身上。可以抽出幸運者、分組，或隨機排出順序。",
+      "cta": {
+        "label": "在 App Store 查看",
+        "action": "url",
+        "url": "https://apps.apple.com/app/id6740798110?utm_source=kairo&utm_medium=feedcard&utm_campaign=random_taptap_intro&utm_content=random-taptap-intro-2026w44"
+      },
+      "secondary": {
+        "label": "以後再說",
+        "action": "dismiss"
+      },
+      "store": {
+        "ios_app_id": "6740798110",
+        "android_package": "com.OVJECT.TapTap"
+      },
+      "tags": [
+        "random-taptap"
+      ],
+      "approval": {
+        "gate": "pass",
+        "approved_by": "JY",
+        "approved_at": "2026-10-19T20:01:29Z"
+      }
+    },
+    {
+      "id": "pitapato-intro-2026w44",
+      "kind": "promo",
+      "priority": 3,
+      "starts_at": "2026-10-19T13:52:00Z",
+      "ends_at": "2099-01-01T00:00:00Z",
+      "platforms": [
+        "ios"
+      ],
+      "runs_on": [
+        "ios",
+        "android"
+      ],
+      "min_app_version": "2.0.1",
+      "max_impressions_per_user": 20,
+      "title": "OVJECT 的海盜輪盤：PITAPATO",
+      "body": "木桶裡藏著鼴鼠的海盜輪盤遊戲。把玩具刀插進洞裡，先約好鼴鼠跳出來的人要受什麼懲罰，玩起來更有趣。",
+      "cta": {
+        "label": "在 App Store 查看",
+        "action": "url",
+        "url": "https://apps.apple.com/app/id1505739502?utm_source=kairo&utm_medium=feedcard&utm_campaign=pitapato_intro&utm_content=pitapato-intro-2026w44"
+      },
+      "secondary": {
+        "label": "以後再說",
+        "action": "dismiss"
+      },
+      "store": {
+        "ios_app_id": "1505739502",
+        "android_package": "com.OVJECT.Pitapato"
+      },
+      "tags": [
+        "pitapato"
+      ],
+      "approval": {
+        "gate": "pass",
+        "approved_by": "JY",
+        "approved_at": "2026-10-19T20:01:29Z"
+      }
+    },
+    {
+      "id": "croco-roulette-intro-2026w44",
+      "kind": "promo",
+      "priority": 1,
+      "starts_at": "2026-10-19T13:45:00Z",
+      "ends_at": "2099-01-01T00:00:00Z",
+      "platforms": [
+        "ios"
+      ],
+      "runs_on": [
+        "ios",
+        "android"
+      ],
+      "min_app_version": "2.0.1",
+      "max_impressions_per_user": 20,
+      "title": "OVJECT 的鱷魚牙齒遊戲：Croco? Croco Roulette",
+      "body": "把玩具鱷魚拔牙遊戲幾乎原樣搬進手機的 App。適合賭午餐、定懲罰，一個人玩沒意思。",
+      "cta": {
+        "label": "在 App Store 查看",
+        "action": "url",
+        "url": "https://apps.apple.com/app/id1501486372?utm_source=kairo&utm_medium=feedcard&utm_campaign=croco_roulette_intro&utm_content=croco-roulette-intro-2026w44"
+      },
+      "secondary": {
+        "label": "以後再說",
+        "action": "dismiss"
+      },
+      "store": {
+        "ios_app_id": "1501486372",
+        "android_package": "com.OVJECT.CrocoR"
+      },
+      "tags": [
+        "croco-roulette"
+      ],
+      "approval": {
+        "gate": "pass",
+        "approved_by": "JY",
+        "approved_at": "2026-10-19T20:01:29Z"
+      }
+    }
+  ],
   "signature": null
 }

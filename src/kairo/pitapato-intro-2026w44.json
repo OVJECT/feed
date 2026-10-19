@@ -1,5 +1,5 @@
 {
-  "notes": "KAIRO 갤러리 광고 실패 시 대체 카드(2026-10-20, JY 결정 '광고가 실패하면 내 앱 소개로, 누르면 바로 이동'). 문구·게이트 결과는 src/oryth/ 의 같은 id 항목과 같다(Oryth용 승인은 이 앱에 적용되지 않으므로 approval은 pending). JY가 approval을 채우면 게시된다.",
+  "notes": "KAIRO 갤러리 광고 실패 시 대체 카드(2026-10-20, JY 결정). 문구·게이트 결과는 src/oryth/ 의 같은 id 항목과 같고, JY가 2026-10-19T20:01:29Z에 KAIRO용으로 승인했다(문구 불변).",
   "id": "pitapato-intro-2026w44",
   "kind": "promo",
   "priority": 3,
@@ -30,9 +30,9 @@
     "pitapato"
   ],
   "approval": {
-    "gate": "pending",
-    "approved_by": "",
-    "approved_at": ""
+    "gate": "pass",
+    "approved_by": "JY",
+    "approved_at": "2026-10-19T20:01:29Z"
   },
   "strings": {
     "en": {
