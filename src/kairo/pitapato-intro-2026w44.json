@@ -1,0 +1,561 @@
+{
+  "notes": "KAIRO 갤러리 광고 실패 시 대체 카드(2026-10-20, JY 결정 '광고가 실패하면 내 앱 소개로, 누르면 바로 이동'). 문구·게이트 결과는 src/oryth/ 의 같은 id 항목과 같다(Oryth용 승인은 이 앱에 적용되지 않으므로 approval은 pending). JY가 approval을 채우면 게시된다.",
+  "id": "pitapato-intro-2026w44",
+  "kind": "promo",
+  "priority": 3,
+  "starts_at": "2026-10-19T13:52:00Z",
+  "ends_at": "2099-01-01T00:00:00Z",
+  "platforms": [
+    "ios"
+  ],
+  "runs_on": [
+    "ios",
+    "android"
+  ],
+  "min_app_version": "2.0.1",
+  "max_impressions_per_user": 20,
+  "image": null,
+  "cta": {
+    "action": "url",
+    "url": "https://apps.apple.com/app/id1505739502?utm_source=kairo&utm_medium=feedcard&utm_campaign=pitapato_intro&utm_content=pitapato-intro-2026w44"
+  },
+  "secondary": {
+    "action": "dismiss"
+  },
+  "store": {
+    "ios_app_id": "1505739502",
+    "android_package": "com.OVJECT.Pitapato"
+  },
+  "tags": [
+    "pitapato"
+  ],
+  "approval": {
+    "gate": "pending",
+    "approved_by": "",
+    "approved_at": ""
+  },
+  "strings": {
+    "en": {
+      "title": "PITAPATO, OVJECT's pirate roulette",
+      "body": "A pirate roulette game with a mole in a barrel. Push the toy knife into a hole, and set a penalty for the loser.",
+      "cta_label": "On the App Store",
+      "secondary_label": "Not now"
+    },
+    "ko": {
+      "title": "OVJECT의 해적 룰렛, PITAPATO",
+      "body": "통 속 두더지가 튀어나오는 해적 룰렛 게임이에요. 장난감 칼을 꽂아 보고, 두더지가 나온 사람에게 줄 벌칙을 정해 보세요.",
+      "cta_label": "App Store에서 보기",
+      "secondary_label": "나중에"
+    },
+    "ja": {
+      "title": "OVJECTの海賊ルーレット、PITAPATO",
+      "body": "樽からモグラが飛び出す海賊ルーレットです。おもちゃのナイフを刺して、モグラが出た人への罰ゲームを決めて遊べます。",
+      "cta_label": "App Storeで見る",
+      "secondary_label": "あとで"
+    },
+    "zh-Hans": {
+      "title": "OVJECT 的海盗轮盘：PITAPATO",
+      "body": "木桶里藏着鼹鼠的海盗轮盘游戏。把玩具刀插进孔里，先约好鼹鼠跳出来的人要接受什么惩罚，玩起来更有意思。",
+      "cta_label": "在 App Store 查看",
+      "secondary_label": "以后再说"
+    },
+    "zh-Hant": {
+      "title": "OVJECT 的海盜輪盤：PITAPATO",
+      "body": "木桶裡藏著鼴鼠的海盜輪盤遊戲。把玩具刀插進洞裡，先約好鼴鼠跳出來的人要受什麼懲罰，玩起來更有趣。",
+      "cta_label": "在 App Store 查看",
+      "secondary_label": "以後再說"
+    },
+    "es": {
+      "title": "PITAPATO, la ruleta pirata de OVJECT",
+      "body": "Una ruleta pirata con un topo en un barril. Clava el cuchillo de juguete en un agujero y fija un castigo.",
+      "cta_label": "En App Store",
+      "secondary_label": "Ahora no"
+    },
+    "fr": {
+      "title": "PITAPATO, la roulette pirate d'OVJECT",
+      "body": "Une roulette pirate avec une taupe dans un tonneau. Piquez le couteau jouet dans un trou, avec un gage à la clé.",
+      "cta_label": "Sur l'App Store",
+      "secondary_label": "Plus tard"
+    },
+    "de": {
+      "title": "PITAPATO, Piraten-Roulette von OVJECT",
+      "body": "Piraten-Roulette mit einem Maulwurf im Fass. Das Spielzeugmesser in ein Loch stecken, vorher eine Strafe vereinbaren.",
+      "cta_label": "Im App Store",
+      "secondary_label": "Später"
+    },
+    "th": {
+      "title": "PITAPATO รูเล็ตโจรสลัดจาก OVJECT",
+      "body": "เกมรูเล็ตโจรสลัดที่มีตัวตุ่นอยู่ในถัง เสียบมีดของเล่นลงในรู แล้วตกลงบทลงโทษไว้สำหรับคนที่ทำให้ตัวตุ่นเด้งออกมา",
+      "cta_label": "ดูบน App Store",
+      "secondary_label": "ไว้ทีหลัง"
+    },
+    "vi": {
+      "title": "PITAPATO, roulette cướp biển của OVJECT",
+      "body": "Trò roulette cướp biển có chú chuột chũi trong thùng. Cắm dao đồ chơi vào một lỗ, và đặt trước hình phạt cho người thua.",
+      "cta_label": "Trên App Store",
+      "secondary_label": "Để sau"
+    }
+  },
+  "gate_context": {
+    "app_summary": "PITAPATO는 OVJECT의 두더지 해적 룰렛(통아저씨) 게임이다. 통의 구멍을 터치하고 장난감 칼을 드래그해 꽂으며, 아무 일 없으면 통과, 두더지가 튀어나오면 당첨(걸림)이다. 벌칙을 정해 하면 더 재미있다고 스토어에 적혀 있다. 카드 역할: Oryth의 'OVJECT 앱' 페이지에서 같은 스튜디오의 다른 게임을 소개하고 스토어 링크를 건넨다. 가격·기능 추가 약속은 없다.",
+    "source_excerpts": [
+      "OVJECT/Website feed/pitapato-game.md: \"Mole Out the Barrel! A cheeky pirate roulette game.\" / \"Pirate Roulette: Insert the knife, survive the round.\" / \"Custom Rules: Make it more interesting with your own penalty rules.\"",
+      "App Store (id1505739502, 2026-10-19 조회): \"It's a Pirate Roulette Board Games. [Game rules] 1. Touch the desired hole. 2. Drag the toy knife shown at the bottom toward the barrel 3. PASS if nothing, LOSE if the mole pops out! … It's more fun to play games by setting penalty.\""
+    ]
+  },
+  "review": {
+    "en": {
+      "gate": "pass",
+      "checked_at": "2026-10-19T11:39:02Z",
+      "tool": "DGX :8090 /v1/score ×2 (choices reversed for order check)",
+      "fields": {
+        "tone": {
+          "output": "ON_BRAND",
+          "prob": 0.946,
+          "margin": 0.895,
+          "entropy": 0.201,
+          "stable": true
+        },
+        "banned_expression": {
+          "output": "NONE",
+          "prob": 0.98,
+          "margin": 0.97,
+          "entropy": 0.066,
+          "stable": true
+        },
+        "fact_grounding": {
+          "output": "SUPPORTED",
+          "prob": 0.951,
+          "margin": 0.922,
+          "entropy": 0.174,
+          "stable": true
+        },
+        "platform_policy": {
+          "output": "COMPLIANT",
+          "prob": 0.923,
+          "margin": 0.862,
+          "entropy": 0.23,
+          "stable": true
+        },
+        "en_naturalness": {
+          "output": "NATURAL",
+          "prob": 0.763,
+          "margin": 0.632,
+          "entropy": 0.523,
+          "stable": true
+        }
+      },
+      "reasons": [],
+      "naturalness_note": "en_naturalness=NATURAL (참고용, 통과 조건 아님; 사람 확인)",
+      "log": "gates/log/2026-10-19-feed-pitapato-intro-2026w44-en.json"
+    },
+    "ko": {
+      "gate": "pass",
+      "checked_at": "2026-10-19T11:39:06Z",
+      "tool": "DGX :8090 /v1/score ×2 (choices reversed for order check)",
+      "fields": {
+        "tone": {
+          "output": "ON_BRAND",
+          "prob": 0.967,
+          "margin": 0.938,
+          "entropy": 0.14,
+          "stable": true
+        },
+        "banned_expression": {
+          "output": "NONE",
+          "prob": 0.986,
+          "margin": 0.98,
+          "entropy": 0.047,
+          "stable": true
+        },
+        "fact_grounding": {
+          "output": "SUPPORTED",
+          "prob": 0.986,
+          "margin": 0.977,
+          "entropy": 0.059,
+          "stable": true
+        },
+        "platform_policy": {
+          "output": "COMPLIANT",
+          "prob": 0.943,
+          "margin": 0.898,
+          "entropy": 0.184,
+          "stable": true
+        },
+        "korean_naturalness": {
+          "output": "NATURAL",
+          "prob": 0.935,
+          "margin": 0.901,
+          "entropy": 0.207,
+          "stable": true
+        }
+      },
+      "reasons": [],
+      "naturalness_note": "korean_naturalness=NATURAL (참고용, 통과 조건 아님; 사람 확인)",
+      "log": "gates/log/2026-10-19-feed-pitapato-intro-2026w44-ko.json"
+    },
+    "ja": {
+      "gate": "pass",
+      "checked_at": "2026-10-19T11:39:09Z",
+      "tool": "DGX :8090 /v1/score ×2 (choices reversed for order check)",
+      "fields": {
+        "tone": {
+          "output": "ON_BRAND",
+          "prob": 0.956,
+          "margin": 0.917,
+          "entropy": 0.18,
+          "stable": true
+        },
+        "banned_expression": {
+          "output": "NONE",
+          "prob": 0.981,
+          "margin": 0.974,
+          "entropy": 0.061,
+          "stable": true
+        },
+        "fact_grounding": {
+          "output": "SUPPORTED",
+          "prob": 0.974,
+          "margin": 0.958,
+          "entropy": 0.105,
+          "stable": true
+        },
+        "platform_policy": {
+          "output": "COMPLIANT",
+          "prob": 0.898,
+          "margin": 0.812,
+          "entropy": 0.279,
+          "stable": true
+        },
+        "ja_naturalness": {
+          "output": "NATURAL",
+          "prob": 0.675,
+          "margin": 0.435,
+          "entropy": 0.597,
+          "stable": true
+        }
+      },
+      "reasons": [],
+      "naturalness_note": "ja_naturalness=NATURAL (참고용, 통과 조건 아님; 사람 확인)",
+      "log": "gates/log/2026-10-19-feed-pitapato-intro-2026w44-ja.json"
+    },
+    "zh-Hans": {
+      "gate": "pass",
+      "checked_at": "2026-10-19T11:39:12Z",
+      "tool": "DGX :8090 /v1/score ×2 (choices reversed for order check)",
+      "fields": {
+        "tone": {
+          "output": "ON_BRAND",
+          "prob": 0.969,
+          "margin": 0.94,
+          "entropy": 0.136,
+          "stable": true
+        },
+        "banned_expression": {
+          "output": "NONE",
+          "prob": 0.981,
+          "margin": 0.973,
+          "entropy": 0.061,
+          "stable": true
+        },
+        "fact_grounding": {
+          "output": "SUPPORTED",
+          "prob": 0.973,
+          "margin": 0.954,
+          "entropy": 0.105,
+          "stable": true
+        },
+        "platform_policy": {
+          "output": "COMPLIANT",
+          "prob": 0.909,
+          "margin": 0.836,
+          "entropy": 0.26,
+          "stable": true
+        },
+        "zh_hans_naturalness": {
+          "output": "NATURAL",
+          "prob": 0.696,
+          "margin": 0.489,
+          "entropy": 0.592,
+          "stable": true
+        }
+      },
+      "reasons": [],
+      "naturalness_note": "zh_hans_naturalness=NATURAL (참고용, 통과 조건 아님; 사람 확인)",
+      "log": "gates/log/2026-10-19-feed-pitapato-intro-2026w44-zh-Hans.json"
+    },
+    "zh-Hant": {
+      "gate": "pass",
+      "checked_at": "2026-10-19T11:39:16Z",
+      "tool": "DGX :8090 /v1/score ×2 (choices reversed for order check)",
+      "fields": {
+        "tone": {
+          "output": "ON_BRAND",
+          "prob": 0.974,
+          "margin": 0.95,
+          "entropy": 0.116,
+          "stable": true
+        },
+        "banned_expression": {
+          "output": "NONE",
+          "prob": 0.982,
+          "margin": 0.975,
+          "entropy": 0.059,
+          "stable": true
+        },
+        "fact_grounding": {
+          "output": "SUPPORTED",
+          "prob": 0.972,
+          "margin": 0.952,
+          "entropy": 0.108,
+          "stable": true
+        },
+        "platform_policy": {
+          "output": "COMPLIANT",
+          "prob": 0.918,
+          "margin": 0.853,
+          "entropy": 0.244,
+          "stable": true
+        },
+        "zh_hant_naturalness": {
+          "output": "NATURAL",
+          "prob": 0.76,
+          "margin": 0.594,
+          "entropy": 0.512,
+          "stable": true
+        }
+      },
+      "reasons": [],
+      "naturalness_note": "zh_hant_naturalness=NATURAL (참고용, 통과 조건 아님; 사람 확인)",
+      "log": "gates/log/2026-10-19-feed-pitapato-intro-2026w44-zh-Hant.json"
+    },
+    "es": {
+      "gate": "pass",
+      "checked_at": "2026-10-19T11:39:19Z",
+      "tool": "DGX :8090 /v1/score ×2 (choices reversed for order check)",
+      "fields": {
+        "tone": {
+          "output": "ON_BRAND",
+          "prob": 0.981,
+          "margin": 0.963,
+          "entropy": 0.092,
+          "stable": true
+        },
+        "banned_expression": {
+          "output": "NONE",
+          "prob": 0.988,
+          "margin": 0.984,
+          "entropy": 0.042,
+          "stable": true
+        },
+        "fact_grounding": {
+          "output": "SUPPORTED",
+          "prob": 0.968,
+          "margin": 0.951,
+          "entropy": 0.126,
+          "stable": true
+        },
+        "platform_policy": {
+          "output": "COMPLIANT",
+          "prob": 0.952,
+          "margin": 0.915,
+          "entropy": 0.163,
+          "stable": true
+        },
+        "es_naturalness": {
+          "output": "NATURAL",
+          "prob": 0.541,
+          "margin": 0.176,
+          "entropy": 0.67,
+          "stable": true
+        }
+      },
+      "reasons": [],
+      "naturalness_note": "es_naturalness=NATURAL (참고용, 통과 조건 아님; 사람 확인)",
+      "log": "gates/log/2026-10-19-feed-pitapato-intro-2026w44-es.json"
+    },
+    "fr": {
+      "gate": "pass",
+      "checked_at": "2026-10-19T11:39:23Z",
+      "tool": "DGX :8090 /v1/score ×2 (choices reversed for order check)",
+      "fields": {
+        "tone": {
+          "output": "ON_BRAND",
+          "prob": 0.967,
+          "margin": 0.937,
+          "entropy": 0.139,
+          "stable": true
+        },
+        "banned_expression": {
+          "output": "NONE",
+          "prob": 0.98,
+          "margin": 0.972,
+          "entropy": 0.067,
+          "stable": true
+        },
+        "fact_grounding": {
+          "output": "SUPPORTED",
+          "prob": 0.968,
+          "margin": 0.947,
+          "entropy": 0.121,
+          "stable": true
+        },
+        "platform_policy": {
+          "output": "COMPLIANT",
+          "prob": 0.95,
+          "margin": 0.911,
+          "entropy": 0.169,
+          "stable": true
+        },
+        "fr_naturalness": {
+          "output": "NON_NATIVE",
+          "prob": 0.504,
+          "margin": 0.14,
+          "entropy": 0.711,
+          "stable": false
+        }
+      },
+      "reasons": [],
+      "naturalness_note": "fr_naturalness=NON_NATIVE (참고용, 통과 조건 아님; 사람 확인)",
+      "log": "gates/log/2026-10-19-feed-pitapato-intro-2026w44-fr.json"
+    },
+    "de": {
+      "gate": "pass",
+      "checked_at": "2026-10-19T11:39:26Z",
+      "tool": "DGX :8090 /v1/score ×2 (choices reversed for order check)",
+      "fields": {
+        "tone": {
+          "output": "ON_BRAND",
+          "prob": 0.985,
+          "margin": 0.971,
+          "entropy": 0.075,
+          "stable": true
+        },
+        "banned_expression": {
+          "output": "NONE",
+          "prob": 0.99,
+          "margin": 0.986,
+          "entropy": 0.036,
+          "stable": true
+        },
+        "fact_grounding": {
+          "output": "SUPPORTED",
+          "prob": 0.983,
+          "margin": 0.973,
+          "entropy": 0.074,
+          "stable": true
+        },
+        "platform_policy": {
+          "output": "COMPLIANT",
+          "prob": 0.962,
+          "margin": 0.935,
+          "entropy": 0.137,
+          "stable": true
+        },
+        "de_naturalness": {
+          "output": "NATURAL",
+          "prob": 0.635,
+          "margin": 0.359,
+          "entropy": 0.63,
+          "stable": true
+        }
+      },
+      "reasons": [],
+      "naturalness_note": "de_naturalness=NATURAL (참고용, 통과 조건 아님; 사람 확인)",
+      "log": "gates/log/2026-10-19-feed-pitapato-intro-2026w44-de.json"
+    },
+    "th": {
+      "gate": "pass",
+      "checked_at": "2026-10-19T11:39:30Z",
+      "tool": "DGX :8090 /v1/score ×2 (choices reversed for order check)",
+      "fields": {
+        "tone": {
+          "output": "ON_BRAND",
+          "prob": 0.839,
+          "margin": 0.692,
+          "entropy": 0.446,
+          "stable": true
+        },
+        "banned_expression": {
+          "output": "NONE",
+          "prob": 0.932,
+          "margin": 0.901,
+          "entropy": 0.173,
+          "stable": true
+        },
+        "fact_grounding": {
+          "output": "SUPPORTED",
+          "prob": 0.894,
+          "margin": 0.811,
+          "entropy": 0.29,
+          "stable": true
+        },
+        "platform_policy": {
+          "output": "COMPLIANT",
+          "prob": 0.797,
+          "margin": 0.631,
+          "entropy": 0.449,
+          "stable": true
+        },
+        "th_naturalness": {
+          "output": "NON_NATIVE",
+          "prob": 0.496,
+          "margin": 0.049,
+          "entropy": 0.633,
+          "stable": false
+        }
+      },
+      "reasons": [],
+      "naturalness_note": "th_naturalness=NON_NATIVE (참고용, 통과 조건 아님; 사람 확인)",
+      "log": "gates/log/2026-10-19-feed-pitapato-intro-2026w44-th.json"
+    },
+    "vi": {
+      "gate": "pass",
+      "human": "JY approved 2026-10-19 with item approval; vi native review not done; text unchanged",
+      "checked_at": "2026-10-19T11:39:33Z",
+      "tool": "DGX :8090 /v1/score ×2 (choices reversed for order check)",
+      "fields": {
+        "tone": {
+          "output": "ON_BRAND",
+          "prob": 0.683,
+          "margin": 0.384,
+          "entropy": 0.634,
+          "stable": true
+        },
+        "banned_expression": {
+          "output": "NONE",
+          "prob": 0.955,
+          "margin": 0.934,
+          "entropy": 0.125,
+          "stable": true
+        },
+        "fact_grounding": {
+          "output": "SUPPORTED",
+          "prob": 0.963,
+          "margin": 0.936,
+          "entropy": 0.136,
+          "stable": true
+        },
+        "platform_policy": {
+          "output": "COMPLIANT",
+          "prob": 0.904,
+          "margin": 0.831,
+          "entropy": 0.274,
+          "stable": true
+        },
+        "vi_naturalness": {
+          "output": "NON_NATIVE",
+          "prob": 0.453,
+          "margin": 0.093,
+          "entropy": 0.755,
+          "stable": false
+        }
+      },
+      "reasons": [
+        "tone=ON_BRAND (margin 0.384, entropy 0.634, stable True)"
+      ],
+      "naturalness_note": "vi_naturalness=NON_NATIVE (참고용, 통과 조건 아님; 사람 확인)",
+      "log": "gates/log/2026-10-19-feed-pitapato-intro-2026w44-vi.json"
+    }
+  }
+}
