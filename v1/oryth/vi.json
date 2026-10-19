@@ -2,42 +2,8 @@
   "schema_version": 1,
   "app": "oryth",
   "locale": "vi",
-  "generated_at": "2026-10-19T09:18:59Z",
+  "generated_at": "2026-10-19T10:48:46Z",
   "ttl_hours": 12,
-  "items": [
-    {
-      "id": "kairo-intro-2026w44",
-      "kind": "promo",
-      "priority": 5,
-      "starts_at": "2026-10-20T00:00:00Z",
-      "ends_at": "2026-12-31T00:00:00Z",
-      "platforms": [
-        "macos",
-        "ios"
-      ],
-      "min_app_version": "1.0.8",
-      "max_impressions_per_user": 3,
-      "title": "KAIRO, ứng dụng máy ảnh phim của OVJECT",
-      "body": "Ứng dụng máy ảnh phim cho iOS. Halation và bloom tính từ ánh sáng thật, đèn sáng HDR, bộ lọc tương phản đen trắng.",
-      "cta": {
-        "label": "Tìm hiểu thêm",
-        "action": "url",
-        "url": "https://ovject.com/kairo?utm_source=oryth&utm_medium=feedcard&utm_campaign=kairo_intro&utm_content=kairo-intro-2026w44"
-      },
-      "secondary": {
-        "label": "Để sau",
-        "action": "dismiss"
-      },
-      "store": null,
-      "tags": [
-        "kairo"
-      ],
-      "approval": {
-        "gate": "pending",
-        "approved_by": "",
-        "approved_at": ""
-      }
-    }
-  ],
+  "items": [],
   "signature": null
 }

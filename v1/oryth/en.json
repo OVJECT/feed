@@ -2,42 +2,8 @@
   "schema_version": 1,
   "app": "oryth",
   "locale": "en",
-  "generated_at": "2026-10-19T09:18:59Z",
+  "generated_at": "2026-10-19T10:48:46Z",
   "ttl_hours": 12,
-  "items": [
-    {
-      "id": "kairo-intro-2026w44",
-      "kind": "promo",
-      "priority": 5,
-      "starts_at": "2026-10-20T00:00:00Z",
-      "ends_at": "2026-12-31T00:00:00Z",
-      "platforms": [
-        "macos",
-        "ios"
-      ],
-      "min_app_version": "1.0.8",
-      "max_impressions_per_user": 3,
-      "title": "KAIRO, a film camera app from OVJECT",
-      "body": "A film camera app for iOS. Halation and bloom rebuilt from real light, HDR glow on lights, black-and-white contrast.",
-      "cta": {
-        "label": "Learn more",
-        "action": "url",
-        "url": "https://ovject.com/kairo?utm_source=oryth&utm_medium=feedcard&utm_campaign=kairo_intro&utm_content=kairo-intro-2026w44"
-      },
-      "secondary": {
-        "label": "Not now",
-        "action": "dismiss"
-      },
-      "store": null,
-      "tags": [
-        "kairo"
-      ],
-      "approval": {
-        "gate": "pending",
-        "approved_by": "",
-        "approved_at": ""
-      }
-    }
-  ],
+  "items": [],
   "signature": null
 }

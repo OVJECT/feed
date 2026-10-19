@@ -2,75 +2,8 @@
   "schema_version": 1,
   "app": "oryth",
   "locale": "zh-Hant",
-  "generated_at": "2026-10-19T09:18:59Z",
+  "generated_at": "2026-10-19T10:48:46Z",
   "ttl_hours": 12,
-  "items": [
-    {
-      "id": "oddside-intro-2026w44",
-      "kind": "promo",
-      "priority": 10,
-      "starts_at": "2026-10-20T00:00:00Z",
-      "ends_at": "2026-12-31T00:00:00Z",
-      "platforms": [
-        "macos",
-        "ios"
-      ],
-      "min_app_version": "1.0.8",
-      "max_impressions_per_user": 3,
-      "title": "OVJECT 的下一款遊戲：Oddside",
-      "body": "在普通的街區裡生活，然後走進傳聞中那個扭曲的地方戰鬥。遊戲還在製作中，我們會邊做邊更新消息。",
-      "cta": {
-        "label": "接收更新",
-        "action": "url",
-        "url": "https://ovject.com/oddside?utm_source=oryth&utm_medium=feedcard&utm_campaign=oddside_prereg&utm_content=oddside-intro-2026w44"
-      },
-      "secondary": {
-        "label": "以後再說",
-        "action": "dismiss"
-      },
-      "store": null,
-      "tags": [
-        "oddside"
-      ],
-      "approval": {
-        "gate": "pending",
-        "approved_by": "",
-        "approved_at": ""
-      }
-    },
-    {
-      "id": "kairo-intro-2026w44",
-      "kind": "promo",
-      "priority": 5,
-      "starts_at": "2026-10-20T00:00:00Z",
-      "ends_at": "2026-12-31T00:00:00Z",
-      "platforms": [
-        "macos",
-        "ios"
-      ],
-      "min_app_version": "1.0.8",
-      "max_impressions_per_user": 3,
-      "title": "OVJECT 的底片相機 App：KAIRO",
-      "body": "一款 iOS 底片相機 App。依真實光線計算的光暈與眩光、在 HDR 螢幕上發亮的燈光，以及黑白對比濾鏡。",
-      "cta": {
-        "label": "了解更多",
-        "action": "url",
-        "url": "https://ovject.com/kairo?utm_source=oryth&utm_medium=feedcard&utm_campaign=kairo_intro&utm_content=kairo-intro-2026w44"
-      },
-      "secondary": {
-        "label": "以後再說",
-        "action": "dismiss"
-      },
-      "store": null,
-      "tags": [
-        "kairo"
-      ],
-      "approval": {
-        "gate": "pending",
-        "approved_by": "",
-        "approved_at": ""
-      }
-    }
-  ],
+  "items": [],
   "signature": null
 }

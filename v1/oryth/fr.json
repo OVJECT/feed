@@ -2,75 +2,8 @@
   "schema_version": 1,
   "app": "oryth",
   "locale": "fr",
-  "generated_at": "2026-10-19T09:18:59Z",
+  "generated_at": "2026-10-19T10:48:46Z",
   "ttl_hours": 12,
-  "items": [
-    {
-      "id": "oddside-intro-2026w44",
-      "kind": "promo",
-      "priority": 10,
-      "starts_at": "2026-10-20T00:00:00Z",
-      "ends_at": "2026-12-31T00:00:00Z",
-      "platforms": [
-        "macos",
-        "ios"
-      ],
-      "min_app_version": "1.0.8",
-      "max_impressions_per_user": 3,
-      "title": "Oddside, le prochain jeu d'OVJECT",
-      "body": "Vivez dans un quartier ordinaire, puis entrez dans le lieu tordu des rumeurs. Des nouvelles au fil du développement.",
-      "cta": {
-        "label": "Suivre l'actu",
-        "action": "url",
-        "url": "https://ovject.com/oddside?utm_source=oryth&utm_medium=feedcard&utm_campaign=oddside_prereg&utm_content=oddside-intro-2026w44"
-      },
-      "secondary": {
-        "label": "Plus tard",
-        "action": "dismiss"
-      },
-      "store": null,
-      "tags": [
-        "oddside"
-      ],
-      "approval": {
-        "gate": "pending",
-        "approved_by": "",
-        "approved_at": ""
-      }
-    },
-    {
-      "id": "kairo-intro-2026w44",
-      "kind": "promo",
-      "priority": 5,
-      "starts_at": "2026-10-20T00:00:00Z",
-      "ends_at": "2026-12-31T00:00:00Z",
-      "platforms": [
-        "macos",
-        "ios"
-      ],
-      "min_app_version": "1.0.8",
-      "max_impressions_per_user": 3,
-      "title": "KAIRO, l'appli photo argentique d'OVJECT",
-      "body": "Appli photo argentique pour iOS. Halation et bloom calculés d'après la lumière réelle, éclat HDR, filtres noir et blanc.",
-      "cta": {
-        "label": "En savoir plus",
-        "action": "url",
-        "url": "https://ovject.com/kairo?utm_source=oryth&utm_medium=feedcard&utm_campaign=kairo_intro&utm_content=kairo-intro-2026w44"
-      },
-      "secondary": {
-        "label": "Plus tard",
-        "action": "dismiss"
-      },
-      "store": null,
-      "tags": [
-        "kairo"
-      ],
-      "approval": {
-        "gate": "pending",
-        "approved_by": "",
-        "approved_at": ""
-      }
-    }
-  ],
+  "items": [],
   "signature": null
 }
