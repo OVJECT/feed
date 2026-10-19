@@ -9,9 +9,8 @@ enough), commit, and the `feed` workflow validates it, regenerates `v1/`, commit
 
 > **Status (2026-10-19): both items under `src/oryth/` are approved by JY** (`approval.gate: pass`; the four
 > `needs_human` locale strings were read and accepted unchanged), so every file under `v1/` carries both items in
-> its own language. **Their CTA URLs are still placeholders** (`https://ovject.com/oddside`, `https://ovject.com/kairo`
-> do not exist yet): pushing publishes cards whose button leads to a missing page until those URLs are replaced
-> (new item id when the copy changes; the URL alone may change in place).
+> its own language. CTA URLs are real: KAIRO leads to its App Store page, Oddside to the `ovject.com` home page
+> until it has a pre-registration page of its own (then replace `cta.url` only; a new item id when the copy changes).
 
 ## Layout
 
@@ -39,7 +38,7 @@ enough), commit, and the `feed` workflow validates it, regenerates `v1/`, commit
    `{"gate": "pass", "approved_by": "JY", "approved_at": "2026-10-20T09:00:00Z"}`처럼 바꾼다(`approved_at`은 ISO 8601 UTC).
 2. `review`에서 `gate`가 `needs_human`인 로케일은 그 로케일의 `strings`를 직접 읽는다. 그대로 괜찮으면 `gate`를 `"pass"`로 바꾸고 사유를 `reasons`에 적는다. 아니면 `strings.<locale>`을 고친 뒤 `gate`를 `"pass"`로 바꾼다. `pass`가 아닌 로케일은 그 로케일 파일에서 항목이 빠진다(영어 대체 없음).
 3. 커밋(main 직접 또는 PR 머지) → Actions `feed`가 `v1/`을 다시 만들어 봇 커밋 → Pages가 1분쯤 뒤 재배포.
-4. **경고: 승인된 항목이 하나도 없으면 피드는 `items: []`라서 앱의 OVJECT 페이지가 빈 상태가 된다**(승인 전 push, 또는 모든 항목을 `pending`으로 되돌릴 때). 자리표시자 CTA URL(`https://ovject.com/oddside`, `https://ovject.com/kairo`)은 실제 주소가 생기면 `cta.url`만 바꾼다(문구가 바뀌면 새 id).
+4. **경고: 승인된 항목이 하나도 없으면 피드는 `items: []`라서 앱의 OVJECT 페이지가 빈 상태가 된다**(승인 전 push, 또는 모든 항목을 `pending`으로 되돌릴 때). Oddside의 CTA는 전용 사전등록 페이지가 생기기 전까지 `https://ovject.com/` 홈이다. 페이지가 생기면 `cta.url`만 바꾼다(문구가 바뀌면 새 id).
 
 ## Pipeline (`.github/workflows/feed.yml`)
 
@@ -145,8 +144,8 @@ When the two differ, `src/` wins. Specification: `marketing/crosspromo/CROSS_PRO
 - `src/oryth/`: `oddside-intro-2026w44`, `kairo-intro-2026w44`, all ten locales written by hand. **Approved by JY on
   2026-10-19** (`approval` = `pass` / `JY` / `2026-10-19T11:26:06Z`). The Nimble gate had passed 16 of 20 locale
   strings; the four `needs_human` ones (Oddside `en`·`th`·`vi`, KAIRO `th`) were read by JY and accepted unchanged
-  (`review.<locale>.human`). CTA URLs are placeholders (the Oddside pre-registration page and a KAIRO page on
-  ovject.com do not exist yet). `kairo-intro` carries `runs_on: ["ios"]`; `oddside-intro` has no `runs_on`
+  (`review.<locale>.human`). CTA URLs: KAIRO → its App Store page (`apps.apple.com/app/id6745693309`), Oddside →
+  `https://ovject.com/` until a pre-registration page exists. `kairo-intro` carries `runs_on: ["ios"]`; `oddside-intro` has no `runs_on`
   (release platforms unconfirmed).
 - `v1/oryth/*.json`: ten files, two items each (Oddside priority 10, KAIRO priority 5), the default build of the
   sources above. Published only once `main` is pushed.

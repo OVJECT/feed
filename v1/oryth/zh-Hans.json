@@ -2,7 +2,7 @@
   "schema_version": 1,
   "app": "oryth",
   "locale": "zh-Hans",
-  "generated_at": "2026-10-19T11:27:00Z",
+  "generated_at": "2026-10-19T11:34:56Z",
   "ttl_hours": 12,
   "items": [
     {
@@ -22,7 +22,7 @@
       "cta": {
         "label": "接收更新",
         "action": "url",
-        "url": "https://ovject.com/oddside?utm_source=oryth&utm_medium=feedcard&utm_campaign=oddside_prereg&utm_content=oddside-intro-2026w44"
+        "url": "https://ovject.com/?utm_source=oryth&utm_medium=feedcard&utm_campaign=oddside_prereg&utm_content=oddside-intro-2026w44"
       },
       "secondary": {
         "label": "以后再说",
@@ -58,7 +58,7 @@
       "cta": {
         "label": "了解更多",
         "action": "url",
-        "url": "https://ovject.com/kairo?utm_source=oryth&utm_medium=feedcard&utm_campaign=kairo_intro&utm_content=kairo-intro-2026w44"
+        "url": "https://apps.apple.com/app/id6745693309?utm_source=oryth&utm_medium=feedcard&utm_campaign=kairo_intro&utm_content=kairo-intro-2026w44"
       },
       "secondary": {
         "label": "以后再说",
