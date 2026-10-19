@@ -2,7 +2,7 @@
   "schema_version": 1,
   "app": "oryth",
   "locale": "th",
-  "generated_at": "2026-10-19T13:53:07Z",
+  "generated_at": "2026-10-19T20:45:37Z",
   "ttl_hours": 12,
   "items": [
     {
@@ -22,7 +22,7 @@
       "cta": {
         "label": "รับข่าวสาร",
         "action": "url",
-        "url": "https://ovject.com/?utm_source=oryth&utm_medium=feedcard&utm_campaign=oddside_prereg&utm_content=oddside-intro-2026w44"
+        "url": "https://www.threads.com/@ovject.official?utm_source=oryth&utm_medium=feedcard&utm_campaign=oddside_prereg&utm_content=oddside-intro-2026w44"
       },
       "secondary": {
         "label": "ไว้ทีหลัง",
