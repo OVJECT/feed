@@ -27,9 +27,9 @@
     "kairo"
   ],
   "approval": {
-    "gate": "pending",
-    "approved_by": "",
-    "approved_at": ""
+    "gate": "pass",
+    "approved_by": "JY",
+    "approved_at": "2026-10-19T11:26:06Z"
   },
   "strings": {
     "en": {
@@ -464,7 +464,8 @@
       "log": "gates/log/2026-10-19-feed-kairo-intro-2026w44-de.json"
     },
     "th": {
-      "gate": "needs_human",
+      "gate": "pass",
+      "human": "JY approved 2026-10-19, text unchanged",
       "checked_at": "2026-10-19T09:17:25Z",
       "tool": "DGX :8090 /v1/score ×2 (choices reversed for order check)",
       "fields": {

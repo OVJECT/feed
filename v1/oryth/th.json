@@ -2,8 +2,78 @@
   "schema_version": 1,
   "app": "oryth",
   "locale": "th",
-  "generated_at": "2026-10-19T10:48:46Z",
+  "generated_at": "2026-10-19T11:27:00Z",
   "ttl_hours": 12,
-  "items": [],
+  "items": [
+    {
+      "id": "oddside-intro-2026w44",
+      "kind": "promo",
+      "priority": 10,
+      "starts_at": "2026-10-20T00:00:00Z",
+      "ends_at": "2026-12-31T00:00:00Z",
+      "platforms": [
+        "macos",
+        "ios"
+      ],
+      "min_app_version": "1.0.8",
+      "max_impressions_per_user": 3,
+      "title": "Oddside เกมถัดไปจาก OVJECT",
+      "body": "ใช้ชีวิตในย่านธรรมดา แล้วก้าวเข้าไปในสถานที่บิดเบี้ยวตามข่าวลือ เราจะแจ้งความคืบหน้าระหว่างที่กำลังสร้าง",
+      "cta": {
+        "label": "รับข่าวสาร",
+        "action": "url",
+        "url": "https://ovject.com/oddside?utm_source=oryth&utm_medium=feedcard&utm_campaign=oddside_prereg&utm_content=oddside-intro-2026w44"
+      },
+      "secondary": {
+        "label": "ไว้ทีหลัง",
+        "action": "dismiss"
+      },
+      "store": null,
+      "tags": [
+        "oddside"
+      ],
+      "approval": {
+        "gate": "pass",
+        "approved_by": "JY",
+        "approved_at": "2026-10-19T11:26:06Z"
+      }
+    },
+    {
+      "id": "kairo-intro-2026w44",
+      "kind": "promo",
+      "priority": 5,
+      "starts_at": "2026-10-20T00:00:00Z",
+      "ends_at": "2026-12-31T00:00:00Z",
+      "platforms": [
+        "macos",
+        "ios"
+      ],
+      "runs_on": [
+        "ios"
+      ],
+      "min_app_version": "1.0.8",
+      "max_impressions_per_user": 3,
+      "title": "KAIRO แอปกล้องฟิล์มจาก OVJECT",
+      "body": "แอปกล้องฟิล์มสำหรับ iOS ฮาเลชันและบลูมคำนวณจากแสงจริง แสงไฟที่เรืองบนจอ HDR และฟิลเตอร์ขาวดำแบบคอนทราสต์",
+      "cta": {
+        "label": "ดูเพิ่มเติม",
+        "action": "url",
+        "url": "https://ovject.com/kairo?utm_source=oryth&utm_medium=feedcard&utm_campaign=kairo_intro&utm_content=kairo-intro-2026w44"
+      },
+      "secondary": {
+        "label": "ไว้ทีหลัง",
+        "action": "dismiss"
+      },
+      "store": null,
+      "tags": [
+        "kairo"
+      ],
+      "approval": {
+        "gate": "pass",
+        "approved_by": "JY",
+        "approved_at": "2026-10-19T11:26:06Z"
+      }
+    }
+  ],
   "signature": null
 }

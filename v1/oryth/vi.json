@@ -2,8 +2,78 @@
   "schema_version": 1,
   "app": "oryth",
   "locale": "vi",
-  "generated_at": "2026-10-19T10:48:46Z",
+  "generated_at": "2026-10-19T11:27:00Z",
   "ttl_hours": 12,
-  "items": [],
+  "items": [
+    {
+      "id": "oddside-intro-2026w44",
+      "kind": "promo",
+      "priority": 10,
+      "starts_at": "2026-10-20T00:00:00Z",
+      "ends_at": "2026-12-31T00:00:00Z",
+      "platforms": [
+        "macos",
+        "ios"
+      ],
+      "min_app_version": "1.0.8",
+      "max_impressions_per_user": 3,
+      "title": "Oddside, trò chơi tiếp theo của OVJECT",
+      "body": "Sống trong một khu phố bình thường, rồi bước vào nơi méo mó trong lời đồn. Chúng tôi sẽ cập nhật trong lúc làm.",
+      "cta": {
+        "label": "Nhận tin mới",
+        "action": "url",
+        "url": "https://ovject.com/oddside?utm_source=oryth&utm_medium=feedcard&utm_campaign=oddside_prereg&utm_content=oddside-intro-2026w44"
+      },
+      "secondary": {
+        "label": "Để sau",
+        "action": "dismiss"
+      },
+      "store": null,
+      "tags": [
+        "oddside"
+      ],
+      "approval": {
+        "gate": "pass",
+        "approved_by": "JY",
+        "approved_at": "2026-10-19T11:26:06Z"
+      }
+    },
+    {
+      "id": "kairo-intro-2026w44",
+      "kind": "promo",
+      "priority": 5,
+      "starts_at": "2026-10-20T00:00:00Z",
+      "ends_at": "2026-12-31T00:00:00Z",
+      "platforms": [
+        "macos",
+        "ios"
+      ],
+      "runs_on": [
+        "ios"
+      ],
+      "min_app_version": "1.0.8",
+      "max_impressions_per_user": 3,
+      "title": "KAIRO, ứng dụng máy ảnh phim của OVJECT",
+      "body": "Ứng dụng máy ảnh phim cho iOS. Halation và bloom tính từ ánh sáng thật, đèn sáng HDR, bộ lọc tương phản đen trắng.",
+      "cta": {
+        "label": "Tìm hiểu thêm",
+        "action": "url",
+        "url": "https://ovject.com/kairo?utm_source=oryth&utm_medium=feedcard&utm_campaign=kairo_intro&utm_content=kairo-intro-2026w44"
+      },
+      "secondary": {
+        "label": "Để sau",
+        "action": "dismiss"
+      },
+      "store": null,
+      "tags": [
+        "kairo"
+      ],
+      "approval": {
+        "gate": "pass",
+        "approved_by": "JY",
+        "approved_at": "2026-10-19T11:26:06Z"
+      }
+    }
+  ],
   "signature": null
 }

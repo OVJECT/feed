@@ -24,9 +24,9 @@
     "oddside"
   ],
   "approval": {
-    "gate": "pending",
-    "approved_by": "",
-    "approved_at": ""
+    "gate": "pass",
+    "approved_by": "JY",
+    "approved_at": "2026-10-19T11:26:06Z"
   },
   "strings": {
     "en": {
@@ -103,7 +103,8 @@
   },
   "review": {
     "en": {
-      "gate": "needs_human",
+      "gate": "pass",
+      "human": "JY approved 2026-10-19, text unchanged",
       "checked_at": "2026-10-19T09:17:32Z",
       "tool": "DGX :8090 /v1/score ×2 (choices reversed for order check)",
       "fields": {
@@ -465,7 +466,8 @@
       "log": "gates/log/2026-10-19-feed-oddside-intro-2026w44-de.json"
     },
     "th": {
-      "gate": "needs_human",
+      "gate": "pass",
+      "human": "JY approved 2026-10-19, text unchanged",
       "checked_at": "2026-10-19T09:18:01Z",
       "tool": "DGX :8090 /v1/score ×2 (choices reversed for order check)",
       "fields": {
@@ -512,7 +514,8 @@
       "log": "gates/log/2026-10-19-feed-oddside-intro-2026w44-th.json"
     },
     "vi": {
-      "gate": "needs_human",
+      "gate": "pass",
+      "human": "JY approved 2026-10-19, text unchanged",
       "checked_at": "2026-10-19T09:18:05Z",
       "tool": "DGX :8090 /v1/score ×2 (choices reversed for order check)",
       "fields": {
