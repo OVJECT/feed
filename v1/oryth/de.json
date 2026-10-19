@@ -2,7 +2,7 @@
   "schema_version": 1,
   "app": "oryth",
   "locale": "de",
-  "generated_at": "2026-10-19T12:49:00Z",
+  "generated_at": "2026-10-19T13:09:25Z",
   "ttl_hours": 12,
   "items": [
     {
@@ -85,6 +85,16 @@
       "kind": "appstore",
       "label": "App Store",
       "url": "https://apps.apple.com/us/developer/junyoung-lee/id1501486371"
+    },
+    {
+      "kind": "instagram",
+      "label": "Instagram",
+      "url": "https://www.instagram.com/ovject.official/"
+    },
+    {
+      "kind": "threads",
+      "label": "Threads",
+      "url": "https://www.threads.com/@ovject.official"
     },
     {
       "kind": "support",

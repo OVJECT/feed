@@ -2,6 +2,8 @@
   "links": [
     { "kind": "website", "url": "https://ovject.com/" },
     { "kind": "appstore", "url": "https://apps.apple.com/us/developer/junyoung-lee/id1501486371" },
+    { "kind": "instagram", "url": "https://www.instagram.com/ovject.official/" },
+    { "kind": "threads", "url": "https://www.threads.com/@ovject.official" },
     { "kind": "support", "url": "https://ovject.com/oryth-support.html" },
     { "kind": "privacy", "url": "https://ovject.com/oryth_privacy_policy_en.html" }
   ]

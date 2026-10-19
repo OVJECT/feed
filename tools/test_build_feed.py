@@ -500,6 +500,27 @@ class LinksTests(unittest.TestCase):
             write_links(tmp, "testapp", {"links": links})
             self.assertEqual(len(build_feed.load_links(tmp, "testapp")), 4)
 
+    def test_six_links_with_www_social_hosts_keep_their_order(self):
+        """The OVJECT row: website, store, socials (www. hosts), then support and privacy."""
+        links = [
+            {"kind": "website", "url": "https://ovject.com/"},
+            {"kind": "appstore", "url": "https://apps.apple.com/us/developer/junyoung-lee/id1501486371"},
+            {"kind": "instagram", "url": "https://www.instagram.com/ovject.official/"},
+            {"kind": "threads", "url": "https://www.threads.com/@ovject.official"},
+            {"kind": "support", "url": "https://ovject.com/oryth-support.html"},
+            {"kind": "privacy", "url": "https://ovject.com/oryth_privacy_policy_en.html"},
+        ]
+        built = self.build({"links": links})
+        for locale, (feed, _report) in built.items():
+            self.assertEqual([link["kind"] for link in feed["links"]],
+                             ["website", "appstore", "instagram", "threads", "support", "privacy"], locale)
+            self.assertEqual([link["label"] for link in feed["links"]],
+                             ["Website", "App Store", "Instagram", "Threads", "Support", "Privacy"], locale)
+            self.assertEqual([link["url"] for link in feed["links"]], [link["url"] for link in links], locale)
+            self.assertEqual(build_feed.validate_feed(feed, expected_app="testapp", expected_locale=locale), [], locale)
+        # a www. host is fine for its own service only
+        self.assertIn("not allowed", self.load_error([{"kind": "instagram", "url": "https://www.threads.com/@ovject.official"}]))
+
     def test_rejects_duplicate_url(self):
         message = self.load_error([
             {"kind": "website", "url": "https://ovject.com/"},

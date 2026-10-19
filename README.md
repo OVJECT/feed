@@ -38,7 +38,7 @@ enough), commit, and the `feed` workflow validates it, regenerates `v1/`, commit
 
 ## GitHub에서 링크 추가하는 법 (how to add a link)
 
-1. `src/_links/<app>.json`을 열어 연필 아이콘으로 `links` 배열에 한 줄을 더한다: `{ "kind": "instagram", "url": "https://www.instagram.com/…" }` (계정이 생기면 `kind`와 `url`만).
+1. `src/_links/<app>.json`을 열어 연필 아이콘으로 `links` 배열에 한 줄을 더한다: `{ "kind": "instagram", "url": "https://www.instagram.com/ovject.official/" }` (계정이 생기면 `kind`와 `url`만; 현재 소셜은 `ovject.official`의 Instagram·Threads, 보이는 순서는 배열 순서).
 2. `kind`: `website`·`appstore`·`support`·`privacy`·`instagram`·`x`·`threads`·`youtube`·`discord`·`bluesky`·`tiktok`·`github`. `label`은 생략하면 영어 기본값(Website·App Store·…)이 들어간다. 최대 8개, 적은 순서대로 보이고, 같은 url 두 번은 안 된다.
 3. 허용 호스트가 kind마다 정해져 있다(website·support·privacy는 `ovject.github.io`·`ovject.com`, appstore는 `apps.apple.com`, 소셜은 각 서비스 도메인). https만. 어긋나면 Actions가 빨간 ✗로 멈추고 아무것도 공개되지 않는다.
 4. 커밋하면 Actions `feed`가 10개 로케일 파일 모두에 같은 `links`를 넣어 `v1/`을 다시 만든다. 링크는 항목 승인(`approval`)과 무관하게 바로 공개되고, 항목 UTM 규칙은 적용되지 않는다. 파일을 비우면(`"links": []`) 피드에서 `links` 필드가 빠진다.
