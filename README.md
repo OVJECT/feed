@@ -63,4 +63,6 @@ in `feed-src`; the Nimble gate passed 16 of the 20 locale strings and flagged 4 
 Review the flagged strings, approve the copy, replace the placeholder URLs in `feed-src`, rebuild without
 `--include-pending`, then push.
 
-One-time setup (owner): create the public repo `OVJECT/feed`, enable Pages (branch `main`, path `/`), push this clone.
+Published: the repo `OVJECT/feed` and Pages (branch `main`, path `/`) exist since 2026-10-19 and serve the
+first commit (`5620a07`: en/ko copy with en fallback, still pending approval). The ten-locale rebuild above is
+local only until the owner pushes `main`.
