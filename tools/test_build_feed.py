@@ -822,6 +822,16 @@ class DerivedHostTests(unittest.TestCase):
             feed, _ = self.build(tmp)["en"]
         self.assertEqual([item["id"] for item in feed["items"]], ["promo-a"])
 
+    def test_apps_that_do_not_run_on_the_host_platform_stay_out(self):
+        desktop = source_for_app("parentapp", "promo-mac", runs_on=["macos"])
+        android = source_for_app("parentapp", "promo-android", runs_on=["android"])
+        both = source_for_app("parentapp", "promo-both", runs_on=["macos", "ios"])
+        unknown = source_for_app("parentapp", "promo-unknown")  # no runs_on: kept
+        with tempfile.TemporaryDirectory() as tmp:
+            write_sources(tmp, "parentapp", [desktop, android, both, unknown])
+            feed, _ = self.build(tmp)["en"]
+        self.assertEqual(sorted(item["id"] for item in feed["items"]), ["promo-both", "promo-unknown"])
+
     def test_exclude_and_cta_hosts(self):
         play = source_for_app("parentapp", "promo-play")
         play["cta"]["url"] = play["cta"]["url"].replace("https://ovject.com", "https://play.google.com")

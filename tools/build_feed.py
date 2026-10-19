@@ -636,7 +636,8 @@ def derived_sources(src_root, app, host, own_ids):
     The copy keeps the parent's strings, approval and review gates (JY: approving an item for the parent app
     approves it here too). Host fields replace platforms/min_app_version/max_impressions_per_user and the CTA's
     utm_source becomes this app. Skipped: ids in `exclude`, ids the host defines itself, items about the host
-    app, and items whose CTA host is not in `cta_hosts` (when set)."""
+    app, items whose `runs_on` shares no platform with the host's `platforms` (desktop-only apps in an iOS app),
+    and items whose CTA host is not in `cta_hosts` (when set)."""
     derived = []
     exclude = set(host.get("exclude") or [])
     cta_hosts = host.get("cta_hosts")
@@ -645,6 +646,11 @@ def derived_sources(src_root, app, host, own_ids):
         if item_id in exclude or item_id in own_ids:
             continue
         if item_id.startswith(f"{app}-") or app in (source.get("tags") or []):
+            continue
+        # An app that does not run on the host's platforms (a desktop-only app in an iOS app) is not promoted
+        # there. An item without `runs_on` (unknown, e.g. a pre-registration page) is kept.
+        runs_on = source.get("runs_on")
+        if runs_on and not set(runs_on) & set(host["platforms"]):
             continue
         item = copy.deepcopy(source)
         item["platforms"] = list(host["platforms"])

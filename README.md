@@ -69,6 +69,7 @@ enough), commit, and the `feed` workflow validates it, regenerates `v1/`, commit
 | `cta_hosts` | 있으면 CTA 호스트가 이 목록에 없는 항목은 뺀다(안드로이드 전용 Play 링크 등) |
 | `exclude` | 가져오지 않을 항목 id |
 
+- 항목의 `runs_on`(그 앱이 실제로 도는 플랫폼)이 있고 호스트의 `platforms`와 겹치지 않으면 뺀다: 데스크톱 전용 앱(`["macos"]`·`["windows"]`)은 KAIRO(iOS)에 나오지 않는다. `runs_on`이 없는 항목(예: 사전등록 페이지)은 그대로 들어간다. 새 앱 항목에는 `runs_on`을 꼭 적는다.
 - CTA의 `utm_source`는 파생 앱 슬러그로 바뀐다(`utm_content`는 항목 id 그대로).
 - 파생 앱 자신을 소개하는 항목(`tags`에 앱 이름, id가 `<app>-`로 시작)은 조용히 빠진다.
 - `src/<app>/<id>.json`을 따로 두면 같은 id의 부모 항목 대신 그 파일이 쓰인다(파생 앱만 문구를 다르게 하고 싶을 때).
