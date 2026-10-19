@@ -2,7 +2,7 @@
   "schema_version": 1,
   "app": "kairo",
   "locale": "ko",
-  "generated_at": "2026-10-19T20:07:49Z",
+  "generated_at": "2026-10-19T20:40:25Z",
   "ttl_hours": 12,
   "items": [
     {
@@ -55,7 +55,7 @@
       "title": "OVJECT의 결정 도우미, Random TapTap",
       "body": "다 같이 화면에 손가락을 올리면 불빛이 돌다가 한 사람에게 멈춰요. 당첨자 뽑기, 팀 나누기, 순서 정하기를 할 수 있어요.",
       "cta": {
-        "label": "App Store에서 보기",
+        "label": "앱스토어에서 보기",
         "action": "url",
         "url": "https://apps.apple.com/app/id6740798110?utm_source=kairo&utm_medium=feedcard&utm_campaign=random_taptap_intro&utm_content=random-taptap-intro-2026w44"
       },
@@ -94,7 +94,7 @@
       "title": "OVJECT의 해적 룰렛, PITAPATO",
       "body": "통 속 두더지가 튀어나오는 해적 룰렛 게임이에요. 장난감 칼을 꽂아 보고, 두더지가 나온 사람에게 줄 벌칙을 정해 보세요.",
       "cta": {
-        "label": "App Store에서 보기",
+        "label": "앱스토어에서 보기",
         "action": "url",
         "url": "https://apps.apple.com/app/id1505739502?utm_source=kairo&utm_medium=feedcard&utm_campaign=pitapato_intro&utm_content=pitapato-intro-2026w44"
       },
@@ -133,7 +133,7 @@
       "title": "OVJECT의 악어 이빨 게임, Croco? Croco Roulette",
       "body": "장난감 악어 이빨 게임을 거의 그대로 옮긴 앱이에요. 점심 내기나 벌칙을 정할 때 좋고, 혼자 하면 재미없어요.",
       "cta": {
-        "label": "App Store에서 보기",
+        "label": "앱스토어에서 보기",
         "action": "url",
         "url": "https://apps.apple.com/app/id1501486372?utm_source=kairo&utm_medium=feedcard&utm_campaign=croco_roulette_intro&utm_content=croco-roulette-intro-2026w44"
       },
