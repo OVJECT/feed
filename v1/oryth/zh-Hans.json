@@ -2,14 +2,14 @@
   "schema_version": 1,
   "app": "oryth",
   "locale": "zh-Hans",
-  "generated_at": "2026-10-19T11:34:56Z",
+  "generated_at": "2026-10-19T12:15:12Z",
   "ttl_hours": 12,
   "items": [
     {
       "id": "oddside-intro-2026w44",
       "kind": "promo",
       "priority": 10,
-      "starts_at": "2026-10-20T00:00:00Z",
+      "starts_at": "2026-10-19T12:00:00Z",
       "ends_at": "2026-12-31T00:00:00Z",
       "platforms": [
         "macos",
@@ -42,7 +42,7 @@
       "id": "kairo-intro-2026w44",
       "kind": "promo",
       "priority": 5,
-      "starts_at": "2026-10-20T00:00:00Z",
+      "starts_at": "2026-10-19T12:00:00Z",
       "ends_at": "2026-12-31T00:00:00Z",
       "platforms": [
         "macos",
