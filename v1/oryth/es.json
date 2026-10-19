@@ -2,7 +2,7 @@
   "schema_version": 1,
   "app": "oryth",
   "locale": "es",
-  "generated_at": "2026-10-20T00:00:00Z",
+  "generated_at": "2026-10-19T09:18:59Z",
   "ttl_hours": 12,
   "items": [
     {
@@ -17,15 +17,15 @@
       ],
       "min_app_version": "1.0.8",
       "max_impressions_per_user": 3,
-      "title": "Oddside, the next game from OVJECT",
-      "body": "Live in an ordinary neighborhood, then step into the twisted place from the rumors. Updates as it gets built.",
+      "title": "Oddside, el próximo juego de OVJECT",
+      "body": "Vive en un barrio normal y entra en el lugar retorcido de los rumores. Novedades a medida que lo construimos.",
       "cta": {
-        "label": "Get updates",
+        "label": "Recibir noticias",
         "action": "url",
         "url": "https://ovject.com/oddside?utm_source=oryth&utm_medium=feedcard&utm_campaign=oddside_prereg&utm_content=oddside-intro-2026w44"
       },
       "secondary": {
-        "label": "Not now",
+        "label": "Ahora no",
         "action": "dismiss"
       },
       "store": null,
@@ -50,15 +50,15 @@
       ],
       "min_app_version": "1.0.8",
       "max_impressions_per_user": 3,
-      "title": "KAIRO, a film camera app from OVJECT",
-      "body": "A film camera app for iOS. Halation and bloom rebuilt from real light, HDR glow on lights, black-and-white contrast.",
+      "title": "KAIRO, cámara de película de OVJECT",
+      "body": "Cámara de película para iOS. Halación y bloom a partir de luz real, brillo HDR en las luces, filtros en blanco y negro.",
       "cta": {
-        "label": "Learn more",
+        "label": "Saber más",
         "action": "url",
         "url": "https://ovject.com/kairo?utm_source=oryth&utm_medium=feedcard&utm_campaign=kairo_intro&utm_content=kairo-intro-2026w44"
       },
       "secondary": {
-        "label": "Not now",
+        "label": "Ahora no",
         "action": "dismiss"
       },
       "store": null,

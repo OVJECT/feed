@@ -2,7 +2,7 @@
   "schema_version": 1,
   "app": "oryth",
   "locale": "ja",
-  "generated_at": "2026-10-20T00:00:00Z",
+  "generated_at": "2026-10-19T09:18:59Z",
   "ttl_hours": 12,
   "items": [
     {
@@ -17,15 +17,15 @@
       ],
       "min_app_version": "1.0.8",
       "max_impressions_per_user": 3,
-      "title": "Oddside, the next game from OVJECT",
-      "body": "Live in an ordinary neighborhood, then step into the twisted place from the rumors. Updates as it gets built.",
+      "title": "OVJECTの次のゲーム、Oddside",
+      "body": "ふつうの街で暮らし、うわさのねじれた場所に入って戦います。作りながら、そのつど近況をお知らせします。",
       "cta": {
-        "label": "Get updates",
+        "label": "最新情報を受け取る",
         "action": "url",
         "url": "https://ovject.com/oddside?utm_source=oryth&utm_medium=feedcard&utm_campaign=oddside_prereg&utm_content=oddside-intro-2026w44"
       },
       "secondary": {
-        "label": "Not now",
+        "label": "あとで",
         "action": "dismiss"
       },
       "store": null,
@@ -50,15 +50,15 @@
       ],
       "min_app_version": "1.0.8",
       "max_impressions_per_user": 3,
-      "title": "KAIRO, a film camera app from OVJECT",
-      "body": "A film camera app for iOS. Halation and bloom rebuilt from real light, HDR glow on lights, black-and-white contrast.",
+      "title": "OVJECTのフィルムカメラアプリ、KAIRO",
+      "body": "iOS向けのフィルムカメラアプリです。実際の光から計算したハレーションとにじみ、HDRで光る照明、白黒のコントラストフィルター。",
       "cta": {
-        "label": "Learn more",
+        "label": "詳しく見る",
         "action": "url",
         "url": "https://ovject.com/kairo?utm_source=oryth&utm_medium=feedcard&utm_campaign=kairo_intro&utm_content=kairo-intro-2026w44"
       },
       "secondary": {
-        "label": "Not now",
+        "label": "あとで",
         "action": "dismiss"
       },
       "store": null,

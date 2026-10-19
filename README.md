@@ -27,26 +27,40 @@ Served by GitHub Pages from the repository root; `v1/` is the schema-v1 path.
 ## Publishing procedure (a person pushes; agents never push)
 
 1. Edit or add items in `marketing/crosspromo/feed-src/<app>/<item-id>.json`
-   (one file per item: shared fields + `strings.<locale>` + free `notes`).
-2. Gate + approval: fill `approval.gate` (e.g. `nimble-5f-pass`), `approved_by`, `approved_at`.
+   (one file per item: shared fields + `strings.<locale>` for **all ten locales**, written by hand, no
+   translation engine + free `notes` + `gate_context` evidence). A locale is either fully written or absent;
+   only an absent locale falls back to `en`.
+2. Gate every locale string (serial Nimble calls, one per string):
+   ```bash
+   python3 /Volumes/SSD03/marketing/scripts/gate_feed.py --app oryth
+   ```
+   It writes `review.<locale>.gate` (`pass` / `fail` / `needs_human`) into the source file. A locale whose gate
+   is not `pass` is **left out of that locale's file** (no `en` fallback). A human who reads a `needs_human`
+   string and accepts it sets its `gate` to `pass` by hand (note why in `reasons`) or rewrites the string and
+   runs the gate again.
+3. Approval: fill `approval.gate` (e.g. `nimble-5f-pass`), `approved_by`, `approved_at`.
    Items still `pending` are dropped by the default build.
-3. Build into this clone:
+4. Build into this clone:
    ```bash
    python3 /Volumes/SSD03/marketing/scripts/build_feed.py --app oryth --out /Volumes/SSD03/web/ovject-feed/v1
    ```
    `--include-pending` emits unapproved items for local preview only; rebuild without it before pushing.
-4. Lint the written files (also runs inside the build):
+5. Lint the written files (also runs inside the build):
    ```bash
    python3 /Volumes/SSD03/marketing/scripts/build_feed.py --check v1/oryth/*.json
    ```
-5. Commit and push `main`; GitHub Pages redeploys in about a minute.
+6. Commit and push `main`; GitHub Pages redeploys in about a minute.
    Verify: `curl -sI https://ovject.github.io/feed/v1/oryth/en.json` → `200`, `content-type: application/json`.
-6. Changed copy gets a **new item id** (apps store dismiss/impression state per id).
+7. Changed copy gets a **new item id** (apps store dismiss/impression state per id).
 
 ## Current state
 
 `v1/oryth/*.json` was generated with `--include-pending` (2 items, approval pending, CTA URLs are placeholders:
-the Oddside pre-registration page and a KAIRO page on ovject.com do not exist yet). Approve the copy, replace the
-placeholder URLs in `feed-src`, rebuild without `--include-pending`, then push.
+the Oddside pre-registration page and a KAIRO page on ovject.com do not exist yet). All ten locales are written
+in `feed-src`; the Nimble gate passed 16 of the 20 locale strings and flagged 4 for human review
+(Oddside `en`·`th`·`vi`, KAIRO `th`), so those are left out: `en.json` and `vi.json` carry only KAIRO,
+`th.json` is empty (`items: []`, the app shows nothing). No locale string is approved by a person yet.
+Review the flagged strings, approve the copy, replace the placeholder URLs in `feed-src`, rebuild without
+`--include-pending`, then push.
 
 One-time setup (owner): create the public repo `OVJECT/feed`, enable Pages (branch `main`, path `/`), push this clone.

@@ -2,42 +2,9 @@
   "schema_version": 1,
   "app": "oryth",
   "locale": "vi",
-  "generated_at": "2026-10-20T00:00:00Z",
+  "generated_at": "2026-10-19T09:18:59Z",
   "ttl_hours": 12,
   "items": [
-    {
-      "id": "oddside-intro-2026w44",
-      "kind": "promo",
-      "priority": 10,
-      "starts_at": "2026-10-20T00:00:00Z",
-      "ends_at": "2026-12-31T00:00:00Z",
-      "platforms": [
-        "macos",
-        "ios"
-      ],
-      "min_app_version": "1.0.8",
-      "max_impressions_per_user": 3,
-      "title": "Oddside, the next game from OVJECT",
-      "body": "Live in an ordinary neighborhood, then step into the twisted place from the rumors. Updates as it gets built.",
-      "cta": {
-        "label": "Get updates",
-        "action": "url",
-        "url": "https://ovject.com/oddside?utm_source=oryth&utm_medium=feedcard&utm_campaign=oddside_prereg&utm_content=oddside-intro-2026w44"
-      },
-      "secondary": {
-        "label": "Not now",
-        "action": "dismiss"
-      },
-      "store": null,
-      "tags": [
-        "oddside"
-      ],
-      "approval": {
-        "gate": "pending",
-        "approved_by": "",
-        "approved_at": ""
-      }
-    },
     {
       "id": "kairo-intro-2026w44",
       "kind": "promo",
@@ -50,15 +17,15 @@
       ],
       "min_app_version": "1.0.8",
       "max_impressions_per_user": 3,
-      "title": "KAIRO, a film camera app from OVJECT",
-      "body": "A film camera app for iOS. Halation and bloom rebuilt from real light, HDR glow on lights, black-and-white contrast.",
+      "title": "KAIRO, ứng dụng máy ảnh phim của OVJECT",
+      "body": "Ứng dụng máy ảnh phim cho iOS. Halation và bloom tính từ ánh sáng thật, đèn sáng HDR, bộ lọc tương phản đen trắng.",
       "cta": {
-        "label": "Learn more",
+        "label": "Tìm hiểu thêm",
         "action": "url",
         "url": "https://ovject.com/kairo?utm_source=oryth&utm_medium=feedcard&utm_campaign=kairo_intro&utm_content=kairo-intro-2026w44"
       },
       "secondary": {
-        "label": "Not now",
+        "label": "Để sau",
         "action": "dismiss"
       },
       "store": null,
