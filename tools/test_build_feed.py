@@ -832,6 +832,60 @@ class DerivedHostTests(unittest.TestCase):
             feed, _ = self.build(tmp)["en"]
         self.assertEqual(sorted(item["id"] for item in feed["items"]), ["promo-both", "promo-unknown"])
 
+    @staticmethod
+    def store_source(item_id, store, host="apps.apple.com", path="/app/id123", runs_on=("ios", "android")):
+        source = source_for_app("parentapp", item_id, store=store, runs_on=list(runs_on))
+        source["cta"]["url"] = (
+            f"https://{host}{path}?utm_source=parentapp&utm_medium=feedcard&utm_campaign=camp_a&utm_content={item_id}"
+        )
+        return source
+
+    def test_android_host_gets_a_play_link_not_the_app_store(self):
+        both = {"ios_app_id": "123", "android_package": "com.ovject.sample"}
+        with tempfile.TemporaryDirectory() as tmp:
+            write_sources(tmp, "parentapp", [self.store_source("promo-a", both)])
+            feed, _ = self.build(tmp, platforms=["android"])["en"]
+        url = feed["items"][0]["cta"]["url"]
+        self.assertTrue(url.startswith("https://play.google.com/store/apps/details?id=com.ovject.sample&"), url)
+        self.assertIn("utm_source=hostapp", url)
+        self.assertIn("utm_campaign=camp_a", url)
+        self.assertIn("utm_content=promo-a", url)
+        self.assertEqual(build_feed.validate_feed(feed, expected_app="hostapp", expected_locale="en"), [])
+
+    def test_item_without_the_needed_store_id_is_left_out(self):
+        ios_only_id = {"ios_app_id": "123"}  # runs_on says android too, but there is no package to link
+        with tempfile.TemporaryDirectory() as tmp:
+            write_sources(tmp, "parentapp", [self.store_source("promo-a", ios_only_id)])
+            feed, _ = self.build(tmp, platforms=["android"])["en"]
+        self.assertEqual(feed["items"], [])
+
+    def test_ios_host_gets_an_app_store_link_even_from_a_play_source(self):
+        both = {"ios_app_id": "456", "android_package": "com.ovject.sample"}
+        source = self.store_source("promo-a", both, host="play.google.com", path="/store/apps/details")
+        with tempfile.TemporaryDirectory() as tmp:
+            write_sources(tmp, "parentapp", [source])
+            feed, _ = self.build(tmp, platforms=["ios"])["en"]
+        url = feed["items"][0]["cta"]["url"]
+        self.assertTrue(url.startswith("https://apps.apple.com/app/id456?"), url)
+        self.assertIn("utm_source=hostapp", url)
+
+    def test_host_on_both_stores_gets_a_store_action(self):
+        both = {"ios_app_id": "123", "android_package": "com.ovject.sample"}
+        with tempfile.TemporaryDirectory() as tmp:
+            write_sources(tmp, "parentapp", [self.store_source("promo-a", both)])
+            feed, _ = self.build(tmp, platforms=["ios", "android"])["en"]
+        cta = feed["items"][0]["cta"]
+        self.assertEqual(cta["action"], "store")
+        self.assertNotIn("url", cta)
+        self.assertEqual(build_feed.validate_feed(feed, expected_app="hostapp", expected_locale="en"), [])
+
+    def test_non_store_links_are_not_retargeted(self):
+        website = source_for_app("parentapp", "promo-web")  # https://ovject.com/oddside?utm_source=...
+        with tempfile.TemporaryDirectory() as tmp:
+            write_sources(tmp, "parentapp", [website])
+            feed, _ = self.build(tmp, platforms=["android"])["en"]
+        self.assertTrue(feed["items"][0]["cta"]["url"].startswith("https://ovject.com/oddside?"))
+
     def test_exclude_and_cta_hosts(self):
         play = source_for_app("parentapp", "promo-play")
         play["cta"]["url"] = play["cta"]["url"].replace("https://ovject.com", "https://play.google.com")

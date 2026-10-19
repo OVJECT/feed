@@ -1,0 +1,1052 @@
+{
+ "version": 1,
+ "note": "Reference allow list for the pick/url_safety cases; each app keeps its own list in config.",
+ "reference_allowed_hosts": [
+  "apps.apple.com",
+  "ovject.com",
+  "www.ovject.com",
+  "www.threads.com",
+  "threads.com"
+ ],
+ "locale": [
+  {
+   "preferred": [
+    "en-US"
+   ],
+   "expected": "en"
+  },
+  {
+   "preferred": [
+    "ko-KR"
+   ],
+   "expected": "ko"
+  },
+  {
+   "preferred": [
+    "ja_JP"
+   ],
+   "expected": "ja"
+  },
+  {
+   "preferred": [
+    "vi"
+   ],
+   "expected": "vi"
+  },
+  {
+   "preferred": [
+    "th-TH"
+   ],
+   "expected": "th"
+  },
+  {
+   "preferred": [
+    "es-MX"
+   ],
+   "expected": "es"
+  },
+  {
+   "preferred": [
+    "fr-CA"
+   ],
+   "expected": "fr"
+  },
+  {
+   "preferred": [
+    "de-AT"
+   ],
+   "expected": "de"
+  },
+  {
+   "preferred": [
+    "zh-Hans-CN"
+   ],
+   "expected": "zh-Hans"
+  },
+  {
+   "preferred": [
+    "zh-CN"
+   ],
+   "expected": "zh-Hans"
+  },
+  {
+   "preferred": [
+    "zh"
+   ],
+   "expected": "zh-Hans"
+  },
+  {
+   "preferred": [
+    "zh-Hant-TW"
+   ],
+   "expected": "zh-Hant"
+  },
+  {
+   "preferred": [
+    "zh-TW"
+   ],
+   "expected": "zh-Hant"
+  },
+  {
+   "preferred": [
+    "zh-HK"
+   ],
+   "expected": "zh-Hant"
+  },
+  {
+   "preferred": [
+    "zh-Hant"
+   ],
+   "expected": "zh-Hant"
+  },
+  {
+   "preferred": [
+    "pt-BR"
+   ],
+   "expected": "en"
+  },
+  {
+   "preferred": [],
+   "expected": "en"
+  },
+  {
+   "preferred": [
+    "ko-KR",
+    "en-US"
+   ],
+   "expected": "ko"
+  }
+ ],
+ "url_safety": [
+  {
+   "url": "https://apps.apple.com/app/id1",
+   "expected": true
+  },
+  {
+   "url": "https://APPS.APPLE.COM/app/id1",
+   "expected": true
+  },
+  {
+   "url": "https://ovject.com/",
+   "expected": true
+  },
+  {
+   "url": "https://www.ovject.com/x",
+   "expected": true
+  },
+  {
+   "url": "https://www.threads.com/@ovject.official",
+   "expected": true
+  },
+  {
+   "url": "https://threads.com/@x",
+   "expected": true
+  },
+  {
+   "url": "http://apps.apple.com/app/id1",
+   "expected": false
+  },
+  {
+   "url": "https://evil.com/?u=apps.apple.com",
+   "expected": false
+  },
+  {
+   "url": "https://apps.apple.com.evil.com/",
+   "expected": false
+  },
+  {
+   "url": "https://play.google.com/store/apps/details?id=x",
+   "expected": false
+  },
+  {
+   "url": "javascript:alert(1)",
+   "expected": false
+  },
+  {
+   "url": "",
+   "expected": false
+  },
+  {
+   "url": null,
+   "expected": false
+  }
+ ],
+ "semver": [
+  {
+   "version": "2.0.1",
+   "minimum": "2.0.1",
+   "expected": true
+  },
+  {
+   "version": "2.0.0",
+   "minimum": "2.0.1",
+   "expected": false
+  },
+  {
+   "version": "2.1",
+   "minimum": "2.0.9",
+   "expected": true
+  },
+  {
+   "version": "10.0.0",
+   "minimum": "9.9.9",
+   "expected": true
+  },
+  {
+   "version": "2.0.10",
+   "minimum": "2.0.9",
+   "expected": true
+  },
+  {
+   "version": "1",
+   "minimum": "1.0.0",
+   "expected": true
+  },
+  {
+   "version": "1.0",
+   "minimum": "1.0.1",
+   "expected": false
+  }
+ ],
+ "pick": [
+  {
+   "name": "one eligible item is picked",
+   "host_app": "kairo",
+   "platform": "ios",
+   "app_version": "2.0.1",
+   "now": "2026-10-20T00:00:00Z",
+   "impressions": {},
+   "items": [
+    {
+     "id": "a",
+     "priority": 1,
+     "starts_at": "2026-10-01T00:00:00Z",
+     "ends_at": "2099-01-01T00:00:00Z",
+     "platforms": [
+      "ios"
+     ],
+     "min_app_version": "2.0.1",
+     "max_impressions_per_user": 20,
+     "title": "Title a",
+     "body": "Body a",
+     "cta": {
+      "label": "Open",
+      "action": "url",
+      "url": "https://apps.apple.com/app/id97"
+     },
+     "tags": [
+      "sample"
+     ]
+    }
+   ],
+   "expected_id": "a"
+  },
+  {
+   "name": "no items gives nothing",
+   "host_app": "kairo",
+   "platform": "ios",
+   "app_version": "2.0.1",
+   "now": "2026-10-20T00:00:00Z",
+   "impressions": {},
+   "items": [],
+   "expected_id": null
+  },
+  {
+   "name": "an item tagged with the host app is skipped",
+   "host_app": "kairo",
+   "platform": "ios",
+   "app_version": "2.0.1",
+   "now": "2026-10-20T00:00:00Z",
+   "impressions": {},
+   "items": [
+    {
+     "id": "a",
+     "priority": 1,
+     "starts_at": "2026-10-01T00:00:00Z",
+     "ends_at": "2099-01-01T00:00:00Z",
+     "platforms": [
+      "ios"
+     ],
+     "min_app_version": "2.0.1",
+     "max_impressions_per_user": 20,
+     "title": "Title a",
+     "body": "Body a",
+     "cta": {
+      "label": "Open",
+      "action": "url",
+      "url": "https://apps.apple.com/app/id97"
+     },
+     "tags": [
+      "kairo"
+     ]
+    }
+   ],
+   "expected_id": null
+  },
+  {
+   "name": "an id starting with the host app is skipped",
+   "host_app": "kairo",
+   "platform": "ios",
+   "app_version": "2.0.1",
+   "now": "2026-10-20T00:00:00Z",
+   "impressions": {},
+   "items": [
+    {
+     "id": "kairo-intro",
+     "priority": 1,
+     "starts_at": "2026-10-01T00:00:00Z",
+     "ends_at": "2099-01-01T00:00:00Z",
+     "platforms": [
+      "ios"
+     ],
+     "min_app_version": "2.0.1",
+     "max_impressions_per_user": 20,
+     "title": "Title kairo-intro",
+     "body": "Body kairo-intro",
+     "cta": {
+      "label": "Open",
+      "action": "url",
+      "url": "https://apps.apple.com/app/id135"
+     },
+     "tags": [
+      "sample"
+     ]
+    }
+   ],
+   "expected_id": null
+  },
+  {
+   "name": "a similar id is not skipped",
+   "host_app": "kairo",
+   "platform": "ios",
+   "app_version": "2.0.1",
+   "now": "2026-10-20T00:00:00Z",
+   "impressions": {},
+   "items": [
+    {
+     "id": "kairo2-intro",
+     "priority": 1,
+     "starts_at": "2026-10-01T00:00:00Z",
+     "ends_at": "2099-01-01T00:00:00Z",
+     "platforms": [
+      "ios"
+     ],
+     "min_app_version": "2.0.1",
+     "max_impressions_per_user": 20,
+     "title": "Title kairo2-intro",
+     "body": "Body kairo2-intro",
+     "cta": {
+      "label": "Open",
+      "action": "url",
+      "url": "https://apps.apple.com/app/id185"
+     },
+     "tags": [
+      "sample"
+     ]
+    }
+   ],
+   "expected_id": "kairo2-intro"
+  },
+  {
+   "name": "android-only item is skipped on ios",
+   "host_app": "kairo",
+   "platform": "ios",
+   "app_version": "2.0.1",
+   "now": "2026-10-20T00:00:00Z",
+   "impressions": {},
+   "items": [
+    {
+     "id": "a",
+     "priority": 1,
+     "starts_at": "2026-10-01T00:00:00Z",
+     "ends_at": "2099-01-01T00:00:00Z",
+     "platforms": [
+      "android"
+     ],
+     "min_app_version": "2.0.1",
+     "max_impressions_per_user": 20,
+     "title": "Title a",
+     "body": "Body a",
+     "cta": {
+      "label": "Open",
+      "action": "url",
+      "url": "https://apps.apple.com/app/id97"
+     },
+     "tags": [
+      "sample"
+     ]
+    }
+   ],
+   "expected_id": null
+  },
+  {
+   "name": "missing platforms means every platform",
+   "host_app": "kairo",
+   "platform": "ios",
+   "app_version": "2.0.1",
+   "now": "2026-10-20T00:00:00Z",
+   "impressions": {},
+   "items": [
+    {
+     "id": "a",
+     "priority": 1,
+     "starts_at": "2026-10-01T00:00:00Z",
+     "ends_at": "2099-01-01T00:00:00Z",
+     "platforms": null,
+     "min_app_version": "2.0.1",
+     "max_impressions_per_user": 20,
+     "title": "Title a",
+     "body": "Body a",
+     "cta": {
+      "label": "Open",
+      "action": "url",
+      "url": "https://apps.apple.com/app/id97"
+     },
+     "tags": [
+      "sample"
+     ]
+    }
+   ],
+   "expected_id": "a"
+  },
+  {
+   "name": "min_app_version above the app version is skipped",
+   "host_app": "kairo",
+   "platform": "ios",
+   "app_version": "2.0.1",
+   "now": "2026-10-20T00:00:00Z",
+   "impressions": {},
+   "items": [
+    {
+     "id": "a",
+     "priority": 1,
+     "starts_at": "2026-10-01T00:00:00Z",
+     "ends_at": "2099-01-01T00:00:00Z",
+     "platforms": [
+      "ios"
+     ],
+     "min_app_version": "2.0.2",
+     "max_impressions_per_user": 20,
+     "title": "Title a",
+     "body": "Body a",
+     "cta": {
+      "label": "Open",
+      "action": "url",
+      "url": "https://apps.apple.com/app/id97"
+     },
+     "tags": [
+      "sample"
+     ]
+    }
+   ],
+   "expected_id": null
+  },
+  {
+   "name": "min_app_version equal to the app version is allowed",
+   "host_app": "kairo",
+   "platform": "ios",
+   "app_version": "2.0.1",
+   "now": "2026-10-20T00:00:00Z",
+   "impressions": {},
+   "items": [
+    {
+     "id": "a",
+     "priority": 1,
+     "starts_at": "2026-10-01T00:00:00Z",
+     "ends_at": "2099-01-01T00:00:00Z",
+     "platforms": [
+      "ios"
+     ],
+     "min_app_version": "2.0.1",
+     "max_impressions_per_user": 20,
+     "title": "Title a",
+     "body": "Body a",
+     "cta": {
+      "label": "Open",
+      "action": "url",
+      "url": "https://apps.apple.com/app/id97"
+     },
+     "tags": [
+      "sample"
+     ]
+    }
+   ],
+   "expected_id": "a"
+  },
+  {
+   "name": "version compare is numeric per part",
+   "host_app": "kairo",
+   "platform": "ios",
+   "app_version": "2.0.10",
+   "now": "2026-10-20T00:00:00Z",
+   "impressions": {},
+   "items": [
+    {
+     "id": "a",
+     "priority": 1,
+     "starts_at": "2026-10-01T00:00:00Z",
+     "ends_at": "2099-01-01T00:00:00Z",
+     "platforms": [
+      "ios"
+     ],
+     "min_app_version": "2.0.9",
+     "max_impressions_per_user": 20,
+     "title": "Title a",
+     "body": "Body a",
+     "cta": {
+      "label": "Open",
+      "action": "url",
+      "url": "https://apps.apple.com/app/id97"
+     },
+     "tags": [
+      "sample"
+     ]
+    }
+   ],
+   "expected_id": "a"
+  },
+  {
+   "name": "not yet started is skipped",
+   "host_app": "kairo",
+   "platform": "ios",
+   "app_version": "2.0.1",
+   "now": "2026-10-20T00:00:00Z",
+   "impressions": {},
+   "items": [
+    {
+     "id": "a",
+     "priority": 1,
+     "starts_at": "2026-10-20T00:00:01Z",
+     "ends_at": "2099-01-01T00:00:00Z",
+     "platforms": [
+      "ios"
+     ],
+     "min_app_version": "2.0.1",
+     "max_impressions_per_user": 20,
+     "title": "Title a",
+     "body": "Body a",
+     "cta": {
+      "label": "Open",
+      "action": "url",
+      "url": "https://apps.apple.com/app/id97"
+     },
+     "tags": [
+      "sample"
+     ]
+    }
+   ],
+   "expected_id": null
+  },
+  {
+   "name": "starts exactly now is allowed",
+   "host_app": "kairo",
+   "platform": "ios",
+   "app_version": "2.0.1",
+   "now": "2026-10-20T00:00:00Z",
+   "impressions": {},
+   "items": [
+    {
+     "id": "a",
+     "priority": 1,
+     "starts_at": "2026-10-20T00:00:00Z",
+     "ends_at": "2099-01-01T00:00:00Z",
+     "platforms": [
+      "ios"
+     ],
+     "min_app_version": "2.0.1",
+     "max_impressions_per_user": 20,
+     "title": "Title a",
+     "body": "Body a",
+     "cta": {
+      "label": "Open",
+      "action": "url",
+      "url": "https://apps.apple.com/app/id97"
+     },
+     "tags": [
+      "sample"
+     ]
+    }
+   ],
+   "expected_id": "a"
+  },
+  {
+   "name": "ends exactly now is skipped",
+   "host_app": "kairo",
+   "platform": "ios",
+   "app_version": "2.0.1",
+   "now": "2026-10-20T00:00:00Z",
+   "impressions": {},
+   "items": [
+    {
+     "id": "a",
+     "priority": 1,
+     "starts_at": "2026-10-01T00:00:00Z",
+     "ends_at": "2026-10-20T00:00:00Z",
+     "platforms": [
+      "ios"
+     ],
+     "min_app_version": "2.0.1",
+     "max_impressions_per_user": 20,
+     "title": "Title a",
+     "body": "Body a",
+     "cta": {
+      "label": "Open",
+      "action": "url",
+      "url": "https://apps.apple.com/app/id97"
+     },
+     "tags": [
+      "sample"
+     ]
+    }
+   ],
+   "expected_id": null
+  },
+  {
+   "name": "dismiss action is skipped",
+   "host_app": "kairo",
+   "platform": "ios",
+   "app_version": "2.0.1",
+   "now": "2026-10-20T00:00:00Z",
+   "impressions": {},
+   "items": [
+    {
+     "id": "a",
+     "priority": 1,
+     "starts_at": "2026-10-01T00:00:00Z",
+     "ends_at": "2099-01-01T00:00:00Z",
+     "platforms": [
+      "ios"
+     ],
+     "min_app_version": "2.0.1",
+     "max_impressions_per_user": 20,
+     "title": "Title a",
+     "body": "Body a",
+     "cta": {
+      "label": "Open",
+      "action": "dismiss",
+      "url": "https://apps.apple.com/app/id1"
+     },
+     "tags": [
+      "sample"
+     ]
+    }
+   ],
+   "expected_id": null
+  },
+  {
+   "name": "http url is skipped",
+   "host_app": "kairo",
+   "platform": "ios",
+   "app_version": "2.0.1",
+   "now": "2026-10-20T00:00:00Z",
+   "impressions": {},
+   "items": [
+    {
+     "id": "a",
+     "priority": 1,
+     "starts_at": "2026-10-01T00:00:00Z",
+     "ends_at": "2099-01-01T00:00:00Z",
+     "platforms": [
+      "ios"
+     ],
+     "min_app_version": "2.0.1",
+     "max_impressions_per_user": 20,
+     "title": "Title a",
+     "body": "Body a",
+     "cta": {
+      "label": "Open",
+      "action": "url",
+      "url": "http://apps.apple.com/app/id1"
+     },
+     "tags": [
+      "sample"
+     ]
+    }
+   ],
+   "expected_id": null
+  },
+  {
+   "name": "host outside the allow list is skipped",
+   "host_app": "kairo",
+   "platform": "ios",
+   "app_version": "2.0.1",
+   "now": "2026-10-20T00:00:00Z",
+   "impressions": {},
+   "items": [
+    {
+     "id": "a",
+     "priority": 1,
+     "starts_at": "2026-10-01T00:00:00Z",
+     "ends_at": "2099-01-01T00:00:00Z",
+     "platforms": [
+      "ios"
+     ],
+     "min_app_version": "2.0.1",
+     "max_impressions_per_user": 20,
+     "title": "Title a",
+     "body": "Body a",
+     "cta": {
+      "label": "Open",
+      "action": "url",
+      "url": "https://play.google.com/store/apps/details?id=x"
+     },
+     "tags": [
+      "sample"
+     ]
+    }
+   ],
+   "expected_id": null
+  },
+  {
+   "name": "threads host is allowed",
+   "host_app": "kairo",
+   "platform": "ios",
+   "app_version": "2.0.1",
+   "now": "2026-10-20T00:00:00Z",
+   "impressions": {},
+   "items": [
+    {
+     "id": "a",
+     "priority": 1,
+     "starts_at": "2026-10-01T00:00:00Z",
+     "ends_at": "2099-01-01T00:00:00Z",
+     "platforms": [
+      "ios"
+     ],
+     "min_app_version": "2.0.1",
+     "max_impressions_per_user": 20,
+     "title": "Title a",
+     "body": "Body a",
+     "cta": {
+      "label": "Open",
+      "action": "url",
+      "url": "https://www.threads.com/@ovject.official?utm_source=kairo"
+     },
+     "tags": [
+      "sample"
+     ]
+    }
+   ],
+   "expected_id": "a"
+  },
+  {
+   "name": "default impression limit is 3",
+   "host_app": "kairo",
+   "platform": "ios",
+   "app_version": "2.0.1",
+   "now": "2026-10-20T00:00:00Z",
+   "impressions": {
+    "a": 3
+   },
+   "items": [
+    {
+     "id": "a",
+     "priority": 1,
+     "starts_at": "2026-10-01T00:00:00Z",
+     "ends_at": "2099-01-01T00:00:00Z",
+     "platforms": [
+      "ios"
+     ],
+     "min_app_version": "2.0.1",
+     "max_impressions_per_user": null,
+     "title": "Title a",
+     "body": "Body a",
+     "cta": {
+      "label": "Open",
+      "action": "url",
+      "url": "https://apps.apple.com/app/id97"
+     },
+     "tags": [
+      "sample"
+     ]
+    }
+   ],
+   "expected_id": null
+  },
+  {
+   "name": "below the default limit is allowed",
+   "host_app": "kairo",
+   "platform": "ios",
+   "app_version": "2.0.1",
+   "now": "2026-10-20T00:00:00Z",
+   "impressions": {
+    "a": 2
+   },
+   "items": [
+    {
+     "id": "a",
+     "priority": 1,
+     "starts_at": "2026-10-01T00:00:00Z",
+     "ends_at": "2099-01-01T00:00:00Z",
+     "platforms": [
+      "ios"
+     ],
+     "min_app_version": "2.0.1",
+     "max_impressions_per_user": null,
+     "title": "Title a",
+     "body": "Body a",
+     "cta": {
+      "label": "Open",
+      "action": "url",
+      "url": "https://apps.apple.com/app/id97"
+     },
+     "tags": [
+      "sample"
+     ]
+    }
+   ],
+   "expected_id": "a"
+  },
+  {
+   "name": "explicit limit is used",
+   "host_app": "kairo",
+   "platform": "ios",
+   "app_version": "2.0.1",
+   "now": "2026-10-20T00:00:00Z",
+   "impressions": {
+    "a": 3
+   },
+   "items": [
+    {
+     "id": "a",
+     "priority": 1,
+     "starts_at": "2026-10-01T00:00:00Z",
+     "ends_at": "2099-01-01T00:00:00Z",
+     "platforms": [
+      "ios"
+     ],
+     "min_app_version": "2.0.1",
+     "max_impressions_per_user": 20,
+     "title": "Title a",
+     "body": "Body a",
+     "cta": {
+      "label": "Open",
+      "action": "url",
+      "url": "https://apps.apple.com/app/id97"
+     },
+     "tags": [
+      "sample"
+     ]
+    }
+   ],
+   "expected_id": "a"
+  },
+  {
+   "name": "the item shown least often wins",
+   "host_app": "kairo",
+   "platform": "ios",
+   "app_version": "2.0.1",
+   "now": "2026-10-20T00:00:00Z",
+   "impressions": {
+    "a": 2,
+    "b": 0
+   },
+   "items": [
+    {
+     "id": "a",
+     "priority": 9,
+     "starts_at": "2026-10-01T00:00:00Z",
+     "ends_at": "2099-01-01T00:00:00Z",
+     "platforms": [
+      "ios"
+     ],
+     "min_app_version": "2.0.1",
+     "max_impressions_per_user": 20,
+     "title": "Title a",
+     "body": "Body a",
+     "cta": {
+      "label": "Open",
+      "action": "url",
+      "url": "https://apps.apple.com/app/id97"
+     },
+     "tags": [
+      "sample"
+     ]
+    },
+    {
+     "id": "b",
+     "priority": 1,
+     "starts_at": "2026-10-01T00:00:00Z",
+     "ends_at": "2099-01-01T00:00:00Z",
+     "platforms": [
+      "ios"
+     ],
+     "min_app_version": "2.0.1",
+     "max_impressions_per_user": 20,
+     "title": "Title b",
+     "body": "Body b",
+     "cta": {
+      "label": "Open",
+      "action": "url",
+      "url": "https://apps.apple.com/app/id98"
+     },
+     "tags": [
+      "sample"
+     ]
+    }
+   ],
+   "expected_id": "b"
+  },
+  {
+   "name": "equal impressions: higher priority wins",
+   "host_app": "kairo",
+   "platform": "ios",
+   "app_version": "2.0.1",
+   "now": "2026-10-20T00:00:00Z",
+   "impressions": {},
+   "items": [
+    {
+     "id": "a",
+     "priority": 1,
+     "starts_at": "2026-10-01T00:00:00Z",
+     "ends_at": "2099-01-01T00:00:00Z",
+     "platforms": [
+      "ios"
+     ],
+     "min_app_version": "2.0.1",
+     "max_impressions_per_user": 20,
+     "title": "Title a",
+     "body": "Body a",
+     "cta": {
+      "label": "Open",
+      "action": "url",
+      "url": "https://apps.apple.com/app/id97"
+     },
+     "tags": [
+      "sample"
+     ]
+    },
+    {
+     "id": "b",
+     "priority": 5,
+     "starts_at": "2026-10-01T00:00:00Z",
+     "ends_at": "2099-01-01T00:00:00Z",
+     "platforms": [
+      "ios"
+     ],
+     "min_app_version": "2.0.1",
+     "max_impressions_per_user": 20,
+     "title": "Title b",
+     "body": "Body b",
+     "cta": {
+      "label": "Open",
+      "action": "url",
+      "url": "https://apps.apple.com/app/id98"
+     },
+     "tags": [
+      "sample"
+     ]
+    }
+   ],
+   "expected_id": "b"
+  },
+  {
+   "name": "full tie: first in the list wins",
+   "host_app": "kairo",
+   "platform": "ios",
+   "app_version": "2.0.1",
+   "now": "2026-10-20T00:00:00Z",
+   "impressions": {},
+   "items": [
+    {
+     "id": "a",
+     "priority": 3,
+     "starts_at": "2026-10-01T00:00:00Z",
+     "ends_at": "2099-01-01T00:00:00Z",
+     "platforms": [
+      "ios"
+     ],
+     "min_app_version": "2.0.1",
+     "max_impressions_per_user": 20,
+     "title": "Title a",
+     "body": "Body a",
+     "cta": {
+      "label": "Open",
+      "action": "url",
+      "url": "https://apps.apple.com/app/id97"
+     },
+     "tags": [
+      "sample"
+     ]
+    },
+    {
+     "id": "b",
+     "priority": 3,
+     "starts_at": "2026-10-01T00:00:00Z",
+     "ends_at": "2099-01-01T00:00:00Z",
+     "platforms": [
+      "ios"
+     ],
+     "min_app_version": "2.0.1",
+     "max_impressions_per_user": 20,
+     "title": "Title b",
+     "body": "Body b",
+     "cta": {
+      "label": "Open",
+      "action": "url",
+      "url": "https://apps.apple.com/app/id98"
+     },
+     "tags": [
+      "sample"
+     ]
+    }
+   ],
+   "expected_id": "a"
+  },
+  {
+   "name": "an exhausted item is skipped, the next is used",
+   "host_app": "kairo",
+   "platform": "ios",
+   "app_version": "2.0.1",
+   "now": "2026-10-20T00:00:00Z",
+   "impressions": {
+    "a": 1
+   },
+   "items": [
+    {
+     "id": "a",
+     "priority": 1,
+     "starts_at": "2026-10-01T00:00:00Z",
+     "ends_at": "2099-01-01T00:00:00Z",
+     "platforms": [
+      "ios"
+     ],
+     "min_app_version": "2.0.1",
+     "max_impressions_per_user": 1,
+     "title": "Title a",
+     "body": "Body a",
+     "cta": {
+      "label": "Open",
+      "action": "url",
+      "url": "https://apps.apple.com/app/id97"
+     },
+     "tags": [
+      "sample"
+     ]
+    },
+    {
+     "id": "b",
+     "priority": 1,
+     "starts_at": "2026-10-01T00:00:00Z",
+     "ends_at": "2099-01-01T00:00:00Z",
+     "platforms": [
+      "ios"
+     ],
+     "min_app_version": "2.0.1",
+     "max_impressions_per_user": 20,
+     "title": "Title b",
+     "body": "Body b",
+     "cta": {
+      "label": "Open",
+      "action": "url",
+      "url": "https://apps.apple.com/app/id98"
+     },
+     "tags": [
+      "sample"
+     ]
+    }
+   ],
+   "expected_id": "b"
+  }
+ ]
+}

@@ -21,6 +21,8 @@ enough), commit, and the `feed` workflow validates it, regenerates `v1/`, commit
 |---|---|---|
 | `src/<app>/<item-id>.json` | one item per file: shared fields, `strings.<locale>` for all ten locales, `approval`, per-locale gate results `review`, memos `notes` / `gate_context` | people |
 | `src/_links/<app>.json` | `{"links": [...]}`: the link row of that app's OVJECT page (website, store, support, privacy, later socials); the same row goes into all ten locale files | people |
+| `src/_hosts/<app>.json` | an app whose feed is derived from another app's approved items (e.g. KAIRO from Oryth); see "다른 앱의 항목을 그대로 쓰는 앱" | people |
+| `clients/` | client kit for apps (spec, `test-vectors.json`, reference implementation, Swift core): take it and implement in your language | maintainers |
 | `tools/build_feed.py` | validator + generator, standard library only (**canonical copy**) | maintainers |
 | `tools/test_build_feed.py` | unit tests + the rules every item under `src/` must meet | maintainers |
 | `tools/feed-schema.json`, `tools/fixtures/` | output schema (reference) and the example the tests use | maintainers |
@@ -70,6 +72,8 @@ enough), commit, and the `feed` workflow validates it, regenerates `v1/`, commit
 | `exclude` | 가져오지 않을 항목 id |
 
 - 항목의 `runs_on`(그 앱이 실제로 도는 플랫폼)이 있고 호스트의 `platforms`와 겹치지 않으면 뺀다: 데스크톱 전용 앱(`["macos"]`·`["windows"]`)은 KAIRO(iOS)에 나오지 않는다. `runs_on`이 없는 항목(예: 사전등록 페이지)은 그대로 들어간다. 새 앱 항목에는 `runs_on`을 꼭 적는다.
+- 스토어 링크(App Store·Google Play)는 호스트 `platforms`에 맞게 `store`의 ID로 **다시 만든다**: `["android"]`면 `play.google.com/store/apps/details?id=<android_package>`, `["ios"]`·`["macos"]`면 `apps.apple.com/app/id<ios_app_id>`. 필요한 ID가 없는 항목은 빠진다. `["ios","android"]`처럼 둘을 함께 쓰는 호스트는 CTA가 `{"action": "store"}`가 되어 클라이언트가 실행 중인 플랫폼의 스토어를 연다. 웹·Threads 링크는 그대로.
+- 앱 쪽 클라이언트(광고 실패 시 카드)를 만들 때는 `clients/README.md`와 `clients/test-vectors.json`을 가져가서 구현·검증한다.
 - CTA의 `utm_source`는 파생 앱 슬러그로 바뀐다(`utm_content`는 항목 id 그대로).
 - 파생 앱 자신을 소개하는 항목(`tags`에 앱 이름, id가 `<app>-`로 시작)은 조용히 빠진다.
 - `src/<app>/<id>.json`을 따로 두면 같은 id의 부모 항목 대신 그 파일이 쓰인다(파생 앱만 문구를 다르게 하고 싶을 때).

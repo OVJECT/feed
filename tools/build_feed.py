@@ -630,6 +630,45 @@ def load_host_config(src_root, app):
     return host
 
 
+APPLE_STORE_HOSTS = ("apps.apple.com",)
+PLAY_STORE_HOSTS = ("play.google.com",)
+
+
+def retarget_store_cta(cta, store, platforms, app, item_id):
+    """The CTA of a derived item, pointed at the store that fits the host app's platforms.
+
+    A store link (App Store or Google Play) is rebuilt from the item's `store` ids, so an Android host does
+    not send people to the App Store. Host platforms on one store family give a plain url CTA with the host's
+    UTM; platforms on both (a Flutter app on iOS and Android) give `{"action": "store"}`, which the client
+    resolves from `store` at runtime. A CTA that is not a store link (a website, Threads) is returned as is.
+    Returns None when the needed store id is missing (the item is left out)."""
+    url = cta.get("url")
+    hostname = (urlsplit(url).hostname or "") if isinstance(url, str) else ""
+    if hostname not in APPLE_STORE_HOSTS + PLAY_STORE_HOSTS:
+        return copy.deepcopy(cta)
+    store = store or {}
+    apple = bool(set(platforms) & {"ios", "macos"})
+    play = "android" in platforms
+    if apple and play:
+        if not store.get("ios_app_id") and not store.get("android_package"):
+            return None
+        return {"action": "store"}
+    params = utm_params(url)
+    utm = (
+        f"utm_source={app}&utm_medium=feedcard&utm_campaign={params.get('utm_campaign', 'feedcard')}"
+        f"&utm_content={item_id}"
+    )
+    if apple:
+        if store.get("ios_app_id"):
+            return {**cta, "url": f"https://apps.apple.com/app/id{store['ios_app_id']}?{utm}"}
+        return copy.deepcopy(cta) if hostname in APPLE_STORE_HOSTS else None
+    if play:
+        if store.get("android_package"):
+            return {**cta, "url": f"https://play.google.com/store/apps/details?id={store['android_package']}&{utm}"}
+        return copy.deepcopy(cta) if hostname in PLAY_STORE_HOSTS else None
+    return copy.deepcopy(cta)
+
+
 def derived_sources(src_root, app, host, own_ids):
     """Copies of the parent app's items for a derived host.
 
@@ -658,7 +697,10 @@ def derived_sources(src_root, app, host, own_ids):
             item["min_app_version"] = host["min_app_version"]
         if host.get("max_impressions_per_user") is not None:
             item["max_impressions_per_user"] = host["max_impressions_per_user"]
-        cta = item.get("cta") or {}
+        cta = retarget_store_cta(item.get("cta") or {}, item.get("store"), host["platforms"], app, item_id)
+        if cta is None:
+            continue
+        item["cta"] = cta
         url = cta.get("url")
         if isinstance(url, str):
             if cta_hosts is not None and (urlsplit(url).hostname or "") not in cta_hosts:
