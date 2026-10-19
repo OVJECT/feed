@@ -28,6 +28,7 @@ import json
 import re
 import sys
 from pathlib import Path
+from urllib.parse import urlsplit
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 DEFAULT_SRC = REPO_ROOT / "src"
@@ -38,6 +39,28 @@ SOURCE_LOCALE = "en"
 KINDS = ("promo", "news", "community", "survey")
 PLATFORMS = ("ios", "android", "macos")        # host app platforms on which an item is shown
 RUNS_ON = ("macos", "ios", "android", "web", "windows")  # platforms the promoted app itself runs on
+
+# Feed-level `links`: a row of fixed destinations for the app's OVJECT page
+# (home page, store, support, privacy, later socials). Source: src/_links/<app>.json.
+LINKS_DIR = "_links"
+MAX_LINKS = 8
+LINK_LABEL_MAX = 24
+_OVJECT_HOSTS = ("ovject.github.io", "ovject.com")
+# kind -> (default English label, allowed hosts; a subdomain of an allowed host also passes)
+LINK_KINDS = {
+    "website": ("Website", _OVJECT_HOSTS),
+    "appstore": ("App Store", ("apps.apple.com",)),
+    "support": ("Support", _OVJECT_HOSTS),
+    "privacy": ("Privacy", _OVJECT_HOSTS),
+    "instagram": ("Instagram", ("instagram.com",)),
+    "x": ("X", ("x.com", "twitter.com")),
+    "threads": ("Threads", ("threads.net", "threads.com")),
+    "youtube": ("YouTube", ("youtube.com", "youtu.be")),
+    "discord": ("Discord", ("discord.gg", "discord.com")),
+    "bluesky": ("Bluesky", ("bsky.app",)),
+    "tiktok": ("TikTok", ("tiktok.com",)),
+    "github": ("GitHub", ("github.com",)),
+}
 ACTIONS = ("url", "store", "dismiss")
 SCHEMA_VERSION = 1
 MAX_ITEMS = 10
@@ -62,7 +85,7 @@ UTM_RE = re.compile(
 )
 
 TOP_REQUIRED = ("schema_version", "app", "locale", "generated_at", "ttl_hours", "items")
-TOP_ALLOWED = TOP_REQUIRED + ("signature",)
+TOP_ALLOWED = TOP_REQUIRED + ("links", "signature")
 ITEM_REQUIRED = (
     "id", "kind", "priority", "starts_at", "ends_at", "platforms",
     "title", "body", "cta", "secondary", "approval",
@@ -245,6 +268,63 @@ def _check_approval(obj, path, errors, *, allow_pending):
         errors.append(f"{path}.approved_at: must be an ISO 8601 date-time")
 
 
+def _host_allowed(host, allowed):
+    return any(host == base or host.endswith("." + base) for base in allowed)
+
+
+def validate_links(links, path, errors, *, allow_empty=False):
+    """Check a `links` array (feed level or the _links source file).
+
+    The item UTM rule does not apply here; links are fixed destinations."""
+    if not isinstance(links, list) or (not links and not allow_empty):
+        errors.append(f"{path}: must be a non-empty array of at most {MAX_LINKS} links")
+        return
+    if len(links) > MAX_LINKS:
+        errors.append(f"{path}: at most {MAX_LINKS} links (got {len(links)})")
+    seen = set()
+    for index, link in enumerate(links):
+        link_path = f"{path}[{index}]"
+        if not isinstance(link, dict):
+            errors.append(f"{link_path}: must be an object")
+            continue
+        _check_keys(link, ("kind", "url"), ("kind", "label", "url"), link_path, errors)
+        kind = link.get("kind")
+        spec = LINK_KINDS.get(kind) if isinstance(kind, str) else None
+        if spec is None:
+            errors.append(f"{link_path}.kind: unknown kind {kind!r} (allowed: {list(LINK_KINDS)})")
+        if "label" in link:
+            label = link["label"]
+            if (not isinstance(label, str) or not (1 <= len(label) <= LINK_LABEL_MAX)
+                    or not label.isascii() or not label.isprintable()):
+                errors.append(f"{link_path}.label: must be 1..{LINK_LABEL_MAX} printable ASCII chars (English); omit it for the default")
+        url = link.get("url")
+        if not isinstance(url, str) or not HTTPS_RE.match(url) or re.search(r"\s", url):
+            errors.append(f"{link_path}.url: must be an https:// URL without spaces")
+            continue
+        try:
+            parts = urlsplit(url)
+            host = (parts.hostname or "").lower()
+            parts.port  # raises ValueError on a bad port
+        except ValueError:
+            errors.append(f"{link_path}.url: not a valid URL")
+            continue
+        if parts.username is not None or parts.password is not None or parts.port is not None:
+            errors.append(f"{link_path}.url: user info and ports are not allowed")
+        if spec is not None and not _host_allowed(host, spec[1]):
+            errors.append(f"{link_path}.url: host '{host}' is not allowed for kind '{kind}' (allowed: {list(spec[1])})")
+        if url in seen:
+            errors.append(f"{link_path}.url: duplicate url")
+        seen.add(url)
+
+
+def normalize_links(links):
+    """Output form: label filled with the kind's English default when omitted."""
+    return [
+        {"kind": link["kind"], "label": link.get("label") or LINK_KINDS[link["kind"]][0], "url": link["url"]}
+        for link in links
+    ]
+
+
 def validate_item(item, index, errors, *, app=None, allow_pending=False):
     path = f"items[{index}]"
     if not isinstance(item, dict):
@@ -364,6 +444,8 @@ def validate_feed(doc, *, expected_app=None, expected_locale=None, allow_pending
     signature = doc.get("signature")
     if signature is not None and not isinstance(signature, str):
         errors.append("feed.signature: must be a string or null")
+    if "links" in doc:
+        validate_links(doc["links"], "feed.links", errors)
 
     items = doc.get("items")
     if not isinstance(items, list):
@@ -496,6 +578,31 @@ def load_sources(src_root, app):
     return sources
 
 
+def load_links(src_root, app):
+    """Links for `app` from <src_root>/_links/<app>.json ({"links": [...]}), or None.
+
+    The file sits outside src/<app>/ so the item loader never sees it. Absent
+    file or an empty array means the output carries no `links` field."""
+    path = Path(src_root) / LINKS_DIR / f"{app}.json"
+    if not path.is_file():
+        return None
+    try:
+        with path.open(encoding="utf-8") as handle:
+            doc = json.load(handle)
+    except (OSError, ValueError) as exc:
+        raise BuildError(f"{path}: cannot read JSON ({exc})")
+    errors = []
+    if not isinstance(doc, dict):
+        errors.append(f"{path}: must be a JSON object")
+    else:
+        _check_keys(doc, ("links",), ("links",), str(path), errors)
+        if "links" in doc:
+            validate_links(doc["links"], f"{path}.links", errors, allow_empty=True)
+    if errors:
+        raise BuildError("\n".join(errors))
+    return normalize_links(doc["links"]) or None
+
+
 def gate_result(source, locale):
     """'pass', 'fail', 'needs_human', or None when the gate has not run."""
     review = source.get("review")
@@ -548,7 +655,7 @@ def item_for_locale(source, locale):
 
 
 def build_locale_feed(app, locale, sources, *, generated_at, ttl_hours=DEFAULT_TTL_HOURS,
-                      include_pending=False):
+                      include_pending=False, links=None):
     """Return (feed_dict, report) for one locale. Raises BuildError on lint failure."""
     items = []
     report = {"fallbacks": [], "skipped_pending": [], "gate_failed": []}
@@ -574,8 +681,10 @@ def build_locale_feed(app, locale, sources, *, generated_at, ttl_hours=DEFAULT_T
         "generated_at": generated_at,
         "ttl_hours": ttl_hours,
         "items": items,
-        "signature": None,
     }
+    if links:
+        feed["links"] = [dict(link) for link in links]
+    feed["signature"] = None
     errors = validate_feed(feed, expected_app=app, expected_locale=locale, allow_pending=include_pending)
     if errors:
         raise BuildError(f"{app}/{locale}.json failed validation:\n  " + "\n  ".join(errors))
@@ -586,13 +695,14 @@ def build_app(app, src_root, *, generated_at=None, ttl_hours=DEFAULT_TTL_HOURS,
               include_pending=False, locales=LOCALES):
     """Return {locale: (feed, report)} for every locale."""
     sources = load_sources(src_root, app)
+    links = load_links(src_root, app)
     generated_at = generated_at or dt.datetime.now(dt.timezone.utc).replace(microsecond=0).isoformat().replace("+00:00", "Z")
     if parse_datetime(generated_at) is None:
         raise BuildError(f"--generated-at is not an ISO 8601 date-time: {generated_at}")
     return {
         locale: build_locale_feed(
             app, locale, sources, generated_at=generated_at, ttl_hours=ttl_hours,
-            include_pending=include_pending,
+            include_pending=include_pending, links=links,
         )
         for locale in locales
     }

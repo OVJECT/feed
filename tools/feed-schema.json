@@ -17,6 +17,22 @@
       "maxItems": 10,
       "items": { "$ref": "#/$defs/item" }
     },
+    "links": {
+      "description": "앱의 OVJECT 페이지에 그리는 고정 링크 줄(홈페이지·스토어·지원·개인정보, 나중에 소셜). 선택, 비어 있으면 필드 자체를 생략. 항목 UTM 규칙은 적용하지 않는다. 원본은 src/_links/<app>.json.",
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 8,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["kind", "url"],
+        "properties": {
+          "kind": { "type": "string", "enum": ["website", "appstore", "support", "privacy", "instagram", "x", "threads", "youtube", "discord", "bluesky", "tiktok", "github"] },
+          "label": { "type": "string", "minLength": 1, "maxLength": 24, "description": "영어 고정. 생략하면 kind별 기본값(Website·App Store·Support·Privacy·Instagram·X·Threads·YouTube·Discord·Bluesky·TikTok·GitHub). 생성기는 출력에 기본값을 채워 넣는다." },
+          "url": { "type": "string", "pattern": "^https://", "description": "https만. kind별 허용 호스트(website·support·privacy: ovject.github.io·ovject.com / appstore: apps.apple.com / instagram: instagram.com / x: x.com·twitter.com / threads: threads.net·threads.com / youtube: youtube.com·youtu.be / discord: discord.gg·discord.com / bluesky: bsky.app / tiktok: tiktok.com / github: github.com, 하위 도메인 포함). 중복 url 금지. 호스트 검사는 생성기가 한다." }
+        }
+      }
+    },
     "signature": { "type": ["string", "null"], "description": "items 배열 정규화 JSON에 대한 Ed25519 서명(base64). v1에서는 선택." }
   },
   "$defs": {

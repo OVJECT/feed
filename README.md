@@ -20,6 +20,7 @@ enough), commit, and the `feed` workflow validates it, regenerates `v1/`, commit
 | Path | What | Who writes it |
 |---|---|---|
 | `src/<app>/<item-id>.json` | one item per file: shared fields, `strings.<locale>` for all ten locales, `approval`, per-locale gate results `review`, memos `notes` / `gate_context` | people |
+| `src/_links/<app>.json` | `{"links": [...]}`: the link row of that app's OVJECT page (website, store, support, privacy, later socials); the same row goes into all ten locale files | people |
 | `tools/build_feed.py` | validator + generator, standard library only (**canonical copy**) | maintainers |
 | `tools/test_build_feed.py` | unit tests + the rules every item under `src/` must meet | maintainers |
 | `tools/feed-schema.json`, `tools/fixtures/` | output schema (reference) and the example the tests use | maintainers |
@@ -34,6 +35,14 @@ enough), commit, and the `feed` workflow validates it, regenerates `v1/`, commit
 3. "Commit changes": main에 직접 커밋하거나 새 브랜치 + PR. PR이면 Actions `feed`가 검사만 하고 요약(Summary)에 "무엇이 바뀔지" diff를 보여 준다.
 4. main에 들어가면 Actions `feed`가 테스트·검증 → `v1/` 재생성 → `github-actions[bot]` 커밋 → Pages가 1분쯤 뒤 재배포. 빨간 ✗면 아무것도 공개되지 않고 마지막 정상 `v1/`이 그대로 남는다(로그의 `FAIL …` 줄이 이유).
 5. 확인: Actions 탭 초록 ✓ + `https://ovject.github.io/feed/v1/<app>/<locale>.json`. 끄기: 항목 파일을 지우거나 `approval.gate`를 `pending`으로 바꾸면 그 항목이 빠진 피드가 올라간다(전부 빠지면 `items: []`).
+
+## GitHub에서 링크 추가하는 법 (how to add a link)
+
+1. `src/_links/<app>.json`을 열어 연필 아이콘으로 `links` 배열에 한 줄을 더한다: `{ "kind": "instagram", "url": "https://www.instagram.com/…" }` (계정이 생기면 `kind`와 `url`만).
+2. `kind`: `website`·`appstore`·`support`·`privacy`·`instagram`·`x`·`threads`·`youtube`·`discord`·`bluesky`·`tiktok`·`github`. `label`은 생략하면 영어 기본값(Website·App Store·…)이 들어간다. 최대 8개, 적은 순서대로 보이고, 같은 url 두 번은 안 된다.
+3. 허용 호스트가 kind마다 정해져 있다(website·support·privacy는 `ovject.github.io`·`ovject.com`, appstore는 `apps.apple.com`, 소셜은 각 서비스 도메인). https만. 어긋나면 Actions가 빨간 ✗로 멈추고 아무것도 공개되지 않는다.
+4. 커밋하면 Actions `feed`가 10개 로케일 파일 모두에 같은 `links`를 넣어 `v1/`을 다시 만든다. 링크는 항목 승인(`approval`)과 무관하게 바로 공개되고, 항목 UTM 규칙은 적용되지 않는다. 파일을 비우면(`"links": []`) 피드에서 `links` 필드가 빠진다.
+5. 참고: `https://ovject.github.io/Website/…` 주소(website·support·privacy)는 지금 `http://ovject.com/…`로 301 리다이렉트된다(2026-10-19 curl 확인). JY가 원하는 방식이라 그대로 두었고, 주소를 바꿀 일이 생기면 이 파일의 `url`만 고친다.
 
 ## 승인하는 법 (how to approve)
 
@@ -162,6 +171,6 @@ When the two differ, `src/` wins. Specification: `marketing/crosspromo/CROSS_PRO
   first approval**; keep them `pending` until their store descriptions are reconciled.
   Croco Snap!: the Google Play listing describes a different game (a beat-memory game) than the website and the App
   Store (crocodile roulette); the card follows the latter.
-- `v1/oryth/*.json`: ten files, two items each (Oddside priority 10, KAIRO priority 5), the default build of the
-  sources above. Published only once `main` is pushed.
+- `v1/oryth/*.json`: ten files, two items each (Oddside priority 10, KAIRO priority 5) plus the `links` row from
+  `src/_links/oryth.json` (website, App Store developer page, support, privacy), the default build of the sources above.
 - Published: the repository and Pages (`main`, `/`) exist since 2026-10-19 and serve whatever `main` holds.

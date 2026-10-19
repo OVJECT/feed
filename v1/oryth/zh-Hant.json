@@ -2,7 +2,7 @@
   "schema_version": 1,
   "app": "oryth",
   "locale": "zh-Hant",
-  "generated_at": "2026-10-19T12:15:12Z",
+  "generated_at": "2026-10-19T12:46:37Z",
   "ttl_hours": 12,
   "items": [
     {
@@ -73,6 +73,28 @@
         "approved_by": "JY",
         "approved_at": "2026-10-19T11:26:06Z"
       }
+    }
+  ],
+  "links": [
+    {
+      "kind": "website",
+      "label": "Website",
+      "url": "https://ovject.github.io/Website/"
+    },
+    {
+      "kind": "appstore",
+      "label": "App Store",
+      "url": "https://apps.apple.com/us/developer/junyoung-lee/id1501486371"
+    },
+    {
+      "kind": "support",
+      "label": "Support",
+      "url": "https://ovject.github.io/Website/oryth-support.html"
+    },
+    {
+      "kind": "privacy",
+      "label": "Privacy",
+      "url": "https://ovject.github.io/Website/oryth_privacy_policy_en.html"
     }
   ],
   "signature": null

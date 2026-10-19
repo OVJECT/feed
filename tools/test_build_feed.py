@@ -402,6 +402,155 @@ class RunsOnTests(unittest.TestCase):
         self.assertTrue(any("runs_on: unknown platform 'desktop'" in error for error in build_feed.validate_feed(doc)))
 
 
+GOOD_LINKS = [
+    {"kind": "website", "url": "https://ovject.github.io/Website/"},
+    {"kind": "appstore", "url": "https://apps.apple.com/us/developer/junyoung-lee/id1501486371"},
+    {"kind": "support", "label": "Help", "url": "https://ovject.github.io/Website/oryth-support.html"},
+    {"kind": "privacy", "url": "https://ovject.github.io/Website/oryth_privacy_policy_en.html"},
+]
+
+
+def write_links(root, app, doc):
+    links_dir = Path(root) / "_links"
+    links_dir.mkdir(parents=True, exist_ok=True)
+    (links_dir / f"{app}.json").write_text(json.dumps(doc, ensure_ascii=False, indent=2), encoding="utf-8")
+
+
+class LinksTests(unittest.TestCase):
+    """Feed-level `links`: src/_links/<app>.json -> the same links in all 10 locale files."""
+
+    def build(self, links_doc=None, app="testapp"):
+        with tempfile.TemporaryDirectory() as tmp:
+            write_sources(tmp, app, [approved_source()])
+            if links_doc is not None:
+                write_links(tmp, app, links_doc)
+            return build_feed.build_app(app, tmp, generated_at=GENERATED_AT)
+
+    def load_error(self, links):
+        with tempfile.TemporaryDirectory() as tmp:
+            write_sources(tmp, "testapp", [approved_source()])
+            write_links(tmp, "testapp", {"links": links})
+            with self.assertRaises(build_feed.BuildError) as raised:
+                build_feed.load_links(tmp, "testapp")
+        return str(raised.exception)
+
+    def test_links_reach_every_locale_in_order_with_default_labels(self):
+        built = self.build({"links": GOOD_LINKS})
+        self.assertEqual(sorted(built), sorted(build_feed.LOCALES))
+        expected = [
+            {"kind": "website", "label": "Website", "url": "https://ovject.github.io/Website/"},
+            {"kind": "appstore", "label": "App Store", "url": "https://apps.apple.com/us/developer/junyoung-lee/id1501486371"},
+            {"kind": "support", "label": "Help", "url": "https://ovject.github.io/Website/oryth-support.html"},
+            {"kind": "privacy", "label": "Privacy", "url": "https://ovject.github.io/Website/oryth_privacy_policy_en.html"},
+        ]
+        for locale, (feed, _report) in built.items():
+            self.assertEqual(feed["links"], expected, locale)
+            self.assertEqual(build_feed.validate_feed(feed, expected_app="testapp", expected_locale=locale), [], locale)
+        # the item UTM rule does not apply to links: none of them carries utm_*
+        self.assertFalse(any("utm_" in link["url"] for link in expected))
+
+    def test_no_links_file_or_empty_array_omits_the_field(self):
+        for links_doc in (None, {"links": []}):
+            built = self.build(links_doc)
+            for locale, (feed, _report) in built.items():
+                self.assertNotIn("links", feed, f"{links_doc} {locale}")
+                self.assertEqual(build_feed.validate_feed(feed, expected_app="testapp", expected_locale=locale), [])
+
+    def test_links_directory_is_not_an_app(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            write_sources(tmp, "testapp", [approved_source()])
+            write_links(tmp, "testapp", {"links": GOOD_LINKS})
+            self.assertEqual(build_feed.discover_apps(tmp), ["testapp"])
+
+    def test_cli_builds_links_into_the_written_files(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            src = Path(tmp) / "src"
+            out = Path(tmp) / "out"
+            write_sources(src, "testapp", [approved_source()])
+            write_links(src, "testapp", {"links": GOOD_LINKS})
+            stdout = io.StringIO()
+            with redirect_stdout(stdout):
+                code = build_feed.main(["--src", str(src), "--out", str(out), "--generated-at", GENERATED_AT])
+            self.assertEqual(code, 0, stdout.getvalue())
+            doc = json.loads((out / "testapp" / "th.json").read_text(encoding="utf-8"))
+            self.assertEqual([link["kind"] for link in doc["links"]], ["website", "appstore", "support", "privacy"])
+            with redirect_stdout(io.StringIO()):
+                self.assertEqual(build_feed.main(["--check", str(out / "testapp" / "th.json")]), 0)
+
+    def test_rejects_non_https_url(self):
+        self.assertIn("https://", self.load_error([{"kind": "website", "url": "http://ovject.com/"}]))
+
+    def test_rejects_host_not_allowed_for_the_kind(self):
+        message = self.load_error([{"kind": "website", "url": "https://example.com/"}])
+        self.assertIn("host 'example.com' is not allowed for kind 'website'", message)
+        self.assertIn("not allowed", self.load_error([{"kind": "appstore", "url": "https://ovject.com/"}]))
+        # look-alike and user-info tricks
+        self.assertIn("not allowed", self.load_error([{"kind": "website", "url": "https://ovject.com.evil.test/"}]))
+        self.assertIn("not allowed", self.load_error([{"kind": "website", "url": "https://notovject.com/"}]))
+        self.assertIn("user info", self.load_error([{"kind": "website", "url": "https://ovject.com@evil.test/"}]))
+
+    def test_allowed_hosts_accept_subdomains_of_the_listed_host(self):
+        links = [
+            {"kind": "youtube", "url": "https://www.youtube.com/@ovject"},
+            {"kind": "x", "url": "https://x.com/ovject"},
+            {"kind": "discord", "url": "https://discord.gg/abc"},
+            {"kind": "github", "url": "https://github.com/OVJECT"},
+        ]
+        with tempfile.TemporaryDirectory() as tmp:
+            write_links(tmp, "testapp", {"links": links})
+            self.assertEqual(len(build_feed.load_links(tmp, "testapp")), 4)
+
+    def test_rejects_duplicate_url(self):
+        message = self.load_error([
+            {"kind": "website", "url": "https://ovject.com/"},
+            {"kind": "support", "url": "https://ovject.com/"},
+        ])
+        self.assertIn("duplicate url", message)
+
+    def test_rejects_unknown_kind(self):
+        self.assertIn("unknown kind 'myspace'", self.load_error([{"kind": "myspace", "url": "https://ovject.com/"}]))
+
+    def test_rejects_more_than_eight_links(self):
+        links = [{"kind": "website", "url": f"https://ovject.com/p{index}"} for index in range(9)]
+        self.assertIn("at most 8 links", self.load_error(links))
+        eight = links[:8]
+        with tempfile.TemporaryDirectory() as tmp:
+            write_links(tmp, "testapp", {"links": eight})
+            self.assertEqual(len(build_feed.load_links(tmp, "testapp")), 8)
+
+    def test_rejects_bad_label_extra_key_and_bad_file_shape(self):
+        self.assertIn("label", self.load_error([{"kind": "website", "label": "홈페이지", "url": "https://ovject.com/"}]))
+        self.assertIn("label", self.load_error([{"kind": "website", "label": "x" * 25, "url": "https://ovject.com/"}]))
+        self.assertIn("unknown key 'rel'", self.load_error([{"kind": "website", "url": "https://ovject.com/", "rel": "me"}]))
+        with tempfile.TemporaryDirectory() as tmp:
+            write_links(tmp, "testapp", {"links": GOOD_LINKS, "extra": 1})
+            with self.assertRaises(build_feed.BuildError) as raised:
+                build_feed.load_links(tmp, "testapp")
+            self.assertIn("unknown key 'extra'", str(raised.exception))
+            write_links(tmp, "testapp", [])
+            with self.assertRaises(build_feed.BuildError):
+                build_feed.load_links(tmp, "testapp")
+
+    def test_feed_level_validation_catches_hand_edited_output(self):
+        doc = json.loads(EXAMPLE.read_text(encoding="utf-8"))
+        doc["links"] = [{"kind": "website", "label": "Website", "url": "https://ovject.com/"}]
+        self.assertEqual(build_feed.validate_feed(doc, expected_app="kairo", expected_locale="ko"), [])
+        doc["links"] = []
+        self.assertTrue(any("non-empty array" in error for error in build_feed.validate_feed(doc)))
+        doc["links"] = [{"kind": "website", "url": "https://example.com/"}]
+        self.assertTrue(any("not allowed" in error for error in build_feed.validate_feed(doc)))
+
+    def test_committed_links_files_build_into_every_locale(self):
+        links_dir = FEED_SRC / "_links"
+        for path in sorted(links_dir.glob("*.json")) if links_dir.is_dir() else []:
+            app = path.stem
+            links = build_feed.load_links(FEED_SRC, app)
+            self.assertTrue(links, f"{path.name} must hold at least one link")
+            built = build_feed.build_app(app, FEED_SRC, generated_at=GENERATED_AT)
+            for locale, (feed, _report) in built.items():
+                self.assertEqual(feed["links"], links, f"{app}/{locale}")
+
+
 class CliTests(unittest.TestCase):
     def run_main(self, argv):
         out = io.StringIO()
