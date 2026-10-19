@@ -22,7 +22,7 @@ enough), commit, and the `feed` workflow validates it, regenerates `v1/`, commit
 ## GitHub에서 고치는 법 (how to edit on GitHub)
 
 1. `src/<app>/<item-id>.json`을 열어 연필 아이콘으로 고친다: 문구는 `strings.<locale>`, 기간은 `starts_at`·`ends_at`, 링크는 `cta.url`(https + utm 4종). 문구를 바꾼 새 캠페인은 **새 id = 새 파일**(파일 이름 = id).
-2. 공개 조건: `approval.gate`가 `pending`이 아니고 `approved_by`·`approved_at`이 채워진 항목만 나가고, `review.<locale>.gate`가 `pass`인 로케일 파일에만 들어간다(아니면 그 로케일에서만 빠진다, 영어 대체 없음).
+2. 공개 조건: `approval.gate`가 `pending`이 아니고 `approved_by`·`approved_at`이 채워진 항목만 나가고, `review.<locale>.gate`가 `pass`인 로케일 파일에만 들어간다(아니면 그 로케일에서만 빠진다, 영어 대체 없음). 앱은 자기 자신을 소개하지 않는다: `src/<app>/`의 항목이 `tags`에 `<app>`을 갖거나 id가 `<app>-`로 시작하면 검증 오류(JY 결정 2026-10-19).
 3. "Commit changes": main에 직접 커밋하거나 새 브랜치 + PR. PR이면 Actions `feed`가 검사만 하고 요약(Summary)에 "무엇이 바뀔지" diff를 보여 준다.
 4. main에 들어가면 Actions `feed`가 테스트·검증 → `v1/` 재생성 → `github-actions[bot]` 커밋 → Pages가 1분쯤 뒤 재배포. 빨간 ✗면 아무것도 공개되지 않고 마지막 정상 `v1/`이 그대로 남는다(로그의 `FAIL …` 줄이 이유).
 5. 확인: Actions 탭 초록 ✓ + `https://ovject.github.io/feed/v1/<app>/<locale>.json`. 끄기: 항목 파일을 지우거나 `approval.gate`를 `pending`으로 바꾸면 그 항목이 빠진 피드가 올라간다(전부 빠지면 `items: []`).
@@ -74,6 +74,8 @@ deployment, the fallback is switching Pages to the Actions deployment (`actions/
 
 - An item is published only when `approval.gate` is not `pending` **and** `approved_by` is set; a `review.<locale>.gate`
   other than `pass` leaves the item out of that locale's file (no English fallback for a failed gate).
+- An app never introduces itself: in `src/<app>/`, an item whose `tags` contain `<app>` or whose id starts with
+  `<app>-` is a validation error for that app's feed (JY, 2026-10-19). The same item is fine in another app's folder.
 - Each `strings.<locale>` is complete (`title`, `body`, `cta_label`, `secondary_label`) or absent; the tests require
   all ten locales for every committed item (OVJECT rule, 2026-10-19).
 - Limits: title ≤ 40, body ≤ 120, labels ≤ 16 characters; HTTPS only; `cta.url` carries `utm_source=<app>`,

@@ -443,6 +443,21 @@ def discover_apps(src_root):
     return apps
 
 
+def self_promotion_errors(source, app, path):
+    """An app never introduces itself (JY, 2026-10-19).
+
+    In the feed built for `app`, an item whose `tags` contain `app` or whose
+    id starts with "<app>-" is an error, not a silent skip."""
+    errors = []
+    item_id = source.get("id")
+    if isinstance(item_id, str) and item_id.startswith(f"{app}-"):
+        errors.append(f"{path}: id '{item_id}' starts with '{app}-' but this is the {app} feed; an app does not introduce itself")
+    tags = source.get("tags")
+    if isinstance(tags, list) and app in tags:
+        errors.append(f"{path}: tags contain '{app}' but this is the {app} feed; an app does not introduce itself")
+    return errors
+
+
 def load_sources(src_root, app):
     app_dir = Path(src_root) / app
     if not app_dir.is_dir():
@@ -457,6 +472,7 @@ def load_sources(src_root, app):
             errors.append(f"{path}: cannot read JSON ({exc})")
             continue
         errors.extend(validate_source(source, path))
+        errors.extend(self_promotion_errors(source, app, path))
         sources.append(source)
     if errors:
         raise BuildError("\n".join(errors))

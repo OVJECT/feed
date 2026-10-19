@@ -338,6 +338,31 @@ class SourceValidationTests(unittest.TestCase):
                 build_feed.build_app("testapp", tmp, generated_at=GENERATED_AT)
         self.assertIn("utm", str(raised.exception))
 
+    def test_item_about_the_target_app_itself_is_rejected(self):
+        """JY rule (2026-10-19): an app never introduces itself. Tagged with the app,
+        or id prefixed '<app>-', is an error for that app's feed; fine for another app."""
+        tagged = approved_source(tags=["testapp", "news"])
+        with tempfile.TemporaryDirectory() as tmp:
+            write_sources(tmp, "testapp", [tagged])
+            with self.assertRaises(build_feed.BuildError) as raised:
+                build_feed.load_sources(tmp, "testapp")
+        self.assertIn("tags contain 'testapp'", str(raised.exception))
+        self.assertIn("does not introduce itself", str(raised.exception))
+
+        prefixed = source_for_app("testapp", "testapp-update-2026w50", tags=["other"])
+        with tempfile.TemporaryDirectory() as tmp:
+            write_sources(tmp, "testapp", [prefixed])
+            with self.assertRaises(build_feed.BuildError) as raised:
+                build_feed.load_sources(tmp, "testapp")
+        self.assertIn("starts with 'testapp-'", str(raised.exception))
+
+        # The same item is allowed in another app's feed (utm_source must match that app).
+        for_other = source_for_app("otherapp", "testapp-update-2026w50", tags=["testapp"])
+        with tempfile.TemporaryDirectory() as tmp:
+            write_sources(tmp, "otherapp", [for_other])
+            built = build_feed.build_app("otherapp", tmp, generated_at=GENERATED_AT)
+        self.assertEqual(built["en"][0]["items"][0]["id"], "testapp-update-2026w50")
+
 
 class CliTests(unittest.TestCase):
     def run_main(self, argv):
