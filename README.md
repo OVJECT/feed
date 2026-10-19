@@ -158,6 +158,8 @@ When the two differ, `src/` wins. Specification: `marketing/crosspromo/CROSS_PRO
   Nimble gate: 41 of 50 locale strings `pass`, 9 `needs_human` (Field Day `en`·`zh-Hans`·`es`·`fr`·`de`·`th`·`vi`,
   PITAPATO `vi`, Croco Snap `th`). **Approving means setting `approval` and also reading each `needs_human` locale
   and setting its `review.<locale>.gate` to `pass`; a locale left at `needs_human` simply omits that item.**
+  **On hold (JY, 2026-10-19): `croco-snap-intro-2026w44` and `pitapato-field-day-intro-2026w44` are left out of the
+  first approval**; keep them `pending` until their store descriptions are reconciled.
   Croco Snap!: the Google Play listing describes a different game (a beat-memory game) than the website and the App
   Store (crocodile roulette); the card follows the latter.
 - `v1/oryth/*.json`: ten files, two items each (Oddside priority 10, KAIRO priority 5), the default build of the

@@ -1,5 +1,5 @@
 {
-  "notes": "OVJECT 앱 소개(Oryth 'OVJECT 앱' 페이지). 2026-10-19 claude-code 세션이 추가했고 approval은 pending이다 — JY가 approval을 채우면 게시된다. 우선순위는 KAIRO(5) 아래로 정렬용이며 바꿔도 된다. 출처: 사이트 feed/croco-snap.md와 App Store 영문 설명. Google Play 목록은 다른 게임(박자 기억 게임)을 설명하므로 runs_on의 android는 사이트의 Google Play 링크를 근거로 했을 뿐 설명과 일치하지 않는다 — JY 확인 필요. 문구는 10개 로케일 모두 번역 엔진 없이 직접 썼고(앱·고유명은 라틴 표기, 한국어는 해요체), 수치·출시 약속·최상급은 쓰지 않았다. 이미지는 넣지 않았다(사이트 자산은 웹 전용 경로). notes·review·gate_context는 생성기가 버린다.",
+  "notes": "[보류: JY 결정 2026-10-19, 승인 대상에서 일단 제외. 사유: Google Play 설명이 사이트·App Store와 다른 게임] OVJECT 앱 소개(Oryth 'OVJECT 앱' 페이지).2026-10-19 claude-code 세션이 추가했고 approval은 pending이다 — JY가 approval을 채우면 게시된다. 우선순위는 KAIRO(5) 아래로 정렬용이며 바꿔도 된다. 출처: 사이트 feed/croco-snap.md와 App Store 영문 설명. Google Play 목록은 다른 게임(박자 기억 게임)을 설명하므로 runs_on의 android는 사이트의 Google Play 링크를 근거로 했을 뿐 설명과 일치하지 않는다 — JY 확인 필요. 문구는 10개 로케일 모두 번역 엔진 없이 직접 썼고(앱·고유명은 라틴 표기, 한국어는 해요체), 수치·출시 약속·최상급은 쓰지 않았다. 이미지는 넣지 않았다(사이트 자산은 웹 전용 경로). notes·review·gate_context는 생성기가 버린다.",
   "id": "croco-snap-intro-2026w44",
   "kind": "promo",
   "priority": 2,
