@@ -1,0 +1,125 @@
+{
+  "schema_version": 1,
+  "app": "pitapato",
+  "locale": "vi",
+  "generated_at": "2026-10-20T00:55:39Z",
+  "ttl_hours": 12,
+  "items": [
+    {
+      "id": "kairo-intro-2026w44",
+      "kind": "promo",
+      "priority": 5,
+      "starts_at": "2026-10-19T12:00:00Z",
+      "ends_at": "2026-12-31T00:00:00Z",
+      "platforms": [
+        "ios",
+        "android"
+      ],
+      "runs_on": [
+        "ios"
+      ],
+      "min_app_version": "1.0.0",
+      "max_impressions_per_user": 20,
+      "title": "KAIRO, ứng dụng máy ảnh phim của OVJECT",
+      "body": "Ứng dụng máy ảnh phim cho iOS. Halation và bloom tính từ ánh sáng thật, đèn sáng HDR, bộ lọc tương phản đen trắng.",
+      "cta": {
+        "label": "Tìm hiểu thêm",
+        "action": "store"
+      },
+      "secondary": {
+        "label": "Để sau",
+        "action": "dismiss"
+      },
+      "store": {
+        "ios_app_id": "6745693309"
+      },
+      "tags": [
+        "kairo"
+      ],
+      "approval": {
+        "gate": "pass",
+        "approved_by": "JY",
+        "approved_at": "2026-10-19T11:26:06Z"
+      }
+    },
+    {
+      "id": "random-taptap-intro-2026w44",
+      "kind": "promo",
+      "priority": 4,
+      "starts_at": "2026-10-19T13:45:00Z",
+      "ends_at": "2099-01-01T00:00:00Z",
+      "platforms": [
+        "ios",
+        "android"
+      ],
+      "runs_on": [
+        "ios",
+        "android"
+      ],
+      "min_app_version": "1.0.0",
+      "max_impressions_per_user": 20,
+      "title": "Random TapTap, ứng dụng của OVJECT",
+      "body": "Mọi người đặt ngón tay lên màn hình, ánh sáng chạy rồi dừng ở một người. Chọn người thắng, chia đội hoặc xếp thứ tự.",
+      "cta": {
+        "label": "Trên App Store",
+        "action": "store"
+      },
+      "secondary": {
+        "label": "Để sau",
+        "action": "dismiss"
+      },
+      "store": {
+        "ios_app_id": "6740798110",
+        "android_package": "com.OVJECT.TapTap"
+      },
+      "tags": [
+        "random-taptap"
+      ],
+      "approval": {
+        "gate": "pass",
+        "approved_by": "JY",
+        "approved_at": "2026-10-19T13:46:00Z"
+      }
+    },
+    {
+      "id": "croco-roulette-intro-2026w44",
+      "kind": "promo",
+      "priority": 1,
+      "starts_at": "2026-10-19T13:45:00Z",
+      "ends_at": "2099-01-01T00:00:00Z",
+      "platforms": [
+        "ios",
+        "android"
+      ],
+      "runs_on": [
+        "ios",
+        "android"
+      ],
+      "min_app_version": "1.0.0",
+      "max_impressions_per_user": 20,
+      "title": "Croco? Croco Roulette của OVJECT",
+      "body": "Bản số đơn giản của trò nhổ răng cá sấu đồ chơi. Hợp để cá bữa trưa hay định hình phạt; chơi một mình thì không vui.",
+      "cta": {
+        "label": "Trên App Store",
+        "action": "store"
+      },
+      "secondary": {
+        "label": "Để sau",
+        "action": "dismiss"
+      },
+      "store": {
+        "ios_app_id": "1501486372",
+        "android_package": "com.OVJECT.CrocoR"
+      },
+      "tags": [
+        "croco-roulette"
+      ],
+      "approval": {
+        "gate": "pass",
+        "approved_by": "JY",
+        "approved_at": "2026-10-19T13:46:00Z"
+      }
+    }
+  ],
+  "signature": null
+}

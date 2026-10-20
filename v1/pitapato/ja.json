@@ -1,0 +1,125 @@
+{
+  "schema_version": 1,
+  "app": "pitapato",
+  "locale": "ja",
+  "generated_at": "2026-10-20T00:55:39Z",
+  "ttl_hours": 12,
+  "items": [
+    {
+      "id": "kairo-intro-2026w44",
+      "kind": "promo",
+      "priority": 5,
+      "starts_at": "2026-10-19T12:00:00Z",
+      "ends_at": "2026-12-31T00:00:00Z",
+      "platforms": [
+        "ios",
+        "android"
+      ],
+      "runs_on": [
+        "ios"
+      ],
+      "min_app_version": "1.0.0",
+      "max_impressions_per_user": 20,
+      "title": "OVJECTのフィルムカメラアプリ、KAIRO",
+      "body": "iOS向けのフィルムカメラアプリです。実際の光から計算したハレーションとにじみ、HDRで光る照明、白黒のコントラストフィルター。",
+      "cta": {
+        "label": "詳しく見る",
+        "action": "store"
+      },
+      "secondary": {
+        "label": "あとで",
+        "action": "dismiss"
+      },
+      "store": {
+        "ios_app_id": "6745693309"
+      },
+      "tags": [
+        "kairo"
+      ],
+      "approval": {
+        "gate": "pass",
+        "approved_by": "JY",
+        "approved_at": "2026-10-19T11:26:06Z"
+      }
+    },
+    {
+      "id": "random-taptap-intro-2026w44",
+      "kind": "promo",
+      "priority": 4,
+      "starts_at": "2026-10-19T13:45:00Z",
+      "ends_at": "2099-01-01T00:00:00Z",
+      "platforms": [
+        "ios",
+        "android"
+      ],
+      "runs_on": [
+        "ios",
+        "android"
+      ],
+      "min_app_version": "1.0.0",
+      "max_impressions_per_user": 20,
+      "title": "OVJECTの決定アプリ、Random TapTap",
+      "body": "みんなで画面に指を置くと、光が回って一人のところで止まります。当選者選び、チーム分け、順番決めができます。",
+      "cta": {
+        "label": "App Storeで見る",
+        "action": "store"
+      },
+      "secondary": {
+        "label": "あとで",
+        "action": "dismiss"
+      },
+      "store": {
+        "ios_app_id": "6740798110",
+        "android_package": "com.OVJECT.TapTap"
+      },
+      "tags": [
+        "random-taptap"
+      ],
+      "approval": {
+        "gate": "pass",
+        "approved_by": "JY",
+        "approved_at": "2026-10-19T13:46:00Z"
+      }
+    },
+    {
+      "id": "croco-roulette-intro-2026w44",
+      "kind": "promo",
+      "priority": 1,
+      "starts_at": "2026-10-19T13:45:00Z",
+      "ends_at": "2099-01-01T00:00:00Z",
+      "platforms": [
+        "ios",
+        "android"
+      ],
+      "runs_on": [
+        "ios",
+        "android"
+      ],
+      "min_app_version": "1.0.0",
+      "max_impressions_per_user": 20,
+      "title": "OVJECTのワニ歯ゲーム、Croco? Croco Roulette",
+      "body": "おもちゃのワニの歯ゲームをほぼそのままデジタルにしたアプリです。ランチの賭けや罰ゲームに向いていて、一人では楽しくありません。",
+      "cta": {
+        "label": "App Storeで見る",
+        "action": "store"
+      },
+      "secondary": {
+        "label": "あとで",
+        "action": "dismiss"
+      },
+      "store": {
+        "ios_app_id": "1501486372",
+        "android_package": "com.OVJECT.CrocoR"
+      },
+      "tags": [
+        "croco-roulette"
+      ],
+      "approval": {
+        "gate": "pass",
+        "approved_by": "JY",
+        "approved_at": "2026-10-19T13:46:00Z"
+      }
+    }
+  ],
+  "signature": null
+}

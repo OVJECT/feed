@@ -1,0 +1,125 @@
+{
+  "schema_version": 1,
+  "app": "pitapato",
+  "locale": "zh-Hans",
+  "generated_at": "2026-10-20T00:55:39Z",
+  "ttl_hours": 12,
+  "items": [
+    {
+      "id": "kairo-intro-2026w44",
+      "kind": "promo",
+      "priority": 5,
+      "starts_at": "2026-10-19T12:00:00Z",
+      "ends_at": "2026-12-31T00:00:00Z",
+      "platforms": [
+        "ios",
+        "android"
+      ],
+      "runs_on": [
+        "ios"
+      ],
+      "min_app_version": "1.0.0",
+      "max_impressions_per_user": 20,
+      "title": "OVJECT 的胶片相机应用：KAIRO",
+      "body": "一款 iOS 胶片相机应用。根据真实光线计算的光晕与眩光、在 HDR 屏幕上发亮的灯光，以及黑白对比滤镜。",
+      "cta": {
+        "label": "了解更多",
+        "action": "store"
+      },
+      "secondary": {
+        "label": "以后再说",
+        "action": "dismiss"
+      },
+      "store": {
+        "ios_app_id": "6745693309"
+      },
+      "tags": [
+        "kairo"
+      ],
+      "approval": {
+        "gate": "pass",
+        "approved_by": "JY",
+        "approved_at": "2026-10-19T11:26:06Z"
+      }
+    },
+    {
+      "id": "random-taptap-intro-2026w44",
+      "kind": "promo",
+      "priority": 4,
+      "starts_at": "2026-10-19T13:45:00Z",
+      "ends_at": "2099-01-01T00:00:00Z",
+      "platforms": [
+        "ios",
+        "android"
+      ],
+      "runs_on": [
+        "ios",
+        "android"
+      ],
+      "min_app_version": "1.0.0",
+      "max_impressions_per_user": 20,
+      "title": "OVJECT 的决定小帮手：Random TapTap",
+      "body": "大家把手指放在屏幕上，灯光转动后停在其中一人身上。可以抽出幸运者、分队，或随机排出顺序。",
+      "cta": {
+        "label": "在 App Store 查看",
+        "action": "store"
+      },
+      "secondary": {
+        "label": "以后再说",
+        "action": "dismiss"
+      },
+      "store": {
+        "ios_app_id": "6740798110",
+        "android_package": "com.OVJECT.TapTap"
+      },
+      "tags": [
+        "random-taptap"
+      ],
+      "approval": {
+        "gate": "pass",
+        "approved_by": "JY",
+        "approved_at": "2026-10-19T13:46:00Z"
+      }
+    },
+    {
+      "id": "croco-roulette-intro-2026w44",
+      "kind": "promo",
+      "priority": 1,
+      "starts_at": "2026-10-19T13:45:00Z",
+      "ends_at": "2099-01-01T00:00:00Z",
+      "platforms": [
+        "ios",
+        "android"
+      ],
+      "runs_on": [
+        "ios",
+        "android"
+      ],
+      "min_app_version": "1.0.0",
+      "max_impressions_per_user": 20,
+      "title": "OVJECT 的鳄鱼牙齿游戏：Croco? Croco Roulette",
+      "body": "把玩具鳄鱼拔牙游戏几乎原样搬进手机的应用。适合赌午餐、定惩罚，一个人玩没意思。",
+      "cta": {
+        "label": "在 App Store 查看",
+        "action": "store"
+      },
+      "secondary": {
+        "label": "以后再说",
+        "action": "dismiss"
+      },
+      "store": {
+        "ios_app_id": "1501486372",
+        "android_package": "com.OVJECT.CrocoR"
+      },
+      "tags": [
+        "croco-roulette"
+      ],
+      "approval": {
+        "gate": "pass",
+        "approved_by": "JY",
+        "approved_at": "2026-10-19T13:46:00Z"
+      }
+    }
+  ],
+  "signature": null
+}

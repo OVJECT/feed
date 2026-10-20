@@ -1,0 +1,125 @@
+{
+  "schema_version": 1,
+  "app": "pitapato",
+  "locale": "fr",
+  "generated_at": "2026-10-20T00:55:39Z",
+  "ttl_hours": 12,
+  "items": [
+    {
+      "id": "kairo-intro-2026w44",
+      "kind": "promo",
+      "priority": 5,
+      "starts_at": "2026-10-19T12:00:00Z",
+      "ends_at": "2026-12-31T00:00:00Z",
+      "platforms": [
+        "ios",
+        "android"
+      ],
+      "runs_on": [
+        "ios"
+      ],
+      "min_app_version": "1.0.0",
+      "max_impressions_per_user": 20,
+      "title": "KAIRO, l'appli photo argentique d'OVJECT",
+      "body": "Appli photo argentique pour iOS. Halation et bloom calculés d'après la lumière réelle, éclat HDR, filtres noir et blanc.",
+      "cta": {
+        "label": "En savoir plus",
+        "action": "store"
+      },
+      "secondary": {
+        "label": "Plus tard",
+        "action": "dismiss"
+      },
+      "store": {
+        "ios_app_id": "6745693309"
+      },
+      "tags": [
+        "kairo"
+      ],
+      "approval": {
+        "gate": "pass",
+        "approved_by": "JY",
+        "approved_at": "2026-10-19T11:26:06Z"
+      }
+    },
+    {
+      "id": "random-taptap-intro-2026w44",
+      "kind": "promo",
+      "priority": 4,
+      "starts_at": "2026-10-19T13:45:00Z",
+      "ends_at": "2099-01-01T00:00:00Z",
+      "platforms": [
+        "ios",
+        "android"
+      ],
+      "runs_on": [
+        "ios",
+        "android"
+      ],
+      "min_app_version": "1.0.0",
+      "max_impressions_per_user": 20,
+      "title": "Random TapTap, le tirage d'OVJECT",
+      "body": "Chacun pose un doigt sur l'écran et une lumière s'arrête sur l'un d'eux. Gagnants, équipes ou ordre de passage.",
+      "cta": {
+        "label": "Sur l'App Store",
+        "action": "store"
+      },
+      "secondary": {
+        "label": "Plus tard",
+        "action": "dismiss"
+      },
+      "store": {
+        "ios_app_id": "6740798110",
+        "android_package": "com.OVJECT.TapTap"
+      },
+      "tags": [
+        "random-taptap"
+      ],
+      "approval": {
+        "gate": "pass",
+        "approved_by": "JY",
+        "approved_at": "2026-10-19T13:46:00Z"
+      }
+    },
+    {
+      "id": "croco-roulette-intro-2026w44",
+      "kind": "promo",
+      "priority": 1,
+      "starts_at": "2026-10-19T13:45:00Z",
+      "ends_at": "2099-01-01T00:00:00Z",
+      "platforms": [
+        "ios",
+        "android"
+      ],
+      "runs_on": [
+        "ios",
+        "android"
+      ],
+      "min_app_version": "1.0.0",
+      "max_impressions_per_user": 20,
+      "title": "Croco? Croco Roulette, par OVJECT",
+      "body": "Version numérique simple du jeu du crocodile dentiste. Pour parier le déjeuner ou fixer des gages ; seul, pas drôle.",
+      "cta": {
+        "label": "Sur l'App Store",
+        "action": "store"
+      },
+      "secondary": {
+        "label": "Plus tard",
+        "action": "dismiss"
+      },
+      "store": {
+        "ios_app_id": "1501486372",
+        "android_package": "com.OVJECT.CrocoR"
+      },
+      "tags": [
+        "croco-roulette"
+      ],
+      "approval": {
+        "gate": "pass",
+        "approved_by": "JY",
+        "approved_at": "2026-10-19T13:46:00Z"
+      }
+    }
+  ],
+  "signature": null
+}
