@@ -1,0 +1,125 @@
+{
+  "schema_version": 1,
+  "app": "croco-roulette",
+  "locale": "th",
+  "generated_at": "2026-10-20T00:29:37Z",
+  "ttl_hours": 12,
+  "items": [
+    {
+      "id": "kairo-intro-2026w44",
+      "kind": "promo",
+      "priority": 5,
+      "starts_at": "2026-10-19T12:00:00Z",
+      "ends_at": "2026-12-31T00:00:00Z",
+      "platforms": [
+        "ios",
+        "android"
+      ],
+      "runs_on": [
+        "ios"
+      ],
+      "min_app_version": "1.0.0",
+      "max_impressions_per_user": 20,
+      "title": "KAIRO แอปกล้องฟิล์มจาก OVJECT",
+      "body": "แอปกล้องฟิล์มสำหรับ iOS ฮาเลชันและบลูมคำนวณจากแสงจริง แสงไฟที่เรืองบนจอ HDR และฟิลเตอร์ขาวดำแบบคอนทราสต์",
+      "cta": {
+        "label": "ดูเพิ่มเติม",
+        "action": "store"
+      },
+      "secondary": {
+        "label": "ไว้ทีหลัง",
+        "action": "dismiss"
+      },
+      "store": {
+        "ios_app_id": "6745693309"
+      },
+      "tags": [
+        "kairo"
+      ],
+      "approval": {
+        "gate": "pass",
+        "approved_by": "JY",
+        "approved_at": "2026-10-19T11:26:06Z"
+      }
+    },
+    {
+      "id": "random-taptap-intro-2026w44",
+      "kind": "promo",
+      "priority": 4,
+      "starts_at": "2026-10-19T13:45:00Z",
+      "ends_at": "2099-01-01T00:00:00Z",
+      "platforms": [
+        "ios",
+        "android"
+      ],
+      "runs_on": [
+        "ios",
+        "android"
+      ],
+      "min_app_version": "1.0.0",
+      "max_impressions_per_user": 20,
+      "title": "Random TapTap แอปช่วยเลือกจาก OVJECT",
+      "body": "ทุกคนวางนิ้วบนหน้าจอ แล้วแสงไฟจะวิ่งวนไปหยุดที่ใครคนหนึ่ง ใช้สุ่มผู้โชคดี แบ่งทีม หรือเรียงลำดับก็ได้",
+      "cta": {
+        "label": "ดูบน App Store",
+        "action": "store"
+      },
+      "secondary": {
+        "label": "ไว้ทีหลัง",
+        "action": "dismiss"
+      },
+      "store": {
+        "ios_app_id": "6740798110",
+        "android_package": "com.OVJECT.TapTap"
+      },
+      "tags": [
+        "random-taptap"
+      ],
+      "approval": {
+        "gate": "pass",
+        "approved_by": "JY",
+        "approved_at": "2026-10-19T13:46:00Z"
+      }
+    },
+    {
+      "id": "pitapato-intro-2026w44",
+      "kind": "promo",
+      "priority": 3,
+      "starts_at": "2026-10-19T13:52:00Z",
+      "ends_at": "2099-01-01T00:00:00Z",
+      "platforms": [
+        "ios",
+        "android"
+      ],
+      "runs_on": [
+        "ios",
+        "android"
+      ],
+      "min_app_version": "1.0.0",
+      "max_impressions_per_user": 20,
+      "title": "PITAPATO รูเล็ตโจรสลัดจาก OVJECT",
+      "body": "เกมรูเล็ตโจรสลัดที่มีตัวตุ่นอยู่ในถัง เสียบมีดของเล่นลงในรู แล้วตกลงบทลงโทษไว้สำหรับคนที่ทำให้ตัวตุ่นเด้งออกมา",
+      "cta": {
+        "label": "ดูบน App Store",
+        "action": "store"
+      },
+      "secondary": {
+        "label": "ไว้ทีหลัง",
+        "action": "dismiss"
+      },
+      "store": {
+        "ios_app_id": "1505739502",
+        "android_package": "com.OVJECT.Pitapato"
+      },
+      "tags": [
+        "pitapato"
+      ],
+      "approval": {
+        "gate": "pass",
+        "approved_by": "JY",
+        "approved_at": "2026-10-19T13:53:00Z"
+      }
+    }
+  ],
+  "signature": null
+}

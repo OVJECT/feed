@@ -1,0 +1,125 @@
+{
+  "schema_version": 1,
+  "app": "croco-roulette",
+  "locale": "ja",
+  "generated_at": "2026-10-20T00:29:37Z",
+  "ttl_hours": 12,
+  "items": [
+    {
+      "id": "kairo-intro-2026w44",
+      "kind": "promo",
+      "priority": 5,
+      "starts_at": "2026-10-19T12:00:00Z",
+      "ends_at": "2026-12-31T00:00:00Z",
+      "platforms": [
+        "ios",
+        "android"
+      ],
+      "runs_on": [
+        "ios"
+      ],
+      "min_app_version": "1.0.0",
+      "max_impressions_per_user": 20,
+      "title": "OVJECTのフィルムカメラアプリ、KAIRO",
+      "body": "iOS向けのフィルムカメラアプリです。実際の光から計算したハレーションとにじみ、HDRで光る照明、白黒のコントラストフィルター。",
+      "cta": {
+        "label": "詳しく見る",
+        "action": "store"
+      },
+      "secondary": {
+        "label": "あとで",
+        "action": "dismiss"
+      },
+      "store": {
+        "ios_app_id": "6745693309"
+      },
+      "tags": [
+        "kairo"
+      ],
+      "approval": {
+        "gate": "pass",
+        "approved_by": "JY",
+        "approved_at": "2026-10-19T11:26:06Z"
+      }
+    },
+    {
+      "id": "random-taptap-intro-2026w44",
+      "kind": "promo",
+      "priority": 4,
+      "starts_at": "2026-10-19T13:45:00Z",
+      "ends_at": "2099-01-01T00:00:00Z",
+      "platforms": [
+        "ios",
+        "android"
+      ],
+      "runs_on": [
+        "ios",
+        "android"
+      ],
+      "min_app_version": "1.0.0",
+      "max_impressions_per_user": 20,
+      "title": "OVJECTの決定アプリ、Random TapTap",
+      "body": "みんなで画面に指を置くと、光が回って一人のところで止まります。当選者選び、チーム分け、順番決めができます。",
+      "cta": {
+        "label": "App Storeで見る",
+        "action": "store"
+      },
+      "secondary": {
+        "label": "あとで",
+        "action": "dismiss"
+      },
+      "store": {
+        "ios_app_id": "6740798110",
+        "android_package": "com.OVJECT.TapTap"
+      },
+      "tags": [
+        "random-taptap"
+      ],
+      "approval": {
+        "gate": "pass",
+        "approved_by": "JY",
+        "approved_at": "2026-10-19T13:46:00Z"
+      }
+    },
+    {
+      "id": "pitapato-intro-2026w44",
+      "kind": "promo",
+      "priority": 3,
+      "starts_at": "2026-10-19T13:52:00Z",
+      "ends_at": "2099-01-01T00:00:00Z",
+      "platforms": [
+        "ios",
+        "android"
+      ],
+      "runs_on": [
+        "ios",
+        "android"
+      ],
+      "min_app_version": "1.0.0",
+      "max_impressions_per_user": 20,
+      "title": "OVJECTの海賊ルーレット、PITAPATO",
+      "body": "樽からモグラが飛び出す海賊ルーレットです。おもちゃのナイフを刺して、モグラが出た人への罰ゲームを決めて遊べます。",
+      "cta": {
+        "label": "App Storeで見る",
+        "action": "store"
+      },
+      "secondary": {
+        "label": "あとで",
+        "action": "dismiss"
+      },
+      "store": {
+        "ios_app_id": "1505739502",
+        "android_package": "com.OVJECT.Pitapato"
+      },
+      "tags": [
+        "pitapato"
+      ],
+      "approval": {
+        "gate": "pass",
+        "approved_by": "JY",
+        "approved_at": "2026-10-19T13:53:00Z"
+      }
+    }
+  ],
+  "signature": null
+}

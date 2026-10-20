@@ -22,7 +22,7 @@ enough), commit, and the `feed` workflow validates it, regenerates `v1/`, commit
 | `src/<app>/<item-id>.json` | one item per file: shared fields, `strings.<locale>` for all ten locales, `approval`, per-locale gate results `review`, memos `notes` / `gate_context` | people |
 | `src/_links/<app>.json` | `{"links": [...]}`: the link row of that app's OVJECT page (website, store, support, privacy, later socials); the same row goes into all ten locale files | people |
 | `src/_hosts/<app>.json` | an app whose feed is derived from another app's approved items (e.g. KAIRO from Oryth); see "다른 앱의 항목을 그대로 쓰는 앱" | people |
-| `clients/` | client kit for apps (spec, `test-vectors.json`, reference implementation, Swift core): take it and implement in your language | maintainers |
+| `clients/` | client kit for apps (spec, `test-vectors.json`, reference implementation, Swift and GDScript cores): take it and implement in your language | maintainers |
 | `tools/build_feed.py` | validator + generator, standard library only (**canonical copy**) | maintainers |
 | `tools/test_build_feed.py` | unit tests + the rules every item under `src/` must meet | maintainers |
 | `tools/feed-schema.json`, `tools/fixtures/` | output schema (reference) and the example the tests use | maintainers |

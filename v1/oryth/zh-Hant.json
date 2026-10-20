@@ -2,7 +2,7 @@
   "schema_version": 1,
   "app": "oryth",
   "locale": "zh-Hant",
-  "generated_at": "2026-10-19T20:45:37Z",
+  "generated_at": "2026-10-20T00:29:37Z",
   "ttl_hours": 12,
   "items": [
     {
@@ -64,7 +64,9 @@
         "label": "以後再說",
         "action": "dismiss"
       },
-      "store": null,
+      "store": {
+        "ios_app_id": "6745693309"
+      },
       "tags": [
         "kairo"
       ],

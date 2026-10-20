@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
-"""clients/test-vectors.json must agree with the reference implementation (clients/reference.py) and, where a
-Swift compiler exists, with the Swift core copy (clients/swift/). Runs in CI with the other tests; the Swift part
-is skipped on machines without swiftc."""
+"""clients/test-vectors.json must agree with the reference implementation (clients/reference.py) and, where the
+tools exist, with the Swift core copy (clients/swift/) and the GDScript core copy (clients/gdscript/). Runs in CI
+with the other tests; the Swift and GDScript parts are skipped on machines without swiftc / godot."""
 
 from __future__ import annotations
 
@@ -14,6 +14,8 @@ import unittest
 from pathlib import Path
 
 CLIENTS = Path(__file__).resolve().parent.parent / "clients"
+GODOT = shutil.which("godot") or ("/Applications/Godot.app/Contents/MacOS/Godot"
+                                  if Path("/Applications/Godot.app/Contents/MacOS/Godot").exists() else None)
 sys.path.insert(0, str(CLIENTS))
 import reference  # noqa: E402
 
@@ -38,15 +40,22 @@ class ReferenceAgainstVectorsTests(unittest.TestCase):
                 self.assertEqual(reference.version_at_least(case["version"], case["minimum"]), case["expected"])
 
     def test_pick(self):
-        hosts = VECTORS["reference_allowed_hosts"]
         for case in VECTORS["pick"]:
             with self.subTest(name=case["name"]):
                 picked = reference.pick(
                     case["items"], now=case["now"], app_version=case["app_version"],
                     impressions=case["impressions"], host_app=case["host_app"],
-                    platform=case["platform"], allowed_hosts=hosts,
+                    platform=case["platform"],
+                    allowed_hosts=case.get("allowed_hosts", VECTORS["reference_allowed_hosts"]),
                 )
                 self.assertEqual(picked["id"] if picked else None, case["expected_id"])
+
+    def test_cta(self):
+        for case in VECTORS["cta"]:
+            with self.subTest(name=case["name"]):
+                self.assertEqual(
+                    reference.resolve_cta(case["item"], case["platform"], case["host_app"]), case["expected"]
+                )
 
     def test_vectors_cover_every_feed_locale(self):
         covered = {case["expected"] for case in VECTORS["locale"]}
@@ -66,6 +75,18 @@ class SwiftCoreAgainstVectorsTests(unittest.TestCase):
             self.assertEqual(build.returncode, 0, build.stderr)
             run = subprocess.run([str(binary), str(CLIENTS / "test-vectors.json")], capture_output=True, text=True)
             self.assertEqual(run.returncode, 0, run.stdout + run.stderr)
+
+
+@unittest.skipUnless(GODOT, "godot not available")
+class GDScriptCoreAgainstVectorsTests(unittest.TestCase):
+    def test_gdscript_core_passes_the_vectors(self):
+        run = subprocess.run(
+            [GODOT, "--headless", "--script", str(CLIENTS / "gdscript" / "vectors_test.gd"), "--",
+             str(CLIENTS / "test-vectors.json")],
+            capture_output=True, text=True,
+        )
+        self.assertEqual(run.returncode, 0, run.stdout + run.stderr)
+        self.assertIn("OK ", run.stdout)
 
 
 if __name__ == "__main__":

@@ -22,7 +22,9 @@
   "secondary": {
     "action": "dismiss"
   },
-  "store": null,
+  "store": {
+    "ios_app_id": "6745693309"
+  },
   "tags": [
     "kairo"
   ],

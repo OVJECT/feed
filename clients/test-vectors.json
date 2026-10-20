@@ -1047,6 +1047,602 @@
     }
    ],
    "expected_id": "b"
+  },
+  {
+   "name": "store action: android builds the Google Play link",
+   "host_app": "croco-roulette",
+   "platform": "android",
+   "app_version": "1.1.16",
+   "now": "2026-10-20T00:00:00Z",
+   "impressions": {},
+   "allowed_hosts": [
+    "apps.apple.com",
+    "play.google.com",
+    "ovject.com",
+    "www.ovject.com"
+   ],
+   "items": [
+    {
+     "id": "a",
+     "priority": 1,
+     "starts_at": "2026-10-01T00:00:00Z",
+     "ends_at": "2099-01-01T00:00:00Z",
+     "platforms": [
+      "ios",
+      "android"
+     ],
+     "min_app_version": "1.0.0",
+     "max_impressions_per_user": 20,
+     "title": "Title a",
+     "body": "Body a",
+     "cta": {
+      "label": "View in App Store",
+      "action": "store"
+     },
+     "store": {
+      "ios_app_id": "1501486372",
+      "android_package": "com.OVJECT.CrocoR"
+     },
+     "tags": [
+      "sample"
+     ]
+    }
+   ],
+   "expected_id": "a"
+  },
+  {
+   "name": "store action: ios builds the App Store link",
+   "host_app": "croco-roulette",
+   "platform": "ios",
+   "app_version": "1.1.16",
+   "now": "2026-10-20T00:00:00Z",
+   "impressions": {},
+   "allowed_hosts": [
+    "apps.apple.com",
+    "play.google.com",
+    "ovject.com",
+    "www.ovject.com"
+   ],
+   "items": [
+    {
+     "id": "a",
+     "priority": 1,
+     "starts_at": "2026-10-01T00:00:00Z",
+     "ends_at": "2099-01-01T00:00:00Z",
+     "platforms": [
+      "ios",
+      "android"
+     ],
+     "min_app_version": "1.0.0",
+     "max_impressions_per_user": 20,
+     "title": "Title a",
+     "body": "Body a",
+     "cta": {
+      "label": "View in App Store",
+      "action": "store"
+     },
+     "store": {
+      "ios_app_id": "1501486372",
+      "android_package": "com.OVJECT.CrocoR"
+     },
+     "tags": [
+      "sample"
+     ]
+    }
+   ],
+   "expected_id": "a"
+  },
+  {
+   "name": "store action: no android package is skipped on android",
+   "host_app": "croco-roulette",
+   "platform": "android",
+   "app_version": "1.1.16",
+   "now": "2026-10-20T00:00:00Z",
+   "impressions": {},
+   "allowed_hosts": [
+    "apps.apple.com",
+    "play.google.com",
+    "ovject.com",
+    "www.ovject.com"
+   ],
+   "items": [
+    {
+     "id": "a",
+     "priority": 1,
+     "starts_at": "2026-10-01T00:00:00Z",
+     "ends_at": "2099-01-01T00:00:00Z",
+     "platforms": [
+      "ios",
+      "android"
+     ],
+     "min_app_version": "1.0.0",
+     "max_impressions_per_user": 20,
+     "title": "Title a",
+     "body": "Body a",
+     "cta": {
+      "label": "View in App Store",
+      "action": "store"
+     },
+     "store": {
+      "ios_app_id": "1"
+     },
+     "tags": [
+      "sample"
+     ]
+    }
+   ],
+   "expected_id": null
+  },
+  {
+   "name": "store action: no ios id is skipped on ios",
+   "host_app": "croco-roulette",
+   "platform": "ios",
+   "app_version": "1.1.16",
+   "now": "2026-10-20T00:00:00Z",
+   "impressions": {},
+   "allowed_hosts": [
+    "apps.apple.com",
+    "play.google.com",
+    "ovject.com",
+    "www.ovject.com"
+   ],
+   "items": [
+    {
+     "id": "a",
+     "priority": 1,
+     "starts_at": "2026-10-01T00:00:00Z",
+     "ends_at": "2099-01-01T00:00:00Z",
+     "platforms": [
+      "ios",
+      "android"
+     ],
+     "min_app_version": "1.0.0",
+     "max_impressions_per_user": 20,
+     "title": "Title a",
+     "body": "Body a",
+     "cta": {
+      "label": "View in App Store",
+      "action": "store"
+     },
+     "store": {
+      "android_package": "com.x.y"
+     },
+     "tags": [
+      "sample"
+     ]
+    }
+   ],
+   "expected_id": null
+  },
+  {
+   "name": "store action: ios id must be digits",
+   "host_app": "croco-roulette",
+   "platform": "ios",
+   "app_version": "1.1.16",
+   "now": "2026-10-20T00:00:00Z",
+   "impressions": {},
+   "allowed_hosts": [
+    "apps.apple.com",
+    "play.google.com",
+    "ovject.com",
+    "www.ovject.com"
+   ],
+   "items": [
+    {
+     "id": "a",
+     "priority": 1,
+     "starts_at": "2026-10-01T00:00:00Z",
+     "ends_at": "2099-01-01T00:00:00Z",
+     "platforms": [
+      "ios",
+      "android"
+     ],
+     "min_app_version": "1.0.0",
+     "max_impressions_per_user": 20,
+     "title": "Title a",
+     "body": "Body a",
+     "cta": {
+      "label": "View in App Store",
+      "action": "store"
+     },
+     "store": {
+      "ios_app_id": "12/../x"
+     },
+     "tags": [
+      "sample"
+     ]
+    }
+   ],
+   "expected_id": null
+  },
+  {
+   "name": "store action: package must look like a package name",
+   "host_app": "croco-roulette",
+   "platform": "android",
+   "app_version": "1.1.16",
+   "now": "2026-10-20T00:00:00Z",
+   "impressions": {},
+   "allowed_hosts": [
+    "apps.apple.com",
+    "play.google.com",
+    "ovject.com",
+    "www.ovject.com"
+   ],
+   "items": [
+    {
+     "id": "a",
+     "priority": 1,
+     "starts_at": "2026-10-01T00:00:00Z",
+     "ends_at": "2099-01-01T00:00:00Z",
+     "platforms": [
+      "ios",
+      "android"
+     ],
+     "min_app_version": "1.0.0",
+     "max_impressions_per_user": 20,
+     "title": "Title a",
+     "body": "Body a",
+     "cta": {
+      "label": "View in App Store",
+      "action": "store"
+     },
+     "store": {
+      "android_package": "com.x.y&evil=1"
+     },
+     "tags": [
+      "sample"
+     ]
+    }
+   ],
+   "expected_id": null
+  },
+  {
+   "name": "store action: play host must be allowed",
+   "host_app": "croco-roulette",
+   "platform": "android",
+   "app_version": "1.1.16",
+   "now": "2026-10-20T00:00:00Z",
+   "impressions": {},
+   "allowed_hosts": [
+    "apps.apple.com"
+   ],
+   "items": [
+    {
+     "id": "a",
+     "priority": 1,
+     "starts_at": "2026-10-01T00:00:00Z",
+     "ends_at": "2099-01-01T00:00:00Z",
+     "platforms": [
+      "ios",
+      "android"
+     ],
+     "min_app_version": "1.0.0",
+     "max_impressions_per_user": 20,
+     "title": "Title a",
+     "body": "Body a",
+     "cta": {
+      "label": "View in App Store",
+      "action": "store"
+     },
+     "store": {
+      "ios_app_id": "1501486372",
+      "android_package": "com.OVJECT.CrocoR"
+     },
+     "tags": [
+      "sample"
+     ]
+    }
+   ],
+   "expected_id": null
+  },
+  {
+   "name": "store action: unknown action is skipped",
+   "host_app": "croco-roulette",
+   "platform": "android",
+   "app_version": "1.1.16",
+   "now": "2026-10-20T00:00:00Z",
+   "impressions": {},
+   "allowed_hosts": [
+    "apps.apple.com",
+    "play.google.com",
+    "ovject.com",
+    "www.ovject.com"
+   ],
+   "items": [
+    {
+     "id": "a",
+     "priority": 1,
+     "starts_at": "2026-10-01T00:00:00Z",
+     "ends_at": "2099-01-01T00:00:00Z",
+     "platforms": [
+      "ios",
+      "android"
+     ],
+     "min_app_version": "1.0.0",
+     "max_impressions_per_user": 20,
+     "title": "Title a",
+     "body": "Body a",
+     "cta": {
+      "label": "x",
+      "action": "deeplink"
+     },
+     "store": {
+      "ios_app_id": "1501486372",
+      "android_package": "com.OVJECT.CrocoR"
+     },
+     "tags": [
+      "sample"
+     ]
+    }
+   ],
+   "expected_id": null
+  },
+  {
+   "name": "store action: rotation by impressions",
+   "host_app": "croco-roulette",
+   "platform": "android",
+   "app_version": "1.1.16",
+   "now": "2026-10-20T00:00:00Z",
+   "impressions": {
+    "a": 1
+   },
+   "allowed_hosts": [
+    "apps.apple.com",
+    "play.google.com",
+    "ovject.com",
+    "www.ovject.com"
+   ],
+   "items": [
+    {
+     "id": "a",
+     "priority": 1,
+     "starts_at": "2026-10-01T00:00:00Z",
+     "ends_at": "2099-01-01T00:00:00Z",
+     "platforms": [
+      "ios",
+      "android"
+     ],
+     "min_app_version": "1.0.0",
+     "max_impressions_per_user": 20,
+     "title": "Title a",
+     "body": "Body a",
+     "cta": {
+      "label": "View in App Store",
+      "action": "store"
+     },
+     "store": {
+      "ios_app_id": "1501486372",
+      "android_package": "com.OVJECT.CrocoR"
+     },
+     "tags": [
+      "sample"
+     ]
+    },
+    {
+     "id": "b",
+     "priority": 1,
+     "starts_at": "2026-10-01T00:00:00Z",
+     "ends_at": "2099-01-01T00:00:00Z",
+     "platforms": [
+      "ios",
+      "android"
+     ],
+     "min_app_version": "1.0.0",
+     "max_impressions_per_user": 20,
+     "title": "Title b",
+     "body": "Body b",
+     "cta": {
+      "label": "View in App Store",
+      "action": "store"
+     },
+     "store": {
+      "ios_app_id": "1501486372",
+      "android_package": "com.OVJECT.CrocoR"
+     },
+     "tags": [
+      "sample"
+     ]
+    }
+   ],
+   "expected_id": "b"
+  }
+ ],
+ "cta": [
+  {
+   "name": "url action is returned as is",
+   "host_app": "croco-roulette",
+   "platform": "ios",
+   "item": {
+    "id": "a",
+    "priority": 1,
+    "starts_at": "2026-10-01T00:00:00Z",
+    "ends_at": "2099-01-01T00:00:00Z",
+    "platforms": [
+     "ios",
+     "android"
+    ],
+    "min_app_version": "1.0.0",
+    "max_impressions_per_user": 20,
+    "title": "Title a",
+    "body": "Body a",
+    "cta": {
+     "label": "Open",
+     "action": "url",
+     "url": "https://apps.apple.com/app/id9"
+    },
+    "store": {
+     "ios_app_id": "1501486372",
+     "android_package": "com.OVJECT.CrocoR"
+    },
+    "tags": [
+     "sample"
+    ]
+   },
+   "expected": {
+    "label": "Open",
+    "url": "https://apps.apple.com/app/id9"
+   }
+  },
+  {
+   "name": "store on ios keeps the feed label",
+   "host_app": "croco-roulette",
+   "platform": "ios",
+   "item": {
+    "id": "a",
+    "priority": 1,
+    "starts_at": "2026-10-01T00:00:00Z",
+    "ends_at": "2099-01-01T00:00:00Z",
+    "platforms": [
+     "ios",
+     "android"
+    ],
+    "min_app_version": "1.0.0",
+    "max_impressions_per_user": 20,
+    "title": "Title a",
+    "body": "Body a",
+    "cta": {
+     "label": "View in App Store",
+     "action": "store"
+    },
+    "store": {
+     "ios_app_id": "1501486372",
+     "android_package": "com.OVJECT.CrocoR"
+    },
+    "tags": [
+     "sample"
+    ]
+   },
+   "expected": {
+    "label": "View in App Store",
+    "url": "https://apps.apple.com/app/id1501486372?utm_source=croco-roulette&utm_medium=feedcard&utm_campaign=feedcard&utm_content=a"
+   }
+  },
+  {
+   "name": "store on macos uses the App Store",
+   "host_app": "croco-roulette",
+   "platform": "macos",
+   "item": {
+    "id": "a",
+    "priority": 1,
+    "starts_at": "2026-10-01T00:00:00Z",
+    "ends_at": "2099-01-01T00:00:00Z",
+    "platforms": [
+     "ios",
+     "android"
+    ],
+    "min_app_version": "1.0.0",
+    "max_impressions_per_user": 20,
+    "title": "Title a",
+    "body": "Body a",
+    "cta": {
+     "label": "View in App Store",
+     "action": "store"
+    },
+    "store": {
+     "ios_app_id": "1501486372",
+     "android_package": "com.OVJECT.CrocoR"
+    },
+    "tags": [
+     "sample"
+    ]
+   },
+   "expected": {
+    "label": "View in App Store",
+    "url": "https://apps.apple.com/app/id1501486372?utm_source=croco-roulette&utm_medium=feedcard&utm_campaign=feedcard&utm_content=a"
+   }
+  },
+  {
+   "name": "store on android is labelled Google Play",
+   "host_app": "croco-roulette",
+   "platform": "android",
+   "item": {
+    "id": "a",
+    "priority": 1,
+    "starts_at": "2026-10-01T00:00:00Z",
+    "ends_at": "2099-01-01T00:00:00Z",
+    "platforms": [
+     "ios",
+     "android"
+    ],
+    "min_app_version": "1.0.0",
+    "max_impressions_per_user": 20,
+    "title": "Title a",
+    "body": "Body a",
+    "cta": {
+     "label": "View in App Store",
+     "action": "store"
+    },
+    "store": {
+     "ios_app_id": "1501486372",
+     "android_package": "com.OVJECT.CrocoR"
+    },
+    "tags": [
+     "sample"
+    ]
+   },
+   "expected": {
+    "label": "Google Play",
+    "url": "https://play.google.com/store/apps/details?id=com.OVJECT.CrocoR&utm_source=croco-roulette&utm_medium=feedcard&utm_campaign=feedcard&utm_content=a"
+   }
+  },
+  {
+   "name": "store without an id for the platform gives nothing",
+   "host_app": "croco-roulette",
+   "platform": "android",
+   "item": {
+    "id": "a",
+    "priority": 1,
+    "starts_at": "2026-10-01T00:00:00Z",
+    "ends_at": "2099-01-01T00:00:00Z",
+    "platforms": [
+     "ios",
+     "android"
+    ],
+    "min_app_version": "1.0.0",
+    "max_impressions_per_user": 20,
+    "title": "Title a",
+    "body": "Body a",
+    "cta": {
+     "label": "View in App Store",
+     "action": "store"
+    },
+    "store": null,
+    "tags": [
+     "sample"
+    ]
+   },
+   "expected": null
+  },
+  {
+   "name": "dismiss gives nothing",
+   "host_app": "croco-roulette",
+   "platform": "ios",
+   "item": {
+    "id": "a",
+    "priority": 1,
+    "starts_at": "2026-10-01T00:00:00Z",
+    "ends_at": "2099-01-01T00:00:00Z",
+    "platforms": [
+     "ios",
+     "android"
+    ],
+    "min_app_version": "1.0.0",
+    "max_impressions_per_user": 20,
+    "title": "Title a",
+    "body": "Body a",
+    "cta": {
+     "label": "x",
+     "action": "dismiss"
+    },
+    "store": {
+     "ios_app_id": "1501486372",
+     "android_package": "com.OVJECT.CrocoR"
+    },
+    "tags": [
+     "sample"
+    ]
+   },
+   "expected": null
   }
  ]
 }

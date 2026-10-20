@@ -1,0 +1,125 @@
+{
+  "schema_version": 1,
+  "app": "croco-roulette",
+  "locale": "ko",
+  "generated_at": "2026-10-20T00:29:37Z",
+  "ttl_hours": 12,
+  "items": [
+    {
+      "id": "kairo-intro-2026w44",
+      "kind": "promo",
+      "priority": 5,
+      "starts_at": "2026-10-19T12:00:00Z",
+      "ends_at": "2026-12-31T00:00:00Z",
+      "platforms": [
+        "ios",
+        "android"
+      ],
+      "runs_on": [
+        "ios"
+      ],
+      "min_app_version": "1.0.0",
+      "max_impressions_per_user": 20,
+      "title": "OVJECT의 필름 카메라 앱, KAIRO",
+      "body": "iOS용 필름 카메라 앱입니다. 실제 빛에서 계산한 할레이션과 빛번짐, HDR 화면에서 빛나는 조명, 흑백 대비 필터.",
+      "cta": {
+        "label": "자세히 보기",
+        "action": "store"
+      },
+      "secondary": {
+        "label": "나중에",
+        "action": "dismiss"
+      },
+      "store": {
+        "ios_app_id": "6745693309"
+      },
+      "tags": [
+        "kairo"
+      ],
+      "approval": {
+        "gate": "pass",
+        "approved_by": "JY",
+        "approved_at": "2026-10-19T11:26:06Z"
+      }
+    },
+    {
+      "id": "random-taptap-intro-2026w44",
+      "kind": "promo",
+      "priority": 4,
+      "starts_at": "2026-10-19T13:45:00Z",
+      "ends_at": "2099-01-01T00:00:00Z",
+      "platforms": [
+        "ios",
+        "android"
+      ],
+      "runs_on": [
+        "ios",
+        "android"
+      ],
+      "min_app_version": "1.0.0",
+      "max_impressions_per_user": 20,
+      "title": "OVJECT의 결정 도우미, Random TapTap",
+      "body": "다 같이 화면에 손가락을 올리면 불빛이 돌다가 한 사람에게 멈춰요. 당첨자 뽑기, 팀 나누기, 순서 정하기를 할 수 있어요.",
+      "cta": {
+        "label": "앱스토어에서 보기",
+        "action": "store"
+      },
+      "secondary": {
+        "label": "나중에",
+        "action": "dismiss"
+      },
+      "store": {
+        "ios_app_id": "6740798110",
+        "android_package": "com.OVJECT.TapTap"
+      },
+      "tags": [
+        "random-taptap"
+      ],
+      "approval": {
+        "gate": "pass",
+        "approved_by": "JY",
+        "approved_at": "2026-10-19T13:46:00Z"
+      }
+    },
+    {
+      "id": "pitapato-intro-2026w44",
+      "kind": "promo",
+      "priority": 3,
+      "starts_at": "2026-10-19T13:52:00Z",
+      "ends_at": "2099-01-01T00:00:00Z",
+      "platforms": [
+        "ios",
+        "android"
+      ],
+      "runs_on": [
+        "ios",
+        "android"
+      ],
+      "min_app_version": "1.0.0",
+      "max_impressions_per_user": 20,
+      "title": "OVJECT의 해적 룰렛, PITAPATO",
+      "body": "통 속 두더지가 튀어나오는 해적 룰렛 게임이에요. 장난감 칼을 꽂아 보고, 두더지가 나온 사람에게 줄 벌칙을 정해 보세요.",
+      "cta": {
+        "label": "앱스토어에서 보기",
+        "action": "store"
+      },
+      "secondary": {
+        "label": "나중에",
+        "action": "dismiss"
+      },
+      "store": {
+        "ios_app_id": "1505739502",
+        "android_package": "com.OVJECT.Pitapato"
+      },
+      "tags": [
+        "pitapato"
+      ],
+      "approval": {
+        "gate": "pass",
+        "approved_by": "JY",
+        "approved_at": "2026-10-19T13:53:00Z"
+      }
+    }
+  ],
+  "signature": null
+}
